@@ -1,4 +1,4 @@
-# Copyright 2023 Adap GmbH. All Rights Reserved.
+# Copyright 2023 Flower Labs GmbH. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,12 +14,15 @@
 # ==============================================================================
 """Telemetry tests."""
 
+
+import os
 import time
 import unittest
 from typing import Callable
 from unittest import mock
+from uuid import uuid4
 
-from flwr.common.telemetry import EventType, _get_source_id, event
+from flwr.common.telemetry import EventType, _get_partner_id, _get_source_id, event
 
 
 class TelemetryTest(unittest.TestCase):
@@ -46,8 +49,8 @@ class TelemetryTest(unittest.TestCase):
         0.001s.
         """
         # Prepare
-        # Use 0.1ms as any blocking networked call would take longer.
-        duration_max = 0.001
+        # Use 5ms as any blocking networked call would take longer.
+        duration_max = 0.005
         start = time.time()
 
         # Execute
@@ -73,8 +76,7 @@ class TelemetryTest(unittest.TestCase):
     def test_get_source_id(self) -> None:
         """Test if _get_source_id returns an ID successfully.
 
-        This test might fail if the UNIX user invoking the test has no
-        home directory.
+        This test might fail if the UNIX user invoking the test has no home directory.
         """
         # Prepare
         # nothing to prepare
@@ -109,3 +111,39 @@ class TelemetryTest(unittest.TestCase):
 
         # Assert
         self.assertEqual(source_id, except_value)
+
+    def test_get_partner_id(self) -> None:
+        """Test if _get_partner_id returns an ID successfully."""
+        # Prepare
+        generated_id = str(uuid4())
+        os.environ["FLWR_TELEMETRY_PARTNER_ID"] = generated_id
+
+        # Execute
+        partner_id = _get_partner_id()
+
+        # Assert
+        self.assertEqual(partner_id, generated_id)
+
+    def test_get_partner_id_no_env(self) -> None:
+        """Test if _get_partner_id returns unavailable without an env variable."""
+        # Prepare
+        os.environ["FLWR_TELEMETRY_PARTNER_ID"] = ""
+        expected_value = "unavailable"
+
+        # Execute
+        partner_id = _get_partner_id()
+
+        # Assert
+        self.assertEqual(partner_id, expected_value)
+
+    def test_get_partner_id_invalid(self) -> None:
+        """Test if _get_partner_id returns invalid with an incorrect env variable."""
+        # Prepare
+        os.environ["FLWR_TELEMETRY_PARTNER_ID"] = "not a valid ID"
+        expected_value = "invalid"
+
+        # Execute
+        partner_id = _get_partner_id()
+
+        # Assert
+        self.assertEqual(partner_id, expected_value)

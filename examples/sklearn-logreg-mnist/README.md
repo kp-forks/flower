@@ -1,61 +1,71 @@
-# Flower Example using scikit-learn
+---
+tags: [basic, vision, logistic regression, fds]
+dataset: [MNIST]
+framework: [scikit-learn]
+---
 
-This example of Flower uses `scikit-learn`'s `LogisticRegression` model to train a federated learning system. It will help you understand how to adapt Flower for use with `scikit-learn`.
-Running this example in itself is quite easy.
+# Flower Logistic Regression Example using scikit-learn and Flower (Quickstart Example)
 
-## Project Setup
+This example of Flower uses `scikit-learn`'s [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) model to train a federated learning system. It will help you understand how to adapt Flower for use with `scikit-learn`.
+Running this example in itself is quite easy. This example uses [Flower Datasets](https://flower.ai/docs/datasets/) to download, partition and preprocess the MNIST dataset.
 
-Start by cloning the example project. We prepared a single-line command that you can copy into your shell which will checkout the example for you:
+## Set up the project
 
-```shell
-git clone --depth=1 https://github.com/adap/flower.git && mv flower/examples/sklearn-logreg-mnist . && rm -rf flower && cd sklearn-logreg-mnist
-```
+### Clone the project
 
-This will create a new directory called `sklearn-logreg-mnist` containing the following files:
-
-```shell
--- pyproject.toml
--- client.py
--- server.py
--- utils.py
--- README.md
-```
-
-Project dependencies (such as `scikit-learn` and `flwr`) are defined in `pyproject.toml`. We recommend [Poetry](https://python-poetry.org/docs/) to install those dependencies and manage your virtual environment ([Poetry installation](https://python-poetry.org/docs/#installation)), but feel free to use a different way of installing dependencies and managing virtual environments if you have other preferences.
+Start by cloning the example project:
 
 ```shell
-poetry install
-poetry shell
+git clone --depth=1 https://github.com/adap/flower.git _tmp \
+		&& mv _tmp/examples/sklearn-logreg-mnist . \
+		&& rm -rf _tmp && cd sklearn-logreg-mnist
 ```
 
-Poetry will install all your dependencies in a newly created virtual environment. To verify that everything works correctly you can run the following command:
+This will create a new directory called `sklearn-logreg-mnist` with the following structure:
 
 ```shell
-poetry run python3 -c "import flwr"
+sklearn-logreg-mnist
+├── README.md
+├── pyproject.toml      # Project metadata like dependencies and configs
+└── sklearn_example
+    ├── __init__.py
+    ├── client_app.py   # Defines your ClientApp
+    ├── server_app.py   # Defines your ServerApp
+    └── task.py         # Defines your model, training and data loading
 ```
 
-If you don't see any errors you're good to go!
+### Install dependencies and project
 
-# Run Federated Learning with scikit-learn and Flower
+Install the dependencies defined in `pyproject.toml` as well as the `sklearn_example` package.
 
-Afterwards you are ready to start the Flower server as well as the clients. You can simply start the server in a terminal as follows:
-
-```shell
-poetry run python3 server.py
+```bash
+pip install -e .
 ```
 
-Now you are ready to start the Flower clients which will participate in the learning. To do so simply open two more terminals and run the following command in each:
+## Run the project
 
-```shell
-poetry run python3 client.py
+You can run your Flower project in both _simulation_ and _deployment_ mode without making changes to the code. If you are starting with Flower, we recommend you using the _simulation_ mode as it requires fewer components to be launched manually. By default, `flwr run` will make use of the Simulation Engine.
+
+### Run with the Simulation Engine
+
+> \[!NOTE\]
+> Check the [Simulation Engine documentation](https://flower.ai/docs/framework/how-to-run-simulations.html) to learn more about Flower simulations and how to optimize them.
+
+```bash
+flwr run .
 ```
 
-Alternatively you can run all of it in one shell as follows:
+You can also override some of the settings for your `ClientApp` and `ServerApp` defined in `pyproject.toml`. For example:
 
-```shell
-poetry run python3 server.py &
-poetry run python3 client.py &
-poetry run python3 client.py
+```bash
+flwr run . --run-config "num-server-rounds=5 fraction-fit=0.25"
 ```
 
-You will see that Flower is starting a federated training. 
+> \[!TIP\]
+> For a more detailed walk-through check our [quickstart PyTorch tutorial](https://flower.ai/docs/framework/tutorial-quickstart-scikitlearn.html)
+
+### Run with the Deployment Engine
+
+Follow this [how-to guide](https://flower.ai/docs/framework/how-to-run-flower-with-deployment-engine.html) to run the same app in this example but with Flower's Deployment Engine. After that, you might be intersted in setting up [secure TLS-enabled communications](https://flower.ai/docs/framework/how-to-enable-tls-connections.html) and [SuperNode authentication](https://flower.ai/docs/framework/how-to-authenticate-supernodes.html) in your federation.
+
+If you are already familiar with how the Deployment Engine works, you may want to learn how to run it using Docker. Check out the [Flower with Docker](https://flower.ai/docs/framework/docker/index.html) documentation.

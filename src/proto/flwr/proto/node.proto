@@ -1,4 +1,4 @@
-// Copyright 2022 Adap GmbH. All Rights Reserved.
+// Copyright 2022 Flower Labs GmbH. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,4 @@ syntax = "proto3";
 
 package flwr.proto;
 
-message Node {
-  uint64 node_id = 1;
-  bool anonymous = 2;
-}
+message Node { uint64 node_id = 1; }

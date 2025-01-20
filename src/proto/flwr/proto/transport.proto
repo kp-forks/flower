@@ -1,4 +1,4 @@
-// Copyright 2020 Adap GmbH. All Rights Reserved.
+// Copyright 2020 Flower Labs GmbH. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ message Scalar {
     // int32 int32 = 3;
     // int64 int64 = 4;
     // uint32 uint32 = 5;
-    // uint64 uint64 = 6;
+    uint64 uint64 = 6;
     // sint32 sint32 = 7;
     sint64 sint64 = 8;
     // fixed32 fixed32 = 9;

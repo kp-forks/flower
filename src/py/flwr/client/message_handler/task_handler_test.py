@@ -1,4 +1,4 @@
-# Copyright 2023 Adap GmbH. All Rights Reserved.
+# Copyright 2023 Flower Labs GmbH. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,114 +15,53 @@
 """Tests for module task_handler."""
 
 
-from flwr.client.message_handler.task_handler import get_server_message
-from flwr.proto.fleet_pb2 import PullTaskInsResponse, Reconnect
-from flwr.proto.task_pb2 import Task, TaskIns
-from flwr.proto.transport_pb2 import ServerMessage
+from flwr.client.message_handler.task_handler import get_task_ins, validate_task_ins
+from flwr.common import RecordSet, serde
+from flwr.proto.fleet_pb2 import PullTaskInsResponse  # pylint: disable=E0611
+from flwr.proto.task_pb2 import Task, TaskIns  # pylint: disable=E0611
 
 
-def test_get_server_message_empty() -> None:
-    """Test get_server_message."""
+def test_validate_task_ins_no_task() -> None:
+    """Test validate_task_ins."""
+    task_ins = TaskIns(task=None)
 
-    # Prepare
+    assert not validate_task_ins(task_ins)
+
+
+def test_validate_task_ins_no_content() -> None:
+    """Test validate_task_ins."""
+    task_ins = TaskIns(task=Task(recordset=None))
+
+    assert not validate_task_ins(task_ins)
+
+
+def test_validate_task_ins_valid() -> None:
+    """Test validate_task_ins."""
+    task_ins = TaskIns(task=Task(recordset=serde.recordset_to_proto(RecordSet())))
+
+    assert validate_task_ins(task_ins)
+
+
+def test_get_task_ins_empty_response() -> None:
+    """Test get_task_ins."""
     res = PullTaskInsResponse(reconnect=None, task_ins_list=[])
-
-    # Execute
-    actual = get_server_message(res)
-
-    # Assert
-    assert actual is None
+    task_ins = get_task_ins(res)
+    assert task_ins is None
 
 
-def test_get_server_message_reconnect() -> None:
-    """Test get_server_message."""
-
-    # Prepare
-    res = PullTaskInsResponse(reconnect=Reconnect(reconnect=42), task_ins_list=[])
-
-    # Execute
-    actual = get_server_message(res)
-
-    # Assert
-    assert actual is None
+def test_get_task_ins_single_ins() -> None:
+    """Test get_task_ins."""
+    expected_task_ins = TaskIns(task_id="123", task=Task())
+    res = PullTaskInsResponse(reconnect=None, task_ins_list=[expected_task_ins])
+    actual_task_ins = get_task_ins(res)
+    assert actual_task_ins == expected_task_ins
 
 
-def test_get_server_message_none_task() -> None:
-    """Test get_server_message."""
-
-    # Prepare
-    res = PullTaskInsResponse(reconnect=None, task_ins_list=[TaskIns(task=None)])
-
-    # Execute
-    actual = get_server_message(res)
-
-    # Assert
-    assert actual is None
-
-
-def test_get_server_message_none_legacy() -> None:
-    """Test get_server_message."""
-
-    # Prepare
+def test_get_task_ins_multiple_ins() -> None:
+    """Test get_task_ins."""
+    expected_task_ins = TaskIns(task_id="123", task=Task())
     res = PullTaskInsResponse(
-        reconnect=None, task_ins_list=[TaskIns(task=Task(legacy_server_message=None))]
+        reconnect=None, task_ins_list=[expected_task_ins, TaskIns(), TaskIns()]
     )
-
-    # Execute
-    actual = get_server_message(res)
-
-    # Assert
-    assert actual is None
-
-
-def test_get_server_message_legacy_reconnect() -> None:
-    """Test get_server_message."""
-
-    # Prepare
-    res = PullTaskInsResponse(
-        reconnect=None,
-        task_ins_list=[
-            TaskIns(
-                task=Task(
-                    legacy_server_message=ServerMessage(
-                        reconnect_ins=ServerMessage.ReconnectIns(seconds=3)
-                    )
-                )
-            )
-        ],
-    )
-
-    # Execute
-    actual = get_server_message(res)
-
-    # Assert
-    assert actual is None
-
-
-def test_get_server_message_legacy_valid() -> None:
-    """Test get_server_message."""
-
-    # Prepare
-    expected = TaskIns(
-        task=Task(
-            legacy_server_message=ServerMessage(
-                get_properties_ins=ServerMessage.GetPropertiesIns()
-            )
-        )
-    )
-    res = PullTaskInsResponse(
-        reconnect=None,
-        task_ins_list=[expected],
-    )
-
-    # Execute
-    actual = get_server_message(res)
-
-    # Assert
-    assert actual is not None
-    actual_task_ins, actual_server_message = actual
-    assert actual_task_ins == expected
-
-    # pylint: disable=no-member
-    assert actual_server_message == expected.task.legacy_server_message
-    # pylint: enable=no-member
+    actual_task_ins = get_task_ins(res)
+    assert actual_task_ins == expected_task_ins

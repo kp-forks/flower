@@ -1,4 +1,4 @@
-# Copyright 2020 Adap GmbH. All Rights Reserved.
+# Copyright 2021 Flower Labs GmbH. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,192 +12,272 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-"""Flower simulation app."""
+"""Flower Simulation process."""
 
 
+import argparse
 import sys
-from logging import ERROR, INFO
-from typing import Any, Callable, Dict, List, Optional
+from logging import DEBUG, ERROR, INFO
+from queue import Queue
+from time import sleep
+from typing import Optional
 
-import ray
-
-from flwr.client.client import Client
+from flwr.cli.config_utils import get_fab_metadata
+from flwr.cli.install import install_from_fab
+from flwr.cli.utils import get_sha256_hash
 from flwr.common import EventType, event
-from flwr.common.logger import log
-from flwr.server import Server
-from flwr.server.app import ServerConfig, _fl, _init_defaults
-from flwr.server.client_manager import ClientManager
-from flwr.server.history import History
-from flwr.server.strategy import Strategy
-from flwr.simulation.ray_transport.ray_client_proxy import RayClientProxy
+from flwr.common.args import add_args_flwr_app_common
+from flwr.common.config import (
+    get_flwr_dir,
+    get_fused_config_from_dir,
+    get_project_config,
+    get_project_dir,
+    unflatten_dict,
+)
+from flwr.common.constant import (
+    SIMULATIONIO_API_DEFAULT_CLIENT_ADDRESS,
+    Status,
+    SubStatus,
+)
+from flwr.common.logger import (
+    log,
+    mirror_output_to_queue,
+    restore_output,
+    start_log_uploader,
+    stop_log_uploader,
+)
+from flwr.common.serde import (
+    configs_record_from_proto,
+    context_from_proto,
+    context_to_proto,
+    fab_from_proto,
+    run_from_proto,
+    run_status_to_proto,
+)
+from flwr.common.typing import RunStatus
+from flwr.proto.run_pb2 import (  # pylint: disable=E0611
+    GetFederationOptionsRequest,
+    GetFederationOptionsResponse,
+    UpdateRunStatusRequest,
+)
+from flwr.proto.simulationio_pb2 import (  # pylint: disable=E0611
+    PullSimulationInputsRequest,
+    PullSimulationInputsResponse,
+    PushSimulationOutputsRequest,
+)
+from flwr.server.superlink.fleet.vce.backend.backend import BackendConfig
+from flwr.simulation.run_simulation import _run_simulation
+from flwr.simulation.simulationio_connection import SimulationIoConnection
 
-INVALID_ARGUMENTS_START_SIMULATION = """
-INVALID ARGUMENTS ERROR
 
-Invalid Arguments in method:
+def flwr_simulation() -> None:
+    """Run process-isolated Flower Simulation."""
+    # Capture stdout/stderr
+    log_queue: Queue[Optional[str]] = Queue()
+    mirror_output_to_queue(log_queue)
 
-`start_simulation(
-    *,
-    client_fn: Callable[[str], Client],
-    num_clients: Optional[int] = None,
-    clients_ids: Optional[List[str]] = None,
-    client_resources: Optional[Dict[str, float]] = None,
-    server: Optional[Server] = None,
-    config: ServerConfig = None,
-    strategy: Optional[Strategy] = None,
-    client_manager: Optional[ClientManager] = None,
-    ray_init_args: Optional[Dict[str, Any]] = None,
-) -> None:`
+    args = _parse_args_run_flwr_simulation().parse_args()
 
-REASON:
-    Method requires:
-        - Either `num_clients`[int] or `clients_ids`[List[str]]
-        to be set exclusively.
-        OR
-        - `len(clients_ids)` == `num_clients`
+    log(INFO, "Starting Flower Simulation")
 
-"""
-
-
-def start_simulation(  # pylint: disable=too-many-arguments
-    *,
-    client_fn: Callable[[str], Client],
-    num_clients: Optional[int] = None,
-    clients_ids: Optional[List[str]] = None,
-    client_resources: Optional[Dict[str, float]] = None,
-    server: Optional[Server] = None,
-    config: Optional[ServerConfig] = None,
-    strategy: Optional[Strategy] = None,
-    client_manager: Optional[ClientManager] = None,
-    ray_init_args: Optional[Dict[str, Any]] = None,
-    keep_initialised: Optional[bool] = False,
-) -> History:
-    """Start a Ray-based Flower simulation server.
-
-    Parameters
-    ----------
-    client_fn : Callable[[str], Client]
-        A function creating client instances. The function must take a single
-        str argument called `cid`. It should return a single client instance.
-        Note that the created client instances are ephemeral and will often be
-        destroyed after a single method invocation. Since client instances are
-        not long-lived, they should not attempt to carry state over method
-        invocations. Any state required by the instance (model, dataset,
-        hyperparameters, ...) should be (re-)created in either the call to
-        `client_fn` or the call to any of the client methods (e.g., load
-        evaluation data in the `evaluate` method itself).
-    num_clients : Optional[int]
-        The total number of clients in this simulation. This must be set if
-        `clients_ids` is not set and vice-versa.
-    clients_ids : Optional[List[str]]
-        List `client_id`s for each client. This is only required if
-        `num_clients` is not set. Setting both `num_clients` and `clients_ids`
-        with `len(clients_ids)` not equal to `num_clients` generates an error.
-    client_resources : Optional[Dict[str, float]] (default: None)
-        CPU and GPU resources for a single client. Supported keys are
-        `num_cpus` and `num_gpus`. Example: `{"num_cpus": 4, "num_gpus": 1}`.
-        To understand the GPU utilization caused by `num_gpus`, consult the Ray
-        documentation on GPU support.
-    server : Optional[flwr.server.Server] (default: None).
-        An implementation of the abstract base class `flwr.server.Server`. If no
-        instance is provided, then `start_server` will create one.
-    config: ServerConfig (default: None).
-        Currently supported values are `num_rounds` (int, default: 1) and
-        `round_timeout` in seconds (float, default: None).
-    strategy : Optional[flwr.server.Strategy] (default: None)
-        An implementation of the abstract base class `flwr.server.Strategy`. If
-        no strategy is provided, then `start_server` will use
-        `flwr.server.strategy.FedAvg`.
-    client_manager : Optional[flwr.server.ClientManager] (default: None)
-        An implementation of the abstract base class `flwr.server.ClientManager`.
-        If no implementation is provided, then `start_simulation` will use
-        `flwr.server.client_manager.SimpleClientManager`.
-    ray_init_args : Optional[Dict[str, Any]] (default: None)
-        Optional dictionary containing arguments for the call to `ray.init`.
-        If ray_init_args is None (the default), Ray will be initialized with
-        the following default args:
-
-        { "ignore_reinit_error": True, "include_dashboard": False }
-
-        An empty dictionary can be used (ray_init_args={}) to prevent any
-        arguments from being passed to ray.init.
-    keep_initialised: Optional[bool] (default: False)
-        Set to True to prevent `ray.shutdown()` in case `ray.is_initialized()=True`.
-
-    Returns
-    -------
-        hist : flwr.server.history.History.
-            Object containing metrics from training.
-    """
-    # pylint: disable-msg=too-many-locals
-    event(
-        EventType.START_SIMULATION_ENTER,
-        {"num_clients": len(clients_ids) if clients_ids is not None else num_clients},
-    )
-
-    # Initialize server and server config
-    initialized_server, initialized_config = _init_defaults(
-        server=server,
-        config=config,
-        strategy=strategy,
-        client_manager=client_manager,
-    )
-    log(
-        INFO,
-        "Starting Flower simulation, config: %s",
-        initialized_config,
-    )
-
-    # clients_ids takes precedence
-    cids: List[str]
-    if clients_ids is not None:
-        if (num_clients is not None) and (len(clients_ids) != num_clients):
-            log(ERROR, INVALID_ARGUMENTS_START_SIMULATION)
-            sys.exit()
-        else:
-            cids = clients_ids
-    else:
-        if num_clients is None:
-            log(ERROR, INVALID_ARGUMENTS_START_SIMULATION)
-            sys.exit()
-        else:
-            cids = [str(x) for x in range(num_clients)]
-
-    # Default arguments for Ray initialization
-    if not ray_init_args:
-        ray_init_args = {
-            "ignore_reinit_error": True,
-            "include_dashboard": False,
-        }
-
-    # Shut down Ray if it has already been initialized (unless asked not to)
-    if ray.is_initialized() and not keep_initialised:
-        ray.shutdown()
-
-    # Initialize Ray
-    ray.init(**ray_init_args)
-    log(
-        INFO,
-        "Flower VCE: Ray initialized with resources: %s",
-        ray.cluster_resources(),
-    )
-
-    # Register one RayClientProxy object for each client with the ClientManager
-    resources = client_resources if client_resources is not None else {}
-    for cid in cids:
-        client_proxy = RayClientProxy(
-            client_fn=client_fn,
-            cid=cid,
-            resources=resources,
+    if not args.insecure:
+        log(
+            ERROR,
+            "`flwr-simulation` does not support TLS yet. "
+            "Please use the '--insecure' flag.",
         )
-        initialized_server.client_manager().register(client=client_proxy)
+        sys.exit(1)
 
-    # Start training
-    hist = _fl(
-        server=initialized_server,
-        config=initialized_config,
+    log(
+        DEBUG,
+        "Starting isolated `Simulation` connected to SuperLink SimulationAppIo API "
+        "at %s",
+        args.simulationio_api_address,
+    )
+    run_simulation_process(
+        simulationio_api_address=args.simulationio_api_address,
+        log_queue=log_queue,
+        run_once=args.run_once,
+        flwr_dir_=args.flwr_dir,
+        certificates=None,
     )
 
-    event(EventType.START_SIMULATION_LEAVE)
+    # Restore stdout/stderr
+    restore_output()
 
-    return hist
+
+def run_simulation_process(  # pylint: disable=R0914, disable=W0212, disable=R0915
+    simulationio_api_address: str,
+    log_queue: Queue[Optional[str]],
+    run_once: bool,
+    flwr_dir_: Optional[str] = None,
+    certificates: Optional[bytes] = None,
+) -> None:
+    """Run Flower Simulation process."""
+    conn = SimulationIoConnection(
+        simulationio_service_address=simulationio_api_address,
+        root_certificates=certificates,
+    )
+
+    # Resolve directory where FABs are installed
+    flwr_dir = get_flwr_dir(flwr_dir_)
+    log_uploader = None
+
+    while True:
+
+        try:
+            # Pull SimulationInputs from LinkState
+            req = PullSimulationInputsRequest()
+            res: PullSimulationInputsResponse = conn._stub.PullSimulationInputs(req)
+            if not res.HasField("run"):
+                sleep(3)
+                run_status = None
+                continue
+
+            context = context_from_proto(res.context)
+            run = run_from_proto(res.run)
+            fab = fab_from_proto(res.fab)
+
+            # Start log uploader for this run
+            log_uploader = start_log_uploader(
+                log_queue=log_queue,
+                node_id=context.node_id,
+                run_id=run.run_id,
+                stub=conn._stub,
+            )
+
+            log(DEBUG, "Simulation process starts FAB installation.")
+            install_from_fab(fab.content, flwr_dir=flwr_dir, skip_prompt=True)
+
+            fab_id, fab_version = get_fab_metadata(fab.content)
+
+            app_path = get_project_dir(fab_id, fab_version, fab.hash_str, flwr_dir)
+            config = get_project_config(app_path)
+
+            # Get ClientApp and SeverApp components
+            app_components = config["tool"]["flwr"]["app"]["components"]
+            client_app_attr = app_components["clientapp"]
+            server_app_attr = app_components["serverapp"]
+            fused_config = get_fused_config_from_dir(app_path, run.override_config)
+
+            # Update run_config in context
+            context.run_config = fused_config
+
+            log(
+                DEBUG,
+                "Flower will load ServerApp `%s` in %s",
+                server_app_attr,
+                app_path,
+            )
+            log(
+                DEBUG,
+                "Flower will load ClientApp `%s` in %s",
+                client_app_attr,
+                app_path,
+            )
+
+            # Change status to Running
+            run_status_proto = run_status_to_proto(RunStatus(Status.RUNNING, "", ""))
+            conn._stub.UpdateRunStatus(
+                UpdateRunStatusRequest(run_id=run.run_id, run_status=run_status_proto)
+            )
+
+            # Pull Federation Options
+            fed_opt_res: GetFederationOptionsResponse = conn._stub.GetFederationOptions(
+                GetFederationOptionsRequest(run_id=run.run_id)
+            )
+            federation_options = configs_record_from_proto(
+                fed_opt_res.federation_options
+            )
+
+            # Unflatten underlying dict
+            fed_opt = unflatten_dict({**federation_options})
+
+            # Extract configs values of interest
+            num_supernodes = fed_opt.get("num-supernodes")
+            if num_supernodes is None:
+                raise ValueError(
+                    "Federation options expects `num-supernodes` to be set."
+                )
+            backend_config: BackendConfig = fed_opt.get("backend", {})
+            verbose: bool = fed_opt.get("verbose", False)
+            enable_tf_gpu_growth: bool = fed_opt.get("enable_tf_gpu_growth", False)
+
+            event(
+                EventType.FLWR_SIMULATION_RUN_ENTER,
+                event_details={
+                    "backend": "ray",
+                    "num-supernodes": num_supernodes,
+                    "run-id-hash": get_sha256_hash(run.run_id),
+                },
+            )
+
+            # Launch the simulation
+            updated_context = _run_simulation(
+                server_app_attr=server_app_attr,
+                client_app_attr=client_app_attr,
+                num_supernodes=num_supernodes,
+                backend_config=backend_config,
+                app_dir=str(app_path),
+                run=run,
+                enable_tf_gpu_growth=enable_tf_gpu_growth,
+                verbose_logging=verbose,
+                server_app_run_config=fused_config,
+                is_app=True,
+                exit_event=EventType.FLWR_SIMULATION_RUN_LEAVE,
+            )
+
+            # Send resulting context
+            context_proto = context_to_proto(updated_context)
+            out_req = PushSimulationOutputsRequest(
+                run_id=run.run_id, context=context_proto
+            )
+            _ = conn._stub.PushSimulationOutputs(out_req)
+
+            run_status = RunStatus(Status.FINISHED, SubStatus.COMPLETED, "")
+
+        except Exception as ex:  # pylint: disable=broad-exception-caught
+            exc_entity = "Simulation"
+            log(ERROR, "%s raised an exception", exc_entity, exc_info=ex)
+            run_status = RunStatus(Status.FINISHED, SubStatus.FAILED, str(ex))
+
+        finally:
+            # Stop log uploader for this run and upload final logs
+            if log_uploader:
+                stop_log_uploader(log_queue, log_uploader)
+                log_uploader = None
+
+            # Update run status
+            if run_status:
+                run_status_proto = run_status_to_proto(run_status)
+                conn._stub.UpdateRunStatus(
+                    UpdateRunStatusRequest(
+                        run_id=run.run_id, run_status=run_status_proto
+                    )
+                )
+
+        # Stop the loop if `flwr-simulation` is expected to process a single run
+        if run_once:
+            break
+
+
+def _parse_args_run_flwr_simulation() -> argparse.ArgumentParser:
+    """Parse flwr-simulation command line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Run a Flower Simulation",
+    )
+    parser.add_argument(
+        "--simulationio-api-address",
+        default=SIMULATIONIO_API_DEFAULT_CLIENT_ADDRESS,
+        type=str,
+        help="Address of SuperLink's SimulationIO API (IPv4, IPv6, or a domain name)."
+        f"By default, it is set to {SIMULATIONIO_API_DEFAULT_CLIENT_ADDRESS}.",
+    )
+    parser.add_argument(
+        "--run-once",
+        action="store_true",
+        help="When set, this process will start a single simulation "
+        "for a pending Run. If no pending run the process will exit. ",
+    )
+    add_args_flwr_app_common(parser=parser)
+    return parser

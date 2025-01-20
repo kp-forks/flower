@@ -1,4 +1,4 @@
-# Copyright 2020 Adap GmbH. All Rights Reserved.
+# Copyright 2020 Flower Labs GmbH. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,27 +14,63 @@
 # ==============================================================================
 """Tests for module connection."""
 
+
 import concurrent.futures
 import socket
+from collections.abc import Iterator
 from contextlib import closing
-from typing import Iterator, cast
+from typing import cast
 from unittest.mock import patch
 
 import grpc
 
-from flwr.proto.transport_pb2 import ClientMessage, ServerMessage
+from flwr.common import DEFAULT_TTL, ConfigsRecord, Message, Metadata, RecordSet
+from flwr.common import recordset_compat as compat
+from flwr.common.constant import MessageTypeLegacy
+from flwr.common.retry_invoker import RetryInvoker, exponential
+from flwr.common.typing import Code, GetPropertiesRes, Status
+from flwr.proto.transport_pb2 import (  # pylint: disable=E0611
+    ClientMessage,
+    ServerMessage,
+)
 from flwr.server.client_manager import SimpleClientManager
-from flwr.server.grpc_server.grpc_server import start_grpc_server
+from flwr.server.superlink.fleet.grpc_bidi.grpc_server import start_grpc_server
 
 from .connection import grpc_connection
 
 EXPECTED_NUM_SERVER_MESSAGE = 10
 
-SERVER_MESSAGE = ServerMessage()
+SERVER_MESSAGE = ServerMessage(get_properties_ins=ServerMessage.GetPropertiesIns())
 SERVER_MESSAGE_RECONNECT = ServerMessage(reconnect_ins=ServerMessage.ReconnectIns())
 
-CLIENT_MESSAGE = ClientMessage()
-CLIENT_MESSAGE_DISCONNECT = ClientMessage(disconnect_res=ClientMessage.DisconnectRes())
+MESSAGE_GET_PROPERTIES = Message(
+    metadata=Metadata(
+        run_id=0,
+        message_id="",
+        src_node_id=0,
+        dst_node_id=0,
+        reply_to_message="",
+        group_id="",
+        ttl=DEFAULT_TTL,
+        message_type=MessageTypeLegacy.GET_PROPERTIES,
+    ),
+    content=compat.getpropertiesres_to_recordset(
+        GetPropertiesRes(Status(Code.OK, ""), {})
+    ),
+)
+MESSAGE_DISCONNECT = Message(
+    metadata=Metadata(
+        run_id=0,
+        message_id="",
+        src_node_id=0,
+        dst_node_id=0,
+        reply_to_message="",
+        group_id="",
+        ttl=DEFAULT_TTL,
+        message_type="reconnect",
+    ),
+    content=RecordSet(configs_records={"config": ConfigsRecord({"reason": 0})}),
+)
 
 
 def unused_tcp_port() -> int:
@@ -70,14 +106,16 @@ def mock_join(  # type: ignore # pylint: disable=invalid-name
 
 
 @patch(
-    "flwr.server.grpc_server.flower_service_servicer.FlowerServiceServicer.Join",
+    # pylint: disable=line-too-long
+    "flwr.server.superlink.fleet.grpc_bidi.flower_service_servicer.FlowerServiceServicer.Join",  # noqa: E501
+    # pylint: enable=line-too-long
     mock_join,
 )
 def test_integration_connection() -> None:
     """Create a server and establish a connection to it.
 
-    Purpose of this integration test is to simulate multiple clients
-    with multiple roundtrips between server and client.
+    Purpose of this integration test is to simulate multiple clients with multiple
+    roundtrips between server and client.
     """
     # Prepare
     port = unused_tcp_port()
@@ -91,21 +129,30 @@ def test_integration_connection() -> None:
     def run_client() -> int:
         messages_received: int = 0
 
-        with grpc_connection(server_address=f"[::]:{port}") as conn:
-            receive, send = conn
+        with grpc_connection(
+            server_address=f"[::]:{port}",
+            insecure=True,
+            retry_invoker=RetryInvoker(
+                wait_gen_factory=exponential,
+                recoverable_exceptions=grpc.RpcError,
+                max_tries=1,
+                max_time=None,
+            ),
+        ) as conn:
+            receive, send, _, _, _, _ = conn
 
             # Setup processing loop
             while True:
                 # Block until server responds with a message
-                server_message = receive()
+                message = receive()
 
                 messages_received += 1
-                if server_message.HasField("reconnect_ins"):
-                    send(CLIENT_MESSAGE_DISCONNECT)
+                if message.metadata.message_type == "reconnect":  # type: ignore
+                    send(MESSAGE_DISCONNECT)
                     break
 
                 # Process server_message and send client_message...
-                send(CLIENT_MESSAGE)
+                send(MESSAGE_GET_PROPERTIES)
 
         return messages_received
 

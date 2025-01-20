@@ -1,4 +1,4 @@
-# Copyright 2023 Adap GmbH. All Rights Reserved.
+# Copyright 2023 Flower Labs GmbH. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,18 +15,35 @@
 """Task handling."""
 
 
-from typing import Optional, Tuple
+from typing import Optional
 
-from flwr.proto.fleet_pb2 import PullTaskInsResponse
-from flwr.proto.task_pb2 import TaskIns
-from flwr.proto.transport_pb2 import ServerMessage
+from flwr.proto.fleet_pb2 import PullTaskInsResponse  # pylint: disable=E0611
+from flwr.proto.task_pb2 import TaskIns  # pylint: disable=E0611
 
 
-def get_server_message(
+def validate_task_ins(task_ins: TaskIns) -> bool:
+    """Validate a TaskIns before it entering the message handling process.
+
+    Parameters
+    ----------
+    task_ins: TaskIns
+        The task instruction coming from the server.
+
+    Returns
+    -------
+    is_valid: bool
+        True if the TaskIns is deemed valid and therefore suitable for
+        undergoing the message handling process, False otherwise.
+    """
+    if not (task_ins.HasField("task") and task_ins.task.HasField("recordset")):
+        return False
+    return True
+
+
+def get_task_ins(
     pull_task_ins_response: PullTaskInsResponse,
-) -> Optional[Tuple[TaskIns, ServerMessage]]:
-    """Get the first ServerMessage, if available."""
-
+) -> Optional[TaskIns]:
+    """Get the first TaskIns, if available."""
     # Extract a single ServerMessage from the response, if possible
     if len(pull_task_ins_response.task_ins_list) == 0:
         return None
@@ -34,13 +51,4 @@ def get_server_message(
     # Only evaluate the first message
     task_ins: TaskIns = pull_task_ins_response.task_ins_list[0]
 
-    # Discard the message if it is not in
-    # {GetPropertiesIns, GetParametersIns, FitIns, EvaluateIns}
-    if (
-        not task_ins.HasField("task")
-        or not task_ins.task.HasField("legacy_server_message")
-        or task_ins.task.legacy_server_message.WhichOneof("msg") == "reconnect_ins"
-    ):
-        return None
-
-    return task_ins, task_ins.task.legacy_server_message
+    return task_ins
