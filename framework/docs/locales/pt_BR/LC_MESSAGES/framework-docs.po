@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flower main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-09 00:08+0000\n"
+"POT-Creation-Date: 2025-04-10 01:20+0000\n"
 "PO-Revision-Date: 2024-05-25 11:09+0000\n"
 "Last-Translator: Gustavo Bertoli <gubertoli@gmail.com>\n"
 "Language: pt_BR\n"
@@ -1281,16 +1281,6 @@ msgstr ""
 
 #: ../../source/contributor-how-to-set-up-a-virtual-env.rst:76
 msgid "and activate the virtual environment with:"
-msgstr ""
-
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:83
-msgid "And then?"
-msgstr ""
-
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:85
-msgid ""
-"As soon as you created your virtual environment you clone one of the "
-"`Flower examples <https://github.com/adap/flower/tree/main/examples/>`_."
 msgstr ""
 
 #: ../../source/contributor-how-to-write-documentation.rst:2
@@ -28534,7 +28524,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:41
-msgid "|1dbe7ef5f86045228c22d76d20494c1c|"
+msgid "|518a11adb72e47b3bdf854e7f8557e2d|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:109
@@ -28549,7 +28539,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:53
-msgid "|0c52a329791a42c9891adee11a3c9ec6|"
+msgid "|1affe747497d4fe0a527940f8c2c936e|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:111
@@ -28571,7 +28561,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:67
-msgid "|0af7f9c988464e6d9988f938f7722cb1|"
+msgid "|e671a569157949048caecc41425184a6|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:113
@@ -28587,7 +28577,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:79
-msgid "|c4fec40358df4c91b8dacba706affdfc|"
+msgid "|04a50951a3ae4331a97bb795dd4d2b55|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:115
@@ -28603,7 +28593,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:91
-msgid "|fffd51185653489082b5587359813c79|"
+msgid "|d11b3e47504a4ca0a0596b3914aefd23|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:117
@@ -28618,7 +28608,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:103
-msgid "|b9f3e0459a704a459d52ae3fca9c72d3|"
+msgid "|f9ec15d00c164d2c9e8c2074a983b28e|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:119
@@ -28638,7 +28628,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:138
-msgid "|5e4f22fdf7cb4373882354252e21f385|"
+msgid "|dc3f220a8f9e4648b802a1a9de5210ce|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:173
@@ -28653,7 +28643,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:150
-msgid "|6e225ec341c643a58ce12c7c1c4f531d|"
+msgid "|eba7db329ff9421db4086d5158537dab|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:175
@@ -28793,7 +28783,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:210
-msgid "|371d89f1268b4ba9af58576635ca724e|"
+msgid "|c7c0e9acd1f14a5585e48d56ff06c03d|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:307
@@ -28817,7 +28807,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:225
-msgid "|b64a9a44fd5745cc91b6aa9fdca1aa28|"
+msgid "|be5fe05e50a0461b8f5a3b9f9d6932a5|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:309
@@ -28841,7 +28831,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:240
-msgid "|b9efd6eda007427a92190b989d035b45|"
+msgid "|fc7a055e8c414a5ebb6c359ea247ee93|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:311
@@ -28864,7 +28854,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:255
-msgid "|61474cd6cd8642968bd5f0d963fa56df|"
+msgid "|aaa6d2306a63493aace418beb4457516|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:313
@@ -28902,7 +28892,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:273
-msgid "|ff52a36f0cad426bb452cfa49b73350a|"
+msgid "|8e1679aa9fad4103b66f5652549b9068|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:315
@@ -28996,7 +28986,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:334
-msgid "|3d62057de8c64752921d1eab65741d54|"
+msgid "|4213d9335b8e48b18c3ff1e48e2694c4|"
 msgstr ""
 
 #: ../../source/tutorial-series-what-is-federated-learning.ipynb:340
@@ -44721,5 +44711,57 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "|918baeda7d744d0dbd5d55f6c8083a6a|"
+#~ msgstr ""
+
+#~ msgid "And then?"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "As soon as you created your "
+#~ "virtual environment you clone one of "
+#~ "the `Flower examples "
+#~ "<https://github.com/adap/flower/tree/main/examples/>`_."
+#~ msgstr ""
+
+#~ msgid "|1dbe7ef5f86045228c22d76d20494c1c|"
+#~ msgstr ""
+
+#~ msgid "|0c52a329791a42c9891adee11a3c9ec6|"
+#~ msgstr ""
+
+#~ msgid "|0af7f9c988464e6d9988f938f7722cb1|"
+#~ msgstr ""
+
+#~ msgid "|c4fec40358df4c91b8dacba706affdfc|"
+#~ msgstr ""
+
+#~ msgid "|fffd51185653489082b5587359813c79|"
+#~ msgstr ""
+
+#~ msgid "|b9f3e0459a704a459d52ae3fca9c72d3|"
+#~ msgstr ""
+
+#~ msgid "|5e4f22fdf7cb4373882354252e21f385|"
+#~ msgstr ""
+
+#~ msgid "|6e225ec341c643a58ce12c7c1c4f531d|"
+#~ msgstr ""
+
+#~ msgid "|371d89f1268b4ba9af58576635ca724e|"
+#~ msgstr ""
+
+#~ msgid "|b64a9a44fd5745cc91b6aa9fdca1aa28|"
+#~ msgstr ""
+
+#~ msgid "|b9efd6eda007427a92190b989d035b45|"
+#~ msgstr ""
+
+#~ msgid "|61474cd6cd8642968bd5f0d963fa56df|"
+#~ msgstr ""
+
+#~ msgid "|ff52a36f0cad426bb452cfa49b73350a|"
+#~ msgstr ""
+
+#~ msgid "|3d62057de8c64752921d1eab65741d54|"
 #~ msgstr ""
 
