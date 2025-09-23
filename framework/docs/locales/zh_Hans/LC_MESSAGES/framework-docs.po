@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flower main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-20 00:07+0000\n"
+"POT-Creation-Date: 2025-09-23 00:06+0000\n"
 "PO-Revision-Date: 2024-06-12 10:09+0000\n"
 "Last-Translator: Yan Gao <y.gaogy@gmail.com>\n"
 "Language: zh_Hans\n"
@@ -62,13 +62,13 @@ msgid ""
 " with Flower."
 msgstr ""
 
-#: ../../source/contribute.rst:6 ../../source/index.rst:114
-#: ../../source/index.rst:119
+#: ../../source/contribute.rst:6 ../../source/index.rst:115
+#: ../../source/index.rst:120
 #, fuzzy
 msgid "Contribute"
 msgstr "属性"
 
-#: ../../source/contribute.rst:8 ../../source/index.rst:116
+#: ../../source/contribute.rst:8 ../../source/index.rst:117
 msgid ""
 "The Flower community welcomes contributions. The following docs are "
 "intended to help along the way."
@@ -94,8 +94,8 @@ msgid ""
 "underlying ideas behind Flower and collaborative AI."
 msgstr "以理解为导向的概念指南解释并讨论了Flower和协作式人工智能背后的关键主题和基本思想。"
 
-#: ../../source/contribute.rst:52 ../../source/index.rst:104
-#: ../../source/index.rst:106 ../../source/reference.rst:5
+#: ../../source/contribute.rst:52 ../../source/index.rst:105
+#: ../../source/index.rst:107 ../../source/reference.rst:5
 msgid "References"
 msgstr "参考资料"
 
@@ -4814,7 +4814,7 @@ msgstr "**本地差分隐私**： 在向服务器发送任何信息之前，在�
 
 #: ../../source/explanation-differential-privacy.rst:-1
 #: ../../source/explanation-differential-privacy.rst:97
-#: ../../source/how-to-use-differential-privacy.rst:19
+#: ../../source/how-to-use-differential-privacy.rst:51
 #, fuzzy
 msgid "Central Differential Privacy"
 msgstr "差分隐私"
@@ -4901,7 +4901,7 @@ msgstr "在固定剪切和自适应剪切之间做出选择取决于各种因素
 
 #: ../../source/explanation-differential-privacy.rst:-1
 #: ../../source/explanation-differential-privacy.rst:145
-#: ../../source/how-to-use-differential-privacy.rst:118
+#: ../../source/how-to-use-differential-privacy.rst:144
 #, fuzzy
 msgid "Local Differential Privacy"
 msgstr "差分隐私"
@@ -5386,6 +5386,420 @@ msgid ""
 "As we continue to enhance Flower at a rapid pace, we'll periodically "
 "update this explainer document. Feel free to share any feedback with us."
 msgstr "随着 Flower Next 的不断快速改进，我们将定期更新本指南。如有任何反馈，请随时与我们分享！"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:-1
+msgid ""
+"Create custom federated learning strategies in Flower by modifying client"
+" sampling, training, aggregation, and evaluation for enhanced flexibility"
+" and control."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:14
+#, fuzzy
+msgid "Flower Strategy Abstraction"
+msgstr ":code:`策略 ` 抽象类"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:16
+msgid ""
+"The strategy abstraction enables the implementation of fully custom "
+"federated learning strategies. In Flower, a *strategy* is essentially the"
+" federated learning algorithm that runs inside the ``ServerApp``. "
+"Strategies define how to:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:20
+#, fuzzy
+msgid "Sample clients"
+msgstr "SimpleClientManager"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:21
+#, fuzzy
+msgid "Configure instructions for training and evaluation"
+msgstr "为客户提供安装说明。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:22
+#, fuzzy
+msgid "Aggregate updates and metrics"
+msgstr "采用加权平均法计算评估损失总额。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:23
+#, fuzzy
+msgid "Evaluate models"
+msgstr "评估Res"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:25
+msgid ""
+"Flower ships with a number of built-in strategies, all following the same"
+" API described below. You can also implement your own strategies with "
+"full access to the same capabilities."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:30
+#, fuzzy
+msgid "The ``Strategy`` abstraction"
+msgstr ":code:`策略 ` 抽象类"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:32
+#, fuzzy
+msgid ""
+"All strategy implementations must derive from the abstract base class "
+"|strategy_link|_. This includes both built-in strategies and third-"
+"party/custom strategies. By extending this base class, user-defined "
+"strategies gain the exact same power and flexibility as the built-in "
+"ones."
+msgstr ""
+"所有策略实现均源自抽象基类 "
+":code:`flwr.server.strategy.Strategy`，包括内置实现和第三方实现。这意味着自定义策略实现与内置实现具有完全相同的功能。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:37
+msgid ""
+"The ``Strategy`` base class defines a ``start`` method and requires "
+"subclasses to implement several abstract methods:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:94
+#, fuzzy
+msgid "Creating a new strategy"
+msgstr "server.strategy"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:96
+msgid ""
+"You can customize an existing strategy (e.g., |fedavg_link|_) by "
+"overriding one or several of its methods. For full flexibility, you can "
+"also implement a strategy from scratch. To implement a brand new "
+"strategy, simply define a class that derives from ``Strategy`` and "
+"implement the abstract methods:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:124
+msgid ""
+"The ``start`` method is already implemented in the base class and "
+"typically does not need to be overridden. It orchestrates the federated "
+"learning process by invoking the abstract methods in sequence."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:129
+#, fuzzy
+msgid "Understand ``start`` method"
+msgstr ":code:`evaluate`方法"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:131
+msgid "The ``start`` method of the ``Strategy`` base class follows this workflow:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:133
+msgid ""
+"Call ``evaluate_fn`` (if provided) to evaluate the initial model on the "
+"ServerApp side."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:135
+msgid "Call ``configure_train`` to generate training messages for ClientApps."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:136
+#, fuzzy
+msgid "Send training messages to ClientApps."
+msgstr "客户端"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:137
+msgid ""
+"ClientApps run their ``@app.train()`` function and return training "
+"replies."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:138
+msgid "Call ``aggregate_train`` to aggregate the training replies."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:139
+msgid ""
+"Call ``configure_evaluate`` to generate evaluation messages for "
+"ClientApps."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:140
+#, fuzzy
+msgid "Send evaluation messages to ClientApps."
+msgstr "客户端"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:141
+msgid ""
+"ClientApps run their ``@app.evaluate()`` function and return evaluation "
+"replies."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:142
+msgid "Call ``aggregate_evaluate`` to aggregate the evaluation replies."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:143
+msgid ""
+"Call ``evaluate_fn`` (if provided) to evaluate the aggregated model on "
+"the ServerApp side."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:145
+#, fuzzy
+msgid "Repeat steps 2-10 for the specified number of rounds."
+msgstr "联邦平均动量策略。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:146
+msgid ""
+"Return the final ``Result``, which contains the final model and metrics "
+"history."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:148
+msgid "The following diagram illustrates the flow."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:152
+msgid ""
+"The sequence diagram below shows the interaction between ``ServerApp``, "
+"``Strategy`` (inside ``ServerApp``), and ``ClientApp``. In reality, they "
+"do **not** communicate directly over the network—Flower infrastructure "
+"(``SuperLink`` and ``SuperNode``) transparently manages all "
+"communication. You can read more about it in the :doc:`Flower Network "
+"Communication <ref-flower-network-communication>` guide."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:196
+#, fuzzy
+msgid "The ``configure_train`` method"
+msgstr ":code:`configure_fit`方法"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:198
+#, fuzzy
+msgid ""
+"The ``configure_train`` method is responsible for preparing the next "
+"round of training. But what does *configure* mean in this context? It "
+"means selecting which clients should participate in the round and "
+"deciding what instructions they should receive."
+msgstr ""
+":code:`configure_fit` "
+"负责配置即将开始的一轮训练。*配置*在这里是什么意思？配置一轮训练意味着选择客户并决定向这些客户发送什么指令。:code:`configure_fit`"
+" 说明了这一点："
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:202
+#: ../../source/explanation-flower-strategy-abstraction.rst:243
+#: ../../source/explanation-flower-strategy-abstraction.rst:280
+#: ../../source/explanation-flower-strategy-abstraction.rst:322
+msgid "Here is the method signature:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:212
+#: ../../source/explanation-flower-strategy-abstraction.rst:290
+#, fuzzy
+msgid "This method takes four arguments:"
+msgstr "这种方法是幂等的。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:214
+#: ../../source/explanation-flower-strategy-abstraction.rst:257
+#: ../../source/explanation-flower-strategy-abstraction.rst:292
+#: ../../source/explanation-flower-strategy-abstraction.rst:336
+msgid "``server_round``: The current round number"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:215
+#, fuzzy
+msgid "``arrays``: The current global model parameters"
+msgstr "当前（全局）模型参数。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:216
+msgid "``config``: A configuration dictionary for the round"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:217
+msgid "``grid``: The object responsible for managing communication with clients"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:219
+#, fuzzy
+msgid ""
+"The return value is an iterable of ``Message`` objects, where each "
+"message contains the instructions to be sent to a specific client. A "
+"typical implementation of ``configure_train`` will:"
+msgstr "返回值是一个元组列表，每个元组代表将发送到特定客户端的指令。策略实现通常在 :code:`configure_fit` 中执行以下步骤："
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:223
+msgid ""
+"Use the ``grid`` to randomly sample a subset (or all) of the available "
+"clients"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:224
+msgid ""
+"Create one ``Message`` per selected client, containing the global model "
+"parameters and configuration values"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:227
+msgid ""
+"More advanced strategies can implement custom client selection logic by "
+"using the capabilities of ``grid``. A client only participates in a round"
+" if ``configure_train`` generates a message for its node ID."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:233
+msgid ""
+"Because the return value is defined per client, strategies can easily "
+"implement heterogeneous configurations. For example, different clients "
+"can receive different models or hyperparameters, enabling highly "
+"customized training behaviors."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:238
+#, fuzzy
+msgid "The ``aggregate_train`` method"
+msgstr ":code:`aggregate_fit` 方法"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:240
+#, fuzzy
+msgid ""
+"The ``aggregate_train`` method is responsible for aggregating the "
+"training results received from the clients selected in "
+"``configure_train``."
+msgstr ":code:`aggregate_fit` 负责汇总在 :code:`configure_fit` 中选择并要求训练的客户端所返回的结果。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:255
+#: ../../source/explanation-flower-strategy-abstraction.rst:334
+#, fuzzy
+msgid "This method takes two arguments:"
+msgstr "这种方法是幂等的。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:258
+#, fuzzy
+msgid ""
+"``replies``: An iterable of ``Message`` objects from the participating "
+"clients"
+msgstr "**replies** -- 从超级链接收到的回复信息的迭代。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:260
+msgid "It returns a tuple consisting of:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:262
+#, fuzzy
+msgid "``ArrayRecord``: The updated global model parameters"
+msgstr "``get_parameters``： 返回当前本地模型参数"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:263
+msgid "``MetricRecord``: Aggregated training metrics (such as loss or accuracy)"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:265
+msgid ""
+"If aggregation cannot be performed (e.g., if too many clients failed "
+"during the round), the method may decide to return ``(None, None)`` "
+"instead."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:270
+msgid ""
+"You can use ``Message.has_error()`` to check if a reply contains an error"
+" and decide how to handle it during aggregation."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:274
+#, fuzzy
+msgid "The ``configure_evaluate`` method"
+msgstr ":code:`configure_evaluate`方法"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:276
+#, fuzzy
+msgid ""
+"The ``configure_evaluate`` method is responsible for preparing the next "
+"round of evaluation. Similar to ``configure_train``, this involves "
+"selecting which clients should participate and deciding what instructions"
+" they should receive for evaluation."
+msgstr ""
+":code:`configure_evaluate` "
+"负责配置下一轮评估。*配置*在这里是什么意思？配置一轮评估意味着选择客户端并决定向这些客户端发送什么指令。:code:`configure_evaluate`"
+" 说明了这一点："
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:293
+#, fuzzy
+msgid "``arrays``: The current global model parameters to be evaluated"
+msgstr "当前（全局）模型参数。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:294
+msgid "``config``: A configuration dictionary for evaluation"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:295
+msgid "``grid``: The object that manages communication with clients"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:297
+msgid ""
+"The return value is an iterable of ``Message`` objects, one for each "
+"selected client. Each message typically contains the current global model"
+" parameters and any evaluation configuration."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:301
+msgid "A typical implementation of ``configure_evaluate`` will:"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:303
+msgid "Use ``grid`` to select a subset (or all) of the available clients"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:304
+msgid ""
+"Create one ``Message`` per selected client containing the global model "
+"and evaluation configuration"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:307
+msgid ""
+"As with training, more advanced strategies may apply custom client "
+"selection logic or send different evaluation configurations to different "
+"clients."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:312
+msgid ""
+"Because each client receives its own message, strategies can implement "
+"heterogeneous evaluation setups. For example, some clients might evaluate"
+" on larger test sets, while others might use specialized metrics."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:317
+#, fuzzy
+msgid "The ``aggregate_evaluate`` method"
+msgstr ":code:`aggregate_evaluate` 方法"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:319
+#, fuzzy
+msgid ""
+"The ``aggregate_evaluate`` method is responsible for aggregating the "
+"evaluation results received from the clients selected in "
+"``configure_evaluate``."
+msgstr ""
+":code:`aggregate_evaluate` 负责汇总在 :code:`configure_evaluate` "
+"中选择并要求评估的客户端返回的结果。"
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:337
+msgid ""
+"``replies``: An iterable of ``Message`` objects returned by the clients "
+"after they executed evaluation"
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:340
+msgid ""
+"It returns a single ``MetricRecord`` that represents the aggregated "
+"evaluation metrics across all participating clients. If aggregation "
+"cannot be performed (for example, due to excessive client failures or "
+"missing metrics), the method may return ``None``."
+msgstr ""
+
+#: ../../source/explanation-flower-strategy-abstraction.rst:346
+msgid ""
+"As with training, ``Message.has_error()`` can be used to detect and "
+"handle client errors during aggregation."
+msgstr ""
 
 #: ../../source/helm/how-to-deploy-superlink-using-helm.md
 msgid ""
@@ -6069,8 +6483,8 @@ msgstr ""
 #: flwr.client.numpy_client.NumPyClient.fit
 #: flwr.client.numpy_client.NumPyClient.get_parameters
 #: flwr.client.numpy_client.NumPyClient.get_properties
-#: flwr.common.context.Context flwr.common.message.Message
-#: flwr.common.message.Message.create_error_reply
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod flwr.common.context.Context
+#: flwr.common.message.Message flwr.common.message.Message.create_error_reply
 #: flwr.common.message.Message.create_reply flwr.common.message.Message.inflate
 #: flwr.common.record.array.Array flwr.common.record.array.Array.inflate
 #: flwr.common.record.arrayrecord.ArrayRecord
@@ -6117,6 +6531,7 @@ msgstr ""
 #: flwr.server.strategy.strategy.Strategy.initialize_parameters
 #: flwr.server.workflow.secure_aggregation.secagg_workflow.SecAggWorkflow
 #: flwr.server.workflow.secure_aggregation.secaggplus_workflow.SecAggPlusWorkflow
+#: flwr.serverapp.strategy.bulyan.Bulyan
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyClientSideFixedClipping
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyServerSideFixedClipping
@@ -6124,10 +6539,13 @@ msgstr ""
 #: flwr.serverapp.strategy.fedadam.FedAdam
 #: flwr.serverapp.strategy.fedavg.FedAvg
 #: flwr.serverapp.strategy.fedavgm.FedAvgM
+#: flwr.serverapp.strategy.fedmedian.FedMedian
 #: flwr.serverapp.strategy.fedprox.FedProx
 #: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging
 #: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic
 #: flwr.serverapp.strategy.fedyogi.FedYogi flwr.serverapp.strategy.krum.Krum
+#: flwr.serverapp.strategy.multikrum.MultiKrum
 #: flwr.serverapp.strategy.qfedavg.QFedAvg
 #: flwr.serverapp.strategy.strategy.Strategy.aggregate_evaluate
 #: flwr.serverapp.strategy.strategy.Strategy.aggregate_train
@@ -8947,37 +9365,72 @@ msgstr ""
 #: ../../source/how-to-aggregate-evaluation-results.rst:-1
 msgid ""
 "Aggregate custom evaluation results from federated clients in Flower "
-"using a strategy that applies weighted averaging for metrics like "
-"accuracy."
+"using a callable function that applies weighted averaging for metrics "
+"like accuracy."
 msgstr ""
 
-#: ../../source/how-to-aggregate-evaluation-results.rst:6
+#: ../../source/how-to-aggregate-evaluation-results.rst:22
 msgid "Aggregate evaluation results"
 msgstr "整合评估结果"
 
-#: ../../source/how-to-aggregate-evaluation-results.rst:8
+#: ../../source/how-to-aggregate-evaluation-results.rst:24
 msgid ""
-"The Flower server does not prescribe a way to aggregate evaluation "
-"results, but it enables the user to fully customize result aggregation."
-msgstr "Flower 服务器没有规定整合评估结果的方法，但用户可以完全自定义如何整合。"
+"Flower strategies (e.g. |fedavg_link|_ and all that derive from it) "
+"automatically aggregate the metrics in the |metricrecord_link|_ in the "
+"``Messages`` replied by the ``ClientApps``. By default, a weighted "
+"aggregation is performed for all metrics using as weight the value "
+"assigned to the ``weighted_by_key`` attribute of a strategy."
+msgstr ""
 
-#: ../../source/how-to-aggregate-evaluation-results.rst:12
-msgid "Aggregate Custom Evaluation Results"
-msgstr "自定义整合评估结果"
+#: ../../source/how-to-aggregate-evaluation-results.rst:29
+msgid ""
+"When constructing your strategy, you can set both the key used to perform"
+" weighted aggregation but also the callback function used to aggregate "
+"metrics."
+msgstr ""
 
-#: ../../source/how-to-aggregate-evaluation-results.rst:14
+#: ../../source/how-to-aggregate-evaluation-results.rst:34
+msgid ""
+"By default, Flower strategies use as ``weighted_by_key=\"num-"
+"examples\"``. If you are interested, see the full implementation of how "
+"the default weighted aggregation callback works `here "
+"<https://github.com/adap/flower/blob/b174b2e02bb34cae9ba9f2a124c610a844cee870/framework/py/flwr/serverapp/strategy/strategy_utils.py#L109>`_."
+msgstr ""
+
+#: ../../source/how-to-aggregate-evaluation-results.rst:50
+msgid ""
+"Let's see how we can define a custom aggregation function for "
+"``MetricRecord`` objects received in the reply of an evaluation round."
+msgstr ""
+
+#: ../../source/how-to-aggregate-evaluation-results.rst:55
+msgid ""
+"Note that Flower strategies also have a ``train_metrics_aggr_fn`` "
+"attribute that allows you to define a custom aggregation function for "
+"received ``MetricRecord`` objects in reply messages of a training round. "
+"By default, it performs weighted averaging using the value assigned to "
+"the ``weighted_by_key`` exactly as the ``evaluate_metrics_aggr_fn`` "
+"presented earlier."
+msgstr ""
+
+#: ../../source/how-to-aggregate-evaluation-results.rst:62
 #, fuzzy
-msgid ""
-"The same ``Strategy``-customization approach can be used to aggregate "
-"custom evaluation results coming from individual clients. Clients can "
-"return custom metrics to the server by returning a dictionary:"
-msgstr "同样的 :code:`Strategy` 定制方法也可用于汇总来自单个客户端的自定义评估结果。客户端可以通过返回字典的方式向服务器返回自定义指标："
+msgid "Using a custom metrics aggregation function"
+msgstr "指标汇总功能，可选。"
 
-#: ../../source/how-to-aggregate-evaluation-results.rst:42
+#: ../../source/how-to-aggregate-evaluation-results.rst:64
 msgid ""
-"The server can then use a customized strategy to aggregate the metrics "
-"provided in these dictionaries:"
-msgstr "然后，服务器可以使用定制的策略来汇总这些字典中提供的指标："
+"The ``evaluate_metrics_aggr_fn`` can be customized to support any "
+"evaluation results aggregation logic you need. Its definition is:"
+msgstr ""
+
+#: ../../source/how-to-aggregate-evaluation-results.rst:71
+msgid ""
+"It takes a list of |recorddict_link|_ and a weighting key as inputs and "
+"returns a |metricrecord_link|_. For example, the function below extracts "
+"and returns the minimum value for each metric key across all "
+"|message_link|_:"
+msgstr ""
 
 #: ../../source/how-to-authenticate-supernodes.rst:-1
 msgid ""
@@ -9176,7 +9629,7 @@ msgstr ""
 
 #: ../../source/how-to-authenticate-supernodes.rst:138
 #: ../../source/how-to-enable-tls-connections.rst:138
-#: ../../source/how-to-use-built-in-mods.rst:174
+#: ../../source/how-to-use-built-in-mods.rst:170
 #: ../../source/tutorial-series-what-is-federated-learning.rst:293
 msgid "Conclusion"
 msgstr "总结"
@@ -9494,17 +9947,16 @@ msgstr ""
 
 #: ../../source/how-to-configure-clients.rst:-1
 msgid ""
-"Configure Flower clients by sending parameters from the server to control"
-" client-side hyperparameters using configuration dictionaries and "
-"strategies."
+"Configure Flower clients by sending configurations from the strategy to "
+"the clients and control client-side hyperparameters dynamically."
 msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:6
+#: ../../source/how-to-configure-clients.rst:34
 #, fuzzy
-msgid "Configure Clients"
+msgid "Configure a ``ClientApp``"
 msgstr "配置客户端"
 
-#: ../../source/how-to-configure-clients.rst:8
+#: ../../source/how-to-configure-clients.rst:36
 msgid ""
 "Flower provides the ability to send configuration values to clients, "
 "allowing server-side control over client behavior. This feature enables "
@@ -9512,208 +9964,107 @@ msgid ""
 " collaboration and experimentation."
 msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:13
-msgid "Configuration values"
-msgstr "配置值"
-
-#: ../../source/how-to-configure-clients.rst:15
-msgid ""
-"``FitConfig`` and ``EvaluateConfig`` are dictionaries containing "
-"configuration values that the server sends to clients during federated "
-"learning rounds. These values must be of type ``Scalar``, which includes "
-"``bool``, ``bytes``, ``float``, ``int``, or ``str`` (or equivalent types "
-"in different languages). Scalar is the value type directly supported by "
-"Flower for these configurations."
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:21
-msgid "For example, a ``FitConfig`` dictionary might look like this:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:32
+#: ../../source/how-to-configure-clients.rst:41
 #, fuzzy
-msgid ""
-"Flower serializes these configuration dictionaries (or *config dicts* for"
-" short) to their ProtoBuf representation, transports them to the client "
-"using gRPC, and then deserializes them back to Python dictionaries."
-msgstr ""
-"Flower 将这些配置字典（简称 *config dict*）序列化为 ProtoBuf 表示形式，使用 gRPC "
-"将其传输到客户端，然后再反序列化为 Python 字典。"
+msgid "Sending ``ConfigRecords`` to a ``ClientApp``"
+msgstr "客户端"
 
-#: ../../source/how-to-configure-clients.rst:38
+#: ../../source/how-to-configure-clients.rst:43
+msgid ""
+"Make use of a |configrecord_link|_ to send configuration values in a "
+"|message_link|_ from your |serverapp_link|_ to a |clientapp_link|_. A "
+"``ConfigRecord`` is a special type of Python dictionary that allows "
+"communicating basic types such as ``int``, ``float``, ``string``, "
+"``bool`` and also ``bytes`` if you need to communicate more complex data "
+"structures that need to be serialized. Lists of these types are also "
+"supported."
+msgstr ""
+
+#: ../../source/how-to-configure-clients.rst:49
 #, fuzzy
+msgid "Let's see a few examples:"
+msgstr "让我们来看几个例子："
+
+#: ../../source/how-to-configure-clients.rst:61
 msgid ""
-"Currently, there is no support for directly sending collection types "
-"(e.g., ``Set``, ``List``, ``Map``) as values in configuration "
-"dictionaries. To send collections, convert them to a supported type "
-"(e.g., JSON string) and decode on the client side."
+"When you use a Flower strategy, the easiest way to get your "
+"``ConfigRecord`` communicated as part of the ``Message`` that gets sent "
+"to the ``ClientApp`` is by passing it to the |strategy_start_link|_ of "
+"your strategy of choice (e.g. |fedavg_link|_). Let's see how this looks "
+"in code:"
 msgstr ""
-"目前，还不支持在配置字典中直接发送作为值的集合类型（例如，`Set``, `List`, "
-"`Map``）。有几种变通方法可将集合转换为支持的值类型之一（并在客户端将其转换回），从而将集合作为值发送。"
 
-#: ../../source/how-to-configure-clients.rst:42
-#, fuzzy
-msgid "Example:"
-msgstr "实例"
-
-#: ../../source/how-to-configure-clients.rst:55
-#, fuzzy
-msgid "Configuration through Built-in Strategies"
-msgstr "通过内置策略进行配置"
-
-#: ../../source/how-to-configure-clients.rst:57
+#: ../../source/how-to-configure-clients.rst:93
 msgid ""
-"Flower provides configuration options to control client behavior "
-"dynamically through ``FitConfig`` and ``EvaluateConfig``. These "
-"configurations allow server-side control over client-side parameters such"
-" as batch size, number of local epochs, learning rate, and evaluation "
-"settings, improving collaboration and experimentation."
+"Passing the above ``ConfigRecord`` to the strategy's ``start`` method "
+"ensures that the exact same ``ConfigRecord`` is received on the client "
+"side. But what if we'd like the configuration to change during the course"
+" of the federated learning process or as rounds advance?"
 msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:63
-#, fuzzy
-msgid "``FitConfig`` and ``EvaluateConfig``"
-msgstr "``eval_fn`` --> ``evaluate_fn``"
-
-#: ../../source/how-to-configure-clients.rst:65
+#: ../../source/how-to-configure-clients.rst:100
 msgid ""
-"``FitConfig`` and ``EvaluateConfig`` are dictionaries containing "
-"configuration values that the server sends to clients during federated "
-"learning rounds. These dictionaries enable the server to adjust client-"
-"side hyperparameters and monitor progress effectively."
+"Note that Flower strategies insert the current server round number into "
+"the ``ConfigRecord`` for you under the key ``server-round``. In this way,"
+" the ``ClientApp`` knows what's the current round of the federated "
+"learning process. Note this is always inserted even if no "
+"``ConfigRecord`` is passed to the strategy ``start`` method. When that's "
+"the case, the only content of the ``ConfigRecord`` that arrives to the "
+"``ClientApp`` will be such key with the corresponding round number."
 msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:71
-#, fuzzy
-msgid "``FitConfig``"
-msgstr "配置日志记录"
+#: ../../source/how-to-configure-clients.rst:109
+msgid "Dynamic modification of ``ConfigRecord``"
+msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:73
+#: ../../source/how-to-configure-clients.rst:111
 msgid ""
-"``FitConfig`` specifies the hyperparameters for training rounds, such as "
-"the batch size, number of local epochs, and other parameters that "
-"influence training."
+"Given a ``ConfigRecord`` passed upon starting the execution of a strategy"
+" (i.e. passed to the |strategy_start_link|_ method), the contents of the "
+"``ConfigRecord`` that arrive to the ``ClientApp`` won't change (with the "
+"exception of the value under the ``server-round`` key)."
 msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:76
-msgid "For example, a ``fit_config`` callback might look like this:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:94
+#: ../../source/how-to-configure-clients.rst:116
 msgid ""
-"You can then pass this ``fit_config`` callback to a built-in strategy "
-"such as ``FedAvg``:"
+"However, some applications do benefit or even require certain dynamism in"
+" the configuration values that one might send over to the ``ClientApps``."
+" For example, the learning rate the local optimizers at the "
+"``ClientApps`` make use of. As the federated learning rounds go by, it is"
+" often reasonable to reduce the learning rate. This dynamism can be "
+"introduced at the strategy by implementing a custom strategy that just "
+"overrides the ``configure_train`` method. This method is responsible for,"
+" among other aspects, to create the ``Messages`` that will be sent to the"
+" ``ClientApps``. These ``Messages`` would typically include an "
+"|arrayrecord_link|_ carrying the parameters of the model to be federated "
+"as well as the ``ConfigRecord`` containing the configurations that the "
+"``ClientApp`` should use. Let's see how to design a custom strategy that "
+"alters the ``ConfigRecord`` passed to the ``start`` method."
 msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:105
-msgid ""
-"On the client side, the configuration is received in the ``fit`` method, "
-"where it can be read and used:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:128
-#, fuzzy
-msgid "``EvaluateConfig``"
-msgstr ":code:`evaluate`"
 
 #: ../../source/how-to-configure-clients.rst:130
 msgid ""
-"``EvaluateConfig`` specifies hyperparameters for the evaluation process, "
-"such as the batch size, evaluation frequency, or metrics to compute "
-"during evaluation."
+"To learn more about how ``configure_train`` and other methods in the "
+"strategies check the :doc:`Strategies Explainer <how-to-implement-"
+"strategies>`."
 msgstr ""
 
 #: ../../source/how-to-configure-clients.rst:133
-msgid "For example, an ``evaluate_config`` callback might look like this:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:147
 msgid ""
-"You can pass this ``evaluate_config`` callback to a built-in strategy "
-"like ``FedAvg``:"
+"Let's create a new class inheriting from |fedavg_link|_ and override the "
+"``configure_train`` method. We then use this new strategy in our "
+"``ServerApp``."
 msgstr ""
 
-#: ../../source/how-to-configure-clients.rst:155
+#: ../../source/how-to-configure-clients.rst:158
 msgid ""
-"On the client side, the configuration is received in the ``evaluate`` "
-"method, where it can be used during the evaluation process:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:179
-msgid "Example: Sending Training Configurations"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:181
-#, fuzzy
-msgid ""
-"Imagine we want to send (a) the batch size, (b) the current global round,"
-" and (c) the number of local epochs. Our configuration function could "
-"look like this:"
-msgstr "让我们从一个简单的例子开始。想象一下，我们想要发送给客户端（a）应该使用的批次大小，（b）当前联邦学习的全局轮次，以及（c）客户端训练的遍历数。我们的配置函数可以是这样的："
-
-#: ../../source/how-to-configure-clients.rst:194
-msgid ""
-"To use this function with a built-in strategy like ``FedAvg``, pass it to"
-" the ``FedAvg`` constructor (typically in your ``server_fn``):"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:215
-#, fuzzy
-msgid "Client-Side Configuration"
-msgstr "客户端逻辑"
-
-#: ../../source/how-to-configure-clients.rst:217
-msgid ""
-"On the client side, configurations are received as input to the ``fit`` "
-"and ``evaluate`` methods. For example:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:234
-msgid "Dynamic Configurations per Round"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:236
-msgid ""
-"Configuration functions are called at the beginning of every round. This "
-"allows for dynamic adjustments based on progress. For example, you can "
-"increase the number of local epochs in later rounds:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:251
-msgid "Customizing Client Configurations"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:253
-msgid ""
-"In some cases, it may be necessary to send different configurations to "
-"individual clients. To achieve this, you can create a custom strategy by "
-"extending a built-in one, such as ``FedAvg``:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:258
-msgid "Example: Client-Specific Configuration"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:277
-msgid "Next, use this custom strategy as usual:"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:291
-msgid "Summary of Enhancements"
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:293
-msgid "**Dynamic Configurations**: Enables per-round adjustments via functions."
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:294
-msgid "**Advanced Customization**: Supports client-specific strategies."
-msgstr ""
-
-#: ../../source/how-to-configure-clients.rst:295
-msgid ""
-"**Client-Side Integration**: Configurations accessible in ``fit`` and "
-"``evaluate``."
+"In this how-to guide, we have shown how to define (when calling the "
+"``start`` method of the strategy) and modify (by overriding the "
+"``configure_train`` method) a ``ConfigRecord`` to customize how "
+"``ClientApps`` perform training. You can follow equivalent steps to "
+"define and customize the ``ConfigRecord`` for an evaluation round. To do "
+"this, use the ``evaluate_config`` argument in the strategy's ``start`` "
+"method and then optionally override the ``configure_evaluate`` method."
 msgstr ""
 
 #: ../../source/how-to-configure-logging.rst:-1
@@ -9997,10 +10348,10 @@ msgstr "客户端"
 msgid ""
 "By design, ClientApp_ objects are stateless. This means that the "
 "``ClientApp`` object is recreated each time a new ``Message`` is to be "
-"processed. This behaviour is identical with Flower's Simulation Engine "
-"and Deployment Engine. For the former, it allows us to simulate the "
-"running of a large number of nodes on a single machine or across multiple"
-" machines. For the latter, it enables each ``SuperNode`` to be part of "
+"processed. This behavior is identical with Flower's Simulation Engine and"
+" Deployment Engine. For the former, it allows us to simulate the running "
+"of a large number of nodes on a single machine or across multiple "
+"machines. For the latter, it enables each ``SuperNode`` to be part of "
 "multiple runs, each running a different ``ClientApp``."
 msgstr ""
 
@@ -10009,14 +10360,15 @@ msgid ""
 "When a ``ClientApp`` is executed it receives a Context_. This context is "
 "unique for each ``ClientApp``, meaning that subsequent executions of the "
 "same ``ClientApp`` from the same node will receive the same ``Context`` "
-"object. In the ``Context``, the ``.state`` attribute can be used to store"
-" information that you would like the ``ClientApp`` to have access to for "
-"the duration of the run. This could be anything from intermediate results"
-" such as the history of training losses (e.g. as a list of ``float`` "
-"values with a new entry appended each time the ``ClientApp`` is "
-"executed), certain parts of the model that should persist on the client "
-"side, or some other arbitrary Python objects. These items would need to "
-"be serialized before saving them into the context."
+"object. In the ``Context``, the ``.state`` attribute (of type "
+"RecordDict_) can be used to store information that you would like the "
+"``ClientApp`` to have access to for the duration of the run. This could "
+"be anything from intermediate results such as the history of training "
+"losses (e.g. as a list of ``float`` values with a new entry appended each"
+" time the ``ClientApp`` is executed), certain parts of the model that "
+"should persist on the client side, or some other arbitrary Python "
+"objects. These items would need to be serialized before saving them into "
+"the context."
 msgstr ""
 
 #: ../../source/how-to-design-stateful-clients.rst:42
@@ -10027,145 +10379,147 @@ msgstr ""
 msgid ""
 "This section will demonstrate how to save metrics such as accuracy/loss "
 "values to the Context_ so they can be used in subsequent executions of "
-"the ``ClientApp``. If your ``ClientApp`` makes use of NumPyClient_ then "
-"entire object is also re-created for each call to methods like ``fit()`` "
-"or ``evaluate()``."
+"the ``ClientApp``."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:49
+#: ../../source/how-to-design-stateful-clients.rst:47
 msgid ""
 "Let's begin with a simple setting in which ``ClientApp`` is defined as "
-"follows. The ``evaluate()`` method only generates a random number and "
-"prints it."
+"follows. The ``train()`` function only generates a random number, prints "
+"it, and return an empty message."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:54
+#: ../../source/how-to-design-stateful-clients.rst:53
 msgid ""
 "You can create a PyTorch project with ready-to-use ``ClientApp`` and "
 "other components by running ``flwr new``."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:86
+#: ../../source/how-to-design-stateful-clients.rst:75
 msgid ""
-"Let's say we want to save that randomly generated integer and append it "
-"to a list that persists in the context. To do that, you'll need to do two"
-" key things:"
+"With the minimal ``ClientApp`` above, each time a ``Message`` is "
+"addressed to this ``train`` function, a new random integer will be "
+"generated and printed. Let's say we want to save that randomly generated "
+"integer and append it to a list that persists in the ``Context``. This "
+"way, each time the function executes,, it prints the history of random "
+"integers. Let's see how this looks in code:"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:89
-msgid "Make the ``context.state`` reachable within your client class"
-msgstr ""
-
-#: ../../source/how-to-design-stateful-clients.rst:90
+#: ../../source/how-to-design-stateful-clients.rst:83
 msgid ""
-"Initialise the appropriate record type (in this example we use "
-"ConfigRecord_) and save/read your entry when required."
+"Recall, the ``state`` attribute of a ``Context`` object is of type "
+"RecordDict_, which is a special dictionary for different types of records"
+" available in Flower. This means that you can save to it not just "
+"MetricRecord_ as in the example below, but also ArrayRecord_ and "
+"ConfigRecord_ objects."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:128
+#: ../../source/how-to-design-stateful-clients.rst:118
 msgid ""
-"If you run the app, you'll see an output similar to the one below. See "
-"how after each round the ``n_val`` entry in the context gets one "
-"additional integer ? Note that the order in which the ``ClientApp`` logs "
-"these messages might differ slightly between rounds."
+"If you run a Flower App including the above logic in your ``ClientApp`` "
+"and having just two clients in your federation sampled in each round, "
+"you'll see an output similar to the one below. See how after each round "
+"the ``random-metrics`` record in the ``Context`` gets one additional "
+"integer? Note that, in Simulation Runtime, the order of log messages may "
+"change each round due to the random ordering of simulated clients."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:152
+#: ../../source/how-to-design-stateful-clients.rst:139
 msgid "Saving model parameters to the context"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:154
+#: ../../source/how-to-design-stateful-clients.rst:141
 msgid ""
 "Using ConfigRecord_ or MetricRecord_ to save \"simple\" components is "
 "fine (e.g., float, integer, boolean, string, bytes, and lists of these "
 "types. Note that MetricRecord_ only supports float, integer, and lists of"
-" these types) Flower has a specific type of record, a ArrayRecord_, for "
-"storing model parameters or more generally data arrays."
+" these types). Flower has a specific type of record, an ArrayRecord_, for"
+" storing model parameters, or more generally, data arrays."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:159
+#: ../../source/how-to-design-stateful-clients.rst:146
 msgid ""
 "Let's see a couple of examples of how to save NumPy arrays first and then"
 " how to save parameters of PyTorch and TensorFlow models."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:164
+#: ../../source/how-to-design-stateful-clients.rst:151
 msgid ""
 "The examples below omit the definition of a ``ClientApp`` to keep the "
 "code blocks concise. To make use of ``ArrayRecord`` objects in your "
 "``ClientApp`` you can follow the same principles as outlined earlier."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:169
+#: ../../source/how-to-design-stateful-clients.rst:156
 #, fuzzy
 msgid "Saving NumPy arrays to the context"
 msgstr "将 NumPy ndarray 序列化为字节。"
 
-#: ../../source/how-to-design-stateful-clients.rst:171
+#: ../../source/how-to-design-stateful-clients.rst:158
 msgid ""
-"Elements stored in a ``ArrayRecord`` are of type Array_, which is a data "
-"structure that holds ``bytes`` and metadata that can be used for "
+"Elements stored in an ``ArrayRecord`` are of type Array_, which is a data"
+" structure that holds ``bytes`` and metadata that can be used for "
 "deserialization. Let's see how to create an ``Array`` from a NumPy array "
-"and insert it into a ``ArrayRecord``."
+"and insert it into an ``ArrayRecord``."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:177
+#: ../../source/how-to-design-stateful-clients.rst:164
 msgid ""
 "Array_ objects carry bytes as their main payload and additional metadata "
 "to use for deserialization. You can also implement your own "
 "serialization/deserialization."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:180
+#: ../../source/how-to-design-stateful-clients.rst:167
 msgid ""
 "Let's see how to use those functions to store a NumPy array into the "
 "context."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:214
+#: ../../source/how-to-design-stateful-clients.rst:201
 msgid ""
-"To extract the data in a ``ArrayRecord``, you just need to deserialize "
-"the array if interest. For example, following the example above:"
+"To extract the data in an ``ArrayRecord``, you just need to deserialize "
+"the array of interest. For example, following the example above:"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:234
+#: ../../source/how-to-design-stateful-clients.rst:221
 msgid "Saving PyTorch parameters to the context"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:236
+#: ../../source/how-to-design-stateful-clients.rst:223
 msgid ""
 "Flower offers one-liner utilities to convert PyTorch model parameters "
 "to/from ``ArrayRecord`` objects. Let's see how to do that."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:269
+#: ../../source/how-to-design-stateful-clients.rst:256
 msgid ""
-"Let say now you want to apply the parameters stored in your context to a "
-"new instance of the model (as it happens each time a ``ClientApp`` is "
+"Let's say now you want to apply the parameters stored in your context to "
+"a new instance of the model (as it happens each time a ``ClientApp`` is "
 "executed). You will need to:"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:272
+#: ../../source/how-to-design-stateful-clients.rst:259
 msgid "Retrieve the ``ArrayRecord`` from the context"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:273
+#: ../../source/how-to-design-stateful-clients.rst:260
 msgid "Construct a ``state_dict`` and load it"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:292
+#: ../../source/how-to-design-stateful-clients.rst:279
 msgid ""
 "And that's it! Recall that even though this example shows how to store "
-"the entire ``state_dict`` in a ``ArrayRecord``, you can just save part of"
-" it. The process would be identical, but you might need to adjust how it "
-"is loaded into an existing model using PyTorch APIs."
+"the entire ``state_dict`` in an ``ArrayRecord``, you can just save part "
+"of it. The process would be identical, but you might need to adjust how "
+"it is loaded into an existing model using PyTorch APIs."
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:298
+#: ../../source/how-to-design-stateful-clients.rst:285
 msgid "Saving Tensorflow/Keras parameters to the context"
 msgstr ""
 
-#: ../../source/how-to-design-stateful-clients.rst:300
+#: ../../source/how-to-design-stateful-clients.rst:287
 msgid ""
 "Follow the same steps as done above but replace the ``state_dict`` logic "
 "with simply `get_weights() "
@@ -10403,7 +10757,7 @@ msgstr "模块"
 msgid ""
 "A full introduction to federated learning with PyTorch and Flower can be "
 "found in :doc:`Quickstart PyTorch <tutorial-quickstart-pytorch>`. This "
-"how-to guide varies only a few details in ``task.py``. FedBN requires a "
+"how-to guide changes only a few details in ``task.py``. FedBN requires a "
 "model architecture (defined in class ``Net()``) that uses Batch "
 "Normalization layers:"
 msgstr ""
@@ -10426,27 +10780,18 @@ msgid "FedBN"
 msgstr "DP-FedAvg"
 
 #: ../../source/how-to-implement-fedbn.rst:61
-msgid ""
-"To adopt FedBN, only the ``get_parameters`` and ``set_parameters`` "
-"functions in ``task.py`` need to be revised. FedBN only changes the "
-"client-side by excluding batch normalization parameters from being "
-"exchanged with the server."
-msgstr ""
-
-#: ../../source/how-to-implement-fedbn.rst:65
 #, fuzzy
 msgid ""
-"We revise the *client* logic by changing ``get_parameters`` and "
-"``set_parameters`` in ``task.py``. The batch normalization parameters are"
-" excluded from model parameter list when sending to or receiving from the"
-" server:"
+"To adopt FedBN, we revise the ``train`` method in ``ClientApp``. The "
+"batch normalization parameters are excluded from model state dict when "
+"sending to or receiving from the ``ServerApp``:"
 msgstr ""
 "最后，我们将修改 *client* 的逻辑，修改 :code:`client.py` 中的 :code:`get_parameters` 和 "
 ":code:`set_parameters`，在向服务器发送或从服务器接收时，我们将从模型参数列表中排除batch "
 "normalization层的参数。"
 
 #: ../../source/how-to-implement-fedbn.rst:94
-msgid "To test the new appraoch, run the project again:"
+msgid "To test the new approach, run the project again:"
 msgstr ""
 
 #: ../../source/how-to-implement-fedbn.rst:100
@@ -10463,352 +10808,25 @@ msgstr "下一步工作"
 #: ../../source/how-to-implement-fedbn.rst:105
 #, fuzzy
 msgid ""
-"The example is of course over-simplified since all clients load the exact"
-" same dataset. This isn't realistic. You now have the tools to explore "
-"this topic further. How about using different subsets of CIFAR-10 on each"
-" client? How about adding more clients?"
+"The example is certainly over-simplified since all ``ClientApp``\\s load "
+"the exact same dataset. This isn't realistic. You now have the tools to "
+"explore this topic further. How about using different subsets of CIFAR-10"
+" on each client? How about adding more clients?"
 msgstr ""
 "本示例的完整源代码可在 <https://github.com/adap/flower/blob/main/examples/pytorch-"
 "from-centralized-to-federated>`_ "
 "找到。当然，我们的示例有些过于简单，因为两个客户端都加载了完全相同的数据集，这并不真实。让我们准备好进一步探讨这一主题。如在每个客户端使用不同的 "
 "CIFAR-10 子集，或者增加客户端的数量。"
 
-#: ../../source/how-to-implement-strategies.rst:-1
-msgid ""
-"Create custom federated learning strategies in Flower by modifying client"
-" sampling, training, aggregation, and evaluation for enhanced flexibility"
-" and control."
-msgstr ""
-
-#: ../../source/how-to-implement-strategies.rst:6
+#: ../../source/how-to-implement-strategies.rst:2
 msgid "Implement strategies"
 msgstr "实施策略"
 
-#: ../../source/how-to-implement-strategies.rst:8
+#: ../../source/how-to-implement-strategies.rst:4
 msgid ""
-"The strategy abstraction enables implementation of fully custom "
-"strategies. A strategy is basically the federated learning algorithm that"
-" runs on the server. Strategies decide how to sample clients, how to "
-"configure clients for training, how to aggregate updates, and how to "
-"evaluate models. Flower provides a few built-in strategies which are "
-"based on the same API described below."
+"This page has moved. Please see :doc:`Flower Strategy Abstraction "
+"<explanation-flower-strategy-abstraction>`."
 msgstr ""
-"策略抽象类可以实现完全定制的策略。策略基本上就是在服务器上运行的联邦学习算法。策略决定如何对客户端进行采样、如何配置客户端进行训练、如何聚合参数更新以及如何评估模型。Flower"
-" 提供了一些内置策略，这些策略基于下文所述的相同 API。"
-
-#: ../../source/how-to-implement-strategies.rst:15
-#, fuzzy
-msgid "The ``Strategy`` abstraction"
-msgstr ":code:`策略 ` 抽象类"
-
-#: ../../source/how-to-implement-strategies.rst:17
-#, fuzzy
-msgid ""
-"All strategy implementations are derived from the abstract base class "
-"``flwr.server.strategy.Strategy``, both built-in implementations and "
-"third party implementations. This means that custom strategy "
-"implementations have the exact same capabilities at their disposal as "
-"built-in ones."
-msgstr ""
-"所有策略实现均源自抽象基类 "
-":code:`flwr.server.strategy.Strategy`，包括内置实现和第三方实现。这意味着自定义策略实现与内置实现具有完全相同的功能。"
-
-#: ../../source/how-to-implement-strategies.rst:22
-msgid ""
-"The strategy abstraction defines a few abstract methods that need to be "
-"implemented:"
-msgstr "策略抽象定义了一些需要实现的抽象方法："
-
-#: ../../source/how-to-implement-strategies.rst:71
-#, fuzzy
-msgid ""
-"Creating a new strategy means implementing a new ``class`` (derived from "
-"the abstract base class ``Strategy``) that implements for the previously "
-"shown abstract methods:"
-msgstr "创建一个新策略意味着要实现一个新的 :code:`class`（从抽象基类 :code:`Strategy` 派生），该类要实现前面显示的抽象方法："
-
-#: ../../source/how-to-implement-strategies.rst:101
-msgid "The Flower server calls these methods in the following order:"
-msgstr "Flower 服务器按以下顺序调用这些方法："
-
-#: ../../source/how-to-implement-strategies.rst:178
-msgid "The following sections describe each of those methods in more detail."
-msgstr "下文将详细介绍每种方法。"
-
-#: ../../source/how-to-implement-strategies.rst:181
-#, fuzzy
-msgid "The ``initialize_parameters`` method"
-msgstr ":code:`初始化参数` 方法"
-
-#: ../../source/how-to-implement-strategies.rst:183
-#, fuzzy
-msgid ""
-"``initialize_parameters`` is called only once, at the very beginning of "
-"an execution. It is responsible for providing the initial global model "
-"parameters in a serialized form (i.e., as a ``Parameters`` object)."
-msgstr ""
-":code:`initialize_parameters` 只调用一次，即在执行开始时。它负责以序列化形式（即 "
-":code:`Parameters` 对象）提供初始全局模型参数。"
-
-#: ../../source/how-to-implement-strategies.rst:187
-#, fuzzy
-msgid ""
-"Built-in strategies return user-provided initial parameters. The "
-"following example shows how initial parameters can be passed to "
-"``FedAvg``:"
-msgstr "内置策略会返回用户提供的初始参数。下面的示例展示了如何将初始参数传递给 :code:`FedAvg`："
-
-#: ../../source/how-to-implement-strategies.rst:213
-#, fuzzy
-msgid ""
-"The Flower server will call ``initialize_parameters``, which either "
-"returns the parameters that were passed to ``initial_parameters``, or "
-"``None``. If no parameters are returned from ``initialize_parameters`` "
-"(i.e., ``None``), the server will randomly select one client and ask it "
-"to provide its parameters. This is a convenience feature and not "
-"recommended in practice, but it can be useful for prototyping. In "
-"practice, it is recommended to always use server-side parameter "
-"initialization."
-msgstr ""
-"Flower 服务器将调用 :code:`initialize_parameters`，返回传给 "
-":code:`initial_parameters` 的参数或 :code:`None`。如果 "
-":code:`initialize_parameters` 没有返回任何参数（即 "
-":code:`None`），服务器将随机选择一个客户端并要求其提供参数。这只是一个便捷的功能，在实际应用中并不推荐使用，但在原型开发中可能很有用。在实践中，建议始终使用服务器端参数初始化。"
-
-#: ../../source/how-to-implement-strategies.rst:222
-msgid ""
-"Server-side parameter initialization is a powerful mechanism. It can be "
-"used, for example, to resume training from a previously saved checkpoint."
-" It is also the fundamental capability needed to implement hybrid "
-"approaches, for example, to fine-tune a pre-trained model using federated"
-" learning."
-msgstr "服务器端参数初始化是一种强大的机制。例如，它可以用来从先前保存的检查点恢复训练。它也是实现混合方法所需的基本能力，例如，使用联邦学习对预先训练好的模型进行微调。"
-
-#: ../../source/how-to-implement-strategies.rst:228
-#, fuzzy
-msgid "The ``configure_fit`` method"
-msgstr ":code:`configure_fit`方法"
-
-#: ../../source/how-to-implement-strategies.rst:230
-#, fuzzy
-msgid ""
-"``configure_fit`` is responsible for configuring the upcoming round of "
-"training. What does *configure* mean in this context? Configuring a round"
-" means selecting clients and deciding what instructions to send to these "
-"clients. The signature of ``configure_fit`` makes this clear:"
-msgstr ""
-":code:`configure_fit` "
-"负责配置即将开始的一轮训练。*配置*在这里是什么意思？配置一轮训练意味着选择客户并决定向这些客户发送什么指令。:code:`configure_fit`"
-" 说明了这一点："
-
-#: ../../source/how-to-implement-strategies.rst:243
-#, fuzzy
-msgid ""
-"The return value is a list of tuples, each representing the instructions "
-"that will be sent to a particular client. Strategy implementations "
-"usually perform the following steps in ``configure_fit``:"
-msgstr "返回值是一个元组列表，每个元组代表将发送到特定客户端的指令。策略实现通常在 :code:`configure_fit` 中执行以下步骤："
-
-#: ../../source/how-to-implement-strategies.rst:247
-#: ../../source/how-to-implement-strategies.rst:311
-#, fuzzy
-msgid ""
-"Use the ``client_manager`` to randomly sample all (or a subset of) "
-"available clients (each represented as a ``ClientProxy`` object)"
-msgstr ""
-"使用 :code:`client_manager` 随机抽样所有（或部分）可用客户端（每个客户端都表示为 :code:`ClientProxy` "
-"对象）"
-
-#: ../../source/how-to-implement-strategies.rst:249
-#, fuzzy
-msgid ""
-"Pair each ``ClientProxy`` with the same ``FitIns`` holding the current "
-"global model ``parameters`` and ``config`` dict"
-msgstr ""
-"将每个 :code:`ClientProxy` 与持有当前全局模型 :code:`parameters` 和 :code:`config` "
-"dict 的 :code:`FitIns` 配对"
-
-#: ../../source/how-to-implement-strategies.rst:252
-#, fuzzy
-msgid ""
-"More sophisticated implementations can use ``configure_fit`` to implement"
-" custom client selection logic. A client will only participate in a round"
-" if the corresponding ``ClientProxy`` is included in the list returned "
-"from ``configure_fit``."
-msgstr ""
-"更复杂的实现可以使用 :code:`configure_fit` 来实现自定义的客户端选择逻辑。只有当相应的 "
-":code:`ClientProxy` 包含在 :code:`configure_fit` 返回的列表中时，客户端才会参与进来。"
-
-#: ../../source/how-to-implement-strategies.rst:258
-#, fuzzy
-msgid ""
-"The structure of this return value provides a lot of flexibility to the "
-"user. Since instructions are defined on a per-client basis, different "
-"instructions can be sent to each client. This enables custom strategies "
-"to train, for example, different models on different clients, or use "
-"different hyperparameters on different clients (via the ``config`` dict)."
-msgstr ""
-"该返回值的结构为用户提供了很大的灵活性。由于指令是按客户端定义的，因此可以向每个客户端发送不同的指令。这使得自定义策略成为可能，例如在不同的客户端上训练不同的模型，或在不同的客户端上使用不同的超参数（通过"
-" :code:`config` dict）。"
-
-#: ../../source/how-to-implement-strategies.rst:265
-#, fuzzy
-msgid "The ``aggregate_fit`` method"
-msgstr ":code:`aggregate_fit` 方法"
-
-#: ../../source/how-to-implement-strategies.rst:267
-#, fuzzy
-msgid ""
-"``aggregate_fit`` is responsible for aggregating the results returned by "
-"the clients that were selected and asked to train in ``configure_fit``."
-msgstr ":code:`aggregate_fit` 负责汇总在 :code:`configure_fit` 中选择并要求训练的客户端所返回的结果。"
-
-#: ../../source/how-to-implement-strategies.rst:281
-#, fuzzy
-msgid ""
-"Of course, failures can happen, so there is no guarantee that the server "
-"will get results from all the clients it sent instructions to (via "
-"``configure_fit``). ``aggregate_fit`` therefore receives a list of "
-"``results``, but also a list of ``failures``."
-msgstr ""
-"当然，失败是有可能发生的，因此无法保证服务器会从它发送指令（通过 :code:`configure_fit`）的所有客户端获得结果。因此 "
-":code:`aggregate_fit` 会收到 :code:`results` 的列表，但也会收到 :code:`failures` 的列表。"
-
-#: ../../source/how-to-implement-strategies.rst:286
-#, fuzzy
-msgid ""
-"``aggregate_fit`` returns an optional ``Parameters`` object and a "
-"dictionary of aggregated metrics. The ``Parameters`` return value is "
-"optional because ``aggregate_fit`` might decide that the results provided"
-" are not sufficient for aggregation (e.g., too many failures)."
-msgstr ""
-":code:`aggregate_fit` 返回一个可选的 :code:`Parameters` "
-"对象和一个聚合度量的字典。:code:`Parameters` 返回值是可选的，因为 :code:`aggregate_fit` "
-"可能会认为所提供的结果不足以进行聚合（例如，失败次数过多）。"
-
-#: ../../source/how-to-implement-strategies.rst:292
-#, fuzzy
-msgid "The ``configure_evaluate`` method"
-msgstr ":code:`configure_evaluate`方法"
-
-#: ../../source/how-to-implement-strategies.rst:294
-#, fuzzy
-msgid ""
-"``configure_evaluate`` is responsible for configuring the upcoming round "
-"of evaluation. What does *configure* mean in this context? Configuring a "
-"round means selecting clients and deciding what instructions to send to "
-"these clients. The signature of ``configure_evaluate`` makes this clear:"
-msgstr ""
-":code:`configure_evaluate` "
-"负责配置下一轮评估。*配置*在这里是什么意思？配置一轮评估意味着选择客户端并决定向这些客户端发送什么指令。:code:`configure_evaluate`"
-" 说明了这一点："
-
-#: ../../source/how-to-implement-strategies.rst:307
-#, fuzzy
-msgid ""
-"The return value is a list of tuples, each representing the instructions "
-"that will be sent to a particular client. Strategy implementations "
-"usually perform the following steps in ``configure_evaluate``:"
-msgstr "返回值是一个元组列表，每个元组代表将发送到特定客户端的指令。策略实现通常在 :code:`configure_evaluate` 中执行以下步骤："
-
-#: ../../source/how-to-implement-strategies.rst:313
-#, fuzzy
-msgid ""
-"Pair each ``ClientProxy`` with the same ``EvaluateIns`` holding the "
-"current global model ``parameters`` and ``config`` dict"
-msgstr ""
-"将每个 :code:`ClientProxy` 与持有当前全局模型 :code:`parameters` 和 :code:`config` "
-"dict 的 :code:`EvaluateIns` 配对"
-
-#: ../../source/how-to-implement-strategies.rst:316
-#, fuzzy
-msgid ""
-"More sophisticated implementations can use ``configure_evaluate`` to "
-"implement custom client selection logic. A client will only participate "
-"in a round if the corresponding ``ClientProxy`` is included in the list "
-"returned from ``configure_evaluate``."
-msgstr ""
-"更复杂的实现可以使用 :code:`configure_evaluate` 来实现自定义的客户端选择逻辑。只有当相应的 "
-":code:`ClientProxy` 包含在 :code:`configure_evaluate` 返回的列表中时，客户端才会参与进来。"
-
-#: ../../source/how-to-implement-strategies.rst:322
-#, fuzzy
-msgid ""
-"The structure of this return value provides a lot of flexibility to the "
-"user. Since instructions are defined on a per-client basis, different "
-"instructions can be sent to each client. This enables custom strategies "
-"to evaluate, for example, different models on different clients, or use "
-"different hyperparameters on different clients (via the ``config`` dict)."
-msgstr ""
-"该返回值的结构为用户提供了很大的灵活性。由于指令是按客户端定义的，因此可以向每个客户端发送不同的指令。这使得自定义策略可以在不同客户端上评估不同的模型，或在不同客户端上使用不同的超参数（通过"
-" :code:`config` dict）。"
-
-#: ../../source/how-to-implement-strategies.rst:329
-#, fuzzy
-msgid "The ``aggregate_evaluate`` method"
-msgstr ":code:`aggregate_evaluate` 方法"
-
-#: ../../source/how-to-implement-strategies.rst:331
-#, fuzzy
-msgid ""
-"``aggregate_evaluate`` is responsible for aggregating the results "
-"returned by the clients that were selected and asked to evaluate in "
-"``configure_evaluate``."
-msgstr ""
-":code:`aggregate_evaluate` 负责汇总在 :code:`configure_evaluate` "
-"中选择并要求评估的客户端返回的结果。"
-
-#: ../../source/how-to-implement-strategies.rst:345
-#, fuzzy
-msgid ""
-"Of course, failures can happen, so there is no guarantee that the server "
-"will get results from all the clients it sent instructions to (via "
-"``configure_evaluate``). ``aggregate_evaluate`` therefore receives a list"
-" of ``results``, but also a list of ``failures``."
-msgstr ""
-"当然，失败是有可能发生的，因此无法保证服务器会从它发送指令（通过 "
-":code:`configure_evaluate`）的所有客户端获得结果。因此， :code:`aggregate_evaluate` 会接收 "
-":code:`results` 的列表，但也会接收 :code:`failures` 的列表。"
-
-#: ../../source/how-to-implement-strategies.rst:350
-#, fuzzy
-msgid ""
-"``aggregate_evaluate`` returns an optional ``float`` (loss) and a "
-"dictionary of aggregated metrics. The ``float`` return value is optional "
-"because ``aggregate_evaluate`` might decide that the results provided are"
-" not sufficient for aggregation (e.g., too many failures)."
-msgstr ""
-":code:`aggregate_evaluate` 返回一个可选的 "
-":code:`float`（损失值）和一个聚合指标字典。:code:`float` 返回值是可选的，因为 "
-":code:`aggregate_evaluate` 可能会认为所提供的结果不足以进行聚合（例如，失败次数过多）。"
-
-#: ../../source/how-to-implement-strategies.rst:356
-#, fuzzy
-msgid "The ``evaluate`` method"
-msgstr ":code:`evaluate`方法"
-
-#: ../../source/how-to-implement-strategies.rst:358
-#, fuzzy
-msgid ""
-"``evaluate`` is responsible for evaluating model parameters on the "
-"server-side. Having ``evaluate`` in addition to "
-"``configure_evaluate``/``aggregate_evaluate`` enables strategies to "
-"perform both servers-side and client-side (federated) evaluation."
-msgstr ""
-":code:`evaluate` 负责在服务器端评估模型参数。除了 "
-":code:`configure_evaluate`/:code:`aggregate_evaluate` 之外，:code:`evaluate`"
-" 可以使策略同时执行服务器端和客户端（联邦）评估。"
-
-#: ../../source/how-to-implement-strategies.rst:368
-#, fuzzy
-msgid ""
-"The return value is again optional because the strategy might not need to"
-" implement server-side evaluation or because the user-defined "
-"``evaluate`` method might not complete successfully (e.g., it might fail "
-"to load the server-side evaluation data)."
-msgstr ""
-"返回值也是可选的，因为策略可能不需要执行服务器端评估，或者因为用户定义的 :code:`evaluate` "
-"方法可能无法成功完成（例如，它可能无法加载服务器端评估数据）。"
 
 #: ../../source/how-to-install-flower.rst:-1
 msgid ""
@@ -13383,83 +13401,70 @@ msgid ""
 "workflows."
 msgstr ""
 
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:6
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:22
 #, fuzzy
-msgid "Save and Load Model Checkpoints"
+msgid "Save and load model checkpoints"
 msgstr "保存和加载模型检查点"
 
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:8
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:24
+#, fuzzy
 msgid ""
-"Flower does not automatically save model updates on the server-side. This"
-" how-to guide describes the steps to save (and load) model checkpoints in"
-" Flower."
+"This how-to guide describes the steps to save (and load) model "
+"checkpoints in ``ClientApp`` and ``ServerApp``."
 msgstr "Flower 不会在服务器端自动保存模型更新。本指南将介绍在 Flower 中保存（和加载）模型检查点的步骤。"
 
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:12
-#, fuzzy
-msgid "Model Checkpointing"
-msgstr "模型检查点"
-
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:14
-#, fuzzy
-msgid ""
-"Model updates can be persisted on the server-side by customizing "
-"``Strategy`` methods. Implementing custom strategies is always an option,"
-" but for many cases it may be more convenient to simply customize an "
-"existing strategy. The following code example defines a new "
-"``SaveModelStrategy`` which customized the existing built-in ``FedAvg`` "
-"strategy. In particular, it customizes ``aggregate_fit`` by calling "
-"``aggregate_fit`` in the base class (``FedAvg``). It then continues to "
-"save returned (aggregated) weights before it returns those aggregated "
-"weights to the caller (i.e., the server):"
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:28
+msgid "How to save model checkpoints in ``ClientApp``"
 msgstr ""
-"模型更新可通过自定义 :code:`Strategy` "
-"方法在服务器端持久化。实现自定义策略始终是一种选择，但在许多情况下，简单地自定义现有策略可能更方便。下面的代码示例定义了一个新的 "
-":code:`SaveModelStrategy`，它自定义了现有的内置 :code:`FedAvg` "
-"策略。特别是，它通过调用基类（:code:`FedAvg`）中的 :code:`aggregate_fit` 来定制 "
-":code:`aggregate_fit`。然后继续保存返回的（聚合）参数，然后再将这些聚合参数返回给调用者（即服务器）："
 
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:62
-#, fuzzy
-msgid "Save and Load PyTorch Checkpoints"
-msgstr "保存和加载 PyTorch 检查点"
-
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:64
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:30
 msgid ""
-"Similar to the previous example but with a few extra steps, we'll show "
-"how to store a PyTorch checkpoint we'll use the ``torch.save`` function. "
-"Firstly, ``aggregate_fit`` returns a ``Parameters`` object that has to be"
-" transformed into a list of NumPy ``ndarray``'s, then those are "
-"transformed into the PyTorch ``state_dict`` following the ``OrderedDict``"
-" class structure."
+"Model updates are saved in |arrayrecord_link|_ and transmitted between "
+"|serverapp_link|_ and |clientapp_link|_. To save model checkpoints in "
+"|clientapp_link|_, you need to convert the |arrayrecord_link|_ into a "
+"format compatible with your ML framework (e.g., PyTorch, TensorFlow, or "
+"NumPy). Include the following code in your functions registered with the "
+"``ClientApp`` (e.g., in your training function decorated with "
+"``@app.train()``):"
 msgstr ""
-"与前面的例子类似，但多了几个步骤，我们将展示如何存储一个 PyTorch 检查点，我们将使用 ``torch.save`` "
-"函数。首先，``aggregate_fit`` 返回一个 ``Parameters`` 对象，它必须被转换成一个 NumPy "
-"``ndarray`` 的列表，然后这些对象按照 ``OrderedDict`` 类结构被转换成 PyTorch `state_dict` 对象。"
 
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:107
-msgid ""
-"To load your progress, you simply append the following lines to your "
-"code. Note that this will iterate over all saved checkpoints and load the"
-" latest one:"
-msgstr "要加载进度，只需在代码中添加以下几行。请注意，这将遍历所有已保存的检查点，并加载最新的检查点："
-
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:120
-#, fuzzy
-msgid ""
-"Return/use this object of type ``Parameters`` wherever necessary, such as"
-" in the ``initial_parameters`` when defining a ``Strategy``."
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:37
+msgid "PyTorch"
 msgstr ""
-"在必要时返回/使用此 ``Parameters`` 类型的对象，例如在定义 ``Strategy` 时的 "
-"``initial_parameters` 中。"
 
-#: ../../source/how-to-save-and-load-model-checkpoints.rst:123
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:47
+#, fuzzy
+msgid "TensorFlow"
+msgstr "工作流程"
+
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:60
+#, fuzzy
+msgid "NumPy"
+msgstr "NumPyClient"
+
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:71
+msgid "How to save model checkpoints in ``ServerApp``"
+msgstr ""
+
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:73
 msgid ""
-"Alternatively, we can save and load the model updates during evaluation "
-"phase by overriding ``evaluate()`` or ``aggregate_evaluate()`` method of "
-"the strategy (``FedAvg``). Checkout the details in `Advanced PyTorch "
-"Example <https://github.com/adap/flower/tree/main/examples/advanced-"
-"pytorch>`_ and `Advanced TensorFlow Example "
+"To save model checkpoints in |serverapp_link|_ across different FL "
+"rounds, you can implement this in a customized ``evaluate_fn`` and pass "
+"it to the strategy's |strategy_start_link|_ method. Here's an example "
+"showing how to save the global PyTorch model:"
+msgstr ""
+
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:96
+msgid ""
+"Then, pass it to the |strategy_start_link|_ method of the defined "
+"strategy:"
+msgstr ""
+
+#: ../../source/how-to-save-and-load-model-checkpoints.rst:105
+msgid ""
+"If you are interested, checkout the details in `Advanced PyTorch Example "
+"<https://github.com/adap/flower/tree/main/examples/advanced-pytorch>`_ "
+"and `Advanced TensorFlow Example "
 "<https://github.com/adap/flower/tree/main/examples/advanced-"
 "tensorflow>`_."
 msgstr ""
@@ -14529,64 +14534,57 @@ msgid ""
 msgstr "创建您的 ``ClientApp`` 并将 mods 作为列表传递给 ``mods`` 参数。提供 mod 的顺序很重要："
 
 #: ../../source/how-to-use-built-in-mods.rst:86
-msgid ""
-"If you define functions to handle messages using decorators instead of "
-"``client_fn``, e.g., ``@app.train()``, you do not need to pass the "
-"``client_fn`` argument."
-msgstr ""
-
-#: ../../source/how-to-use-built-in-mods.rst:90
 msgid "2. Registering Function-specific Mods"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:92
+#: ../../source/how-to-use-built-in-mods.rst:88
 msgid ""
 "Instead of applying mods to the entire ``ClientApp``, you can specify "
 "them for a particular function:"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:114
+#: ../../source/how-to-use-built-in-mods.rst:110
 msgid ""
 "In this case, ``example_mod_3`` and ``example_mod_4`` are only applied to"
 " the ``train`` function."
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:118
+#: ../../source/how-to-use-built-in-mods.rst:114
 #, fuzzy
 msgid "Order of Execution"
 msgstr "停用"
 
-#: ../../source/how-to-use-built-in-mods.rst:120
+#: ../../source/how-to-use-built-in-mods.rst:116
 #, fuzzy
 msgid "When the ``ClientApp`` runs, the mods execute in the following order:"
 msgstr "当运行 ``ClientApp`` 时，会按照列表中提供的顺序执行模块："
 
-#: ../../source/how-to-use-built-in-mods.rst:122
+#: ../../source/how-to-use-built-in-mods.rst:118
 msgid "**Application-wide mods** (executed first, in the order they are provided)"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:123
+#: ../../source/how-to-use-built-in-mods.rst:119
 msgid ""
 "**Function-specific mods** (executed after application-wide mods, in the "
 "order they are provided)"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:125
+#: ../../source/how-to-use-built-in-mods.rst:121
 #, fuzzy
 msgid ""
 "**ClientApp** (core function that handles the incoming ``Message`` and "
 "returns the outgoing ``Message``)"
 msgstr "消息处理程序（处理传入的 \"消息 \"并返回传出的 \"消息 \"的核心函数）"
 
-#: ../../source/how-to-use-built-in-mods.rst:127
+#: ../../source/how-to-use-built-in-mods.rst:123
 msgid "**Function-specific mods** (on the way back, in reverse order)"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:128
+#: ../../source/how-to-use-built-in-mods.rst:124
 msgid "**Application-wide mods** (on the way back, in reverse order)"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:130
+#: ../../source/how-to-use-built-in-mods.rst:126
 #, fuzzy
 msgid ""
 "Each mod has a chance to inspect and modify the incoming ``Message`` "
@@ -14594,76 +14592,76 @@ msgid ""
 "``Message`` before returning it up the stack."
 msgstr "每个模块都有机会检查和修改传入的 \"信息\"，然后再将其传递给下一个模块，同样，也有机会检查和修改传出的 \"信息\"，然后再将其返回堆栈。"
 
-#: ../../source/how-to-use-built-in-mods.rst:135
+#: ../../source/how-to-use-built-in-mods.rst:131
 #, fuzzy
 msgid "Example Execution Flow"
 msgstr "示例： 见下文。"
 
-#: ../../source/how-to-use-built-in-mods.rst:137
+#: ../../source/how-to-use-built-in-mods.rst:133
 msgid "Assuming the following registration:"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:153
+#: ../../source/how-to-use-built-in-mods.rst:149
 msgid "The execution order for an incoming **train** message is as follows:"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:155
-#: ../../source/how-to-use-built-in-mods.rst:167
+#: ../../source/how-to-use-built-in-mods.rst:151
+#: ../../source/how-to-use-built-in-mods.rst:163
 #, fuzzy
 msgid "``example_mod_1`` (before handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:156
-#: ../../source/how-to-use-built-in-mods.rst:168
+#: ../../source/how-to-use-built-in-mods.rst:152
+#: ../../source/how-to-use-built-in-mods.rst:164
 #, fuzzy
 msgid "``example_mod_2`` (before handling)"
 msgstr "示例模式 2（下一个模式）"
 
-#: ../../source/how-to-use-built-in-mods.rst:157
+#: ../../source/how-to-use-built-in-mods.rst:153
 #, fuzzy
 msgid "``example_mod_3`` (before handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:158
+#: ../../source/how-to-use-built-in-mods.rst:154
 #, fuzzy
 msgid "``example_mod_4`` (before handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:159
+#: ../../source/how-to-use-built-in-mods.rst:155
 msgid "``train`` (handling message)"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:160
+#: ../../source/how-to-use-built-in-mods.rst:156
 #, fuzzy
 msgid "``example_mod_4`` (after handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:161
+#: ../../source/how-to-use-built-in-mods.rst:157
 #, fuzzy
 msgid "``example_mod_3`` (after handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:162
-#: ../../source/how-to-use-built-in-mods.rst:170
+#: ../../source/how-to-use-built-in-mods.rst:158
+#: ../../source/how-to-use-built-in-mods.rst:166
 #, fuzzy
 msgid "``example_mod_2`` (after handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:163
-#: ../../source/how-to-use-built-in-mods.rst:171
+#: ../../source/how-to-use-built-in-mods.rst:159
+#: ../../source/how-to-use-built-in-mods.rst:167
 #, fuzzy
 msgid "``example_mod_1`` (after handling)"
 msgstr "``example_mod_1`` （最外层模块）"
 
-#: ../../source/how-to-use-built-in-mods.rst:165
+#: ../../source/how-to-use-built-in-mods.rst:161
 msgid "The execution order for an incoming **evaluate** message is as follows:"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:169
+#: ../../source/how-to-use-built-in-mods.rst:165
 msgid "``evaluate`` (handling message)"
 msgstr ""
 
-#: ../../source/how-to-use-built-in-mods.rst:176
+#: ../../source/how-to-use-built-in-mods.rst:172
 #, fuzzy
 msgid ""
 "By following this guide, you have learned how to effectively use mods to "
@@ -14673,7 +14671,7 @@ msgstr ""
 "通过本指南，您已学会如何有效地使用 mod 来增强您的 ``ClientApp`` 的功能。请记住，mod "
 "的顺序至关重要，它会影响输入和输出的处理方式。"
 
-#: ../../source/how-to-use-built-in-mods.rst:180
+#: ../../source/how-to-use-built-in-mods.rst:176
 #, fuzzy
 msgid "Enjoy building a more robust and flexible ``ClientApp`` with mods!"
 msgstr "使用 mods 构建更强大、更灵活的 \"客户端应用程序\"！"
@@ -14865,12 +14863,12 @@ msgid ""
 "learning."
 msgstr ""
 
-#: ../../source/how-to-use-differential-privacy.rst:6
+#: ../../source/how-to-use-differential-privacy.rst:38
 #, fuzzy
 msgid "Use Differential Privacy"
 msgstr "差分隐私"
 
-#: ../../source/how-to-use-differential-privacy.rst:8
+#: ../../source/how-to-use-differential-privacy.rst:40
 #, fuzzy
 msgid ""
 "This guide explains how you can utilize differential privacy in the "
@@ -14880,7 +14878,7 @@ msgstr ""
 "本指南解释了如何在 Flower 框架中使用差分隐私。如果您还不熟悉差分隐私，可以参考 :doc:`explanation-"
 "differential-privacy` 。"
 
-#: ../../source/how-to-use-differential-privacy.rst:14
+#: ../../source/how-to-use-differential-privacy.rst:46
 #, fuzzy
 msgid ""
 "Differential Privacy in Flower is in a preview phase. If you plan to use "
@@ -14891,7 +14889,7 @@ msgstr ""
 "Flower "
 "中的差异隐私处于预览阶段。如果您计划在生产环境中使用这些敏感数据功能，请随时联系我们，讨论您的需求，并获得如何最好地使用这些功能的指导。"
 
-#: ../../source/how-to-use-differential-privacy.rst:21
+#: ../../source/how-to-use-differential-privacy.rst:53
 #, fuzzy
 msgid ""
 "This approach consists of two separate phases: clipping of the updates "
@@ -14900,7 +14898,7 @@ msgid ""
 "the server side or the client side."
 msgstr "这种方法包括两个独立的阶段：对更新进行剪切和在聚合模型中添加噪声。在剪切阶段，Flower 框架可以决定是在服务器端还是在客户端执行剪切。"
 
-#: ../../source/how-to-use-differential-privacy.rst:25
+#: ../../source/how-to-use-differential-privacy.rst:57
 #, fuzzy
 msgid ""
 "**Server-side Clipping**: This approach has the advantage of the server "
@@ -14912,7 +14910,7 @@ msgstr ""
 "** 服务器端剪切**： "
 "这种方法的优点是服务器可对所有客户端的更新执行统一的剪切，并减少剪切值的通信开销。不过，这种方法也有缺点，那就是需要为所有客户端执行剪切操作，从而增加了服务器的计算负荷。"
 
-#: ../../source/how-to-use-differential-privacy.rst:30
+#: ../../source/how-to-use-differential-privacy.rst:62
 #, fuzzy
 msgid ""
 "**Client-side Clipping**: This approach has the advantage of reducing the"
@@ -14921,19 +14919,18 @@ msgid ""
 "control over the clipping process."
 msgstr "**客户端剪切**： 这种方法的优点是可以减少服务器的计算开销。不过，它也有缺乏集中控制的缺点，因为服务器对剪切过程的控制较少。"
 
-#: ../../source/how-to-use-differential-privacy.rst:35
+#: ../../source/how-to-use-differential-privacy.rst:67
 #, fuzzy
 msgid "Server-side Clipping"
 msgstr "服务器端逻辑"
 
-#: ../../source/how-to-use-differential-privacy.rst:37
+#: ../../source/how-to-use-differential-privacy.rst:69
 #, fuzzy
 msgid ""
 "For central DP with server-side clipping, there are two ``Strategy`` "
 "classes that act as wrappers around the actual ``Strategy`` instance (for"
-" example, ``FedAvg``). The two wrapper classes are "
-"``DifferentialPrivacyServerSideFixedClipping`` and "
-"``DifferentialPrivacyServerSideAdaptiveClipping`` for fixed and adaptive "
+" example, |fedavg_link|_). The two wrapper classes are "
+"|dpserverfix_link|_ and |dpserveradapt_link|_ for fixed and adaptive "
 "clipping."
 msgstr ""
 "对于具有服务器端剪裁功能的中央 DP，有两个 :code:`Strategy` 类作为实际 :code:`Strategy` 实例（例如 "
@@ -14946,7 +14943,7 @@ msgstr ""
 msgid "server side clipping"
 msgstr "服务器端逻辑"
 
-#: ../../source/how-to-use-differential-privacy.rst:47
+#: ../../source/how-to-use-differential-privacy.rst:79
 #, fuzzy
 msgid ""
 "The code sample below enables the ``FedAvg`` strategy to use server-side "
@@ -14959,21 +14956,20 @@ msgstr ""
 ":code:`FedAvg` 策略使用服务器端固定剪辑。通过调整相应的输入参数，同样的方法也可用于 "
 ":code:`DifferentialPrivacyServerSideAdaptiveClipping`。"
 
-#: ../../source/how-to-use-differential-privacy.rst:68
+#: ../../source/how-to-use-differential-privacy.rst:100
 #, fuzzy
 msgid "Client-side Clipping"
 msgstr "客户端逻辑"
 
-#: ../../source/how-to-use-differential-privacy.rst:70
+#: ../../source/how-to-use-differential-privacy.rst:102
 #, fuzzy
 msgid ""
 "For central DP with client-side clipping, the server sends the clipping "
 "value to selected clients on each round. Clients can use existing Flower "
 "``Mods`` to perform the clipping. Two mods are available for fixed and "
-"adaptive client-side clipping: ``fixedclipping_mod`` and "
-"``adaptiveclipping_mod`` with corresponding server-side wrappers "
-"``DifferentialPrivacyClientSideFixedClipping`` and "
-"``DifferentialPrivacyClientSideAdaptiveClipping``."
+"adaptive client-side clipping: |fixedclipping_mod_link|_ and "
+"|adaptiveclipping_mod_link|_ with corresponding server-side wrappers "
+"|dpclientfix_link|_ and |dpclientadapt_link|_."
 msgstr ""
 "对于带有客户端剪裁功能的中央 DP，服务器会在每一轮向选定的客户端发送剪裁值。客户端可以使用现有的 Flower "
 ":code:`Mods`来执行剪裁。有两种模式可用于固定和自适应客户端剪辑：:code:`fixedclipping_mod` 和 "
@@ -14986,7 +14982,7 @@ msgstr ""
 msgid "client side clipping"
 msgstr "客户端逻辑"
 
-#: ../../source/how-to-use-differential-privacy.rst:82
+#: ../../source/how-to-use-differential-privacy.rst:113
 #, fuzzy
 msgid ""
 "The code sample below enables the ``FedAvg`` strategy to use differential"
@@ -14997,7 +14993,7 @@ msgstr ""
 "下面的代码示例使用 :code:`DifferentialPrivacyClientSideFixedClipping` 封装类和客户端的 "
 ":code:`fixedclipping_mod` 使 :code:`FedAvg` 策略在客户端固定剪辑的情况下使用差分隐私："
 
-#: ../../source/how-to-use-differential-privacy.rst:101
+#: ../../source/how-to-use-differential-privacy.rst:132
 #, fuzzy
 msgid ""
 "In addition to the server-side strategy wrapper, the ``ClientApp`` needs "
@@ -15007,13 +15003,13 @@ msgstr ""
 "除了服务器端策略包装器外，:code:`ClientApp` 还需要配置匹配的 :code:`fixedclipping_mod` "
 "以执行客户端剪切："
 
-#: ../../source/how-to-use-differential-privacy.rst:120
+#: ../../source/how-to-use-differential-privacy.rst:146
 #, fuzzy
 msgid ""
 "To utilize local differential privacy (DP) and add noise to the client "
 "model parameters before transmitting them to the server in Flower, you "
-"can use the `LocalDpMod`. The following hyperparameters need to be set: "
-"clipping norm value, sensitivity, epsilon, and delta."
+"can use the |localdp_mod_link|_. The following hyperparameters need to be"
+" set: clipping norm value, sensitivity, epsilon, and delta."
 msgstr ""
 "要利用本地差分隐私（DP）并在将客户端模型参数传输到 Flower 服务器之前为其添加噪声，可以使用 "
 "`LocalDpMod`。需要设置以下超参数：剪切规范值、灵敏度、ε 和 delta。"
@@ -15023,12 +15019,22 @@ msgstr ""
 msgid "local DP mod"
 msgstr "本地 DP 模式"
 
-#: ../../source/how-to-use-differential-privacy.rst:130
+#: ../../source/how-to-use-differential-privacy.rst:156
 #, fuzzy
 msgid "Below is a code example that shows how to use ``LocalDpMod``:"
 msgstr "下面的代码示例展示了如何使用 :code:`LocalDpMod`："
 
-#: ../../source/how-to-use-differential-privacy.rst:148
+#: ../../source/how-to-use-differential-privacy.rst:160
+msgid ""
+"Apply the mod only to the functions that require it. For example, to use "
+"local DP during training, add the mod to the training function with "
+"``@app.train(mods=[your_mod])``. Avoid adding it directly to "
+"``ClientApp`` with ``ClientApp(mods=[your_mod])``, as this applies the "
+"mod to all functions (including evaluation), which is generally "
+"unnecessary and error-prone."
+msgstr ""
+
+#: ../../source/how-to-use-differential-privacy.rst:185
 #, fuzzy
 msgid ""
 "Please note that the order of mods, especially those that modify "
@@ -15037,12 +15043,12 @@ msgid ""
 "parameters."
 msgstr "请注意，在使用多个修改器时，修改器（尤其是修改参数的修改器）的顺序非常重要。通常情况下，差分隐私 (DP) 修改器应最后对参数进行操作。"
 
-#: ../../source/how-to-use-differential-privacy.rst:153
+#: ../../source/how-to-use-differential-privacy.rst:190
 #, fuzzy
 msgid "Local Training using Privacy Engines"
 msgstr "使用隐私引擎进行本地培训"
 
-#: ../../source/how-to-use-differential-privacy.rst:155
+#: ../../source/how-to-use-differential-privacy.rst:192
 #, fuzzy
 msgid ""
 "For ensuring data instance-level privacy during local model training on "
@@ -15066,137 +15072,233 @@ msgid ""
 " and control."
 msgstr ""
 
-#: ../../source/how-to-use-strategies.rst:6
+#: ../../source/how-to-use-strategies.rst:46
 msgid "Use strategies"
 msgstr "使用策略"
 
-#: ../../source/how-to-use-strategies.rst:8
+#: ../../source/how-to-use-strategies.rst:48
 #, fuzzy
 msgid ""
 "Flower allows full customization of the learning process through the "
-"``Strategy`` abstraction. A number of built-in strategies are provided in"
-" the core framework."
+"|strategy_link|_ abstraction. A number of built-in `strategies <ref-"
+"api/flwr.serverapp.strategy.html>`_ are provided in the core framework."
 msgstr "Flower 允许通过 :code:`Strategy` 抽象类对学习过程进行完全定制。核心框架中提供了许多内置策略。"
 
-#: ../../source/how-to-use-strategies.rst:11
+#: ../../source/how-to-use-strategies.rst:52
+#, fuzzy
 msgid ""
-"There are three ways to customize the way Flower orchestrates the "
-"learning process on the server side:"
+"There are four ways to customize the way Flower orchestrates the learning"
+" process on the server side:"
 msgstr "有三种方法可以自定义 Flower 在服务器端协调学习过程的方式："
 
-#: ../../source/how-to-use-strategies.rst:14
+#: ../../source/how-to-use-strategies.rst:55
 #, fuzzy
 msgid "Use an existing strategy, for example, ``FedAvg``"
 msgstr "使用现有策略，例如 :code:`FedAvg`"
 
-#: ../../source/how-to-use-strategies.rst:15
-#: ../../source/how-to-use-strategies.rst:71
-msgid "Customize an existing strategy with callback functions"
+#: ../../source/how-to-use-strategies.rst:56
+#, fuzzy
+msgid ""
+"Customize an existing strategy with callback functions to its ``start`` "
+"method"
 msgstr "使用回调函数定制现有策略"
 
-#: ../../source/how-to-use-strategies.rst:16
-#: ../../source/how-to-use-strategies.rst:145
-msgid "Implement a novel strategy"
+#: ../../source/how-to-use-strategies.rst:57
+msgid "Customize an existing strategy by overriding one or more of its methods."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:58
+#, fuzzy
+msgid "Implement a novel strategy from scratch"
 msgstr "实施新策略"
 
-#: ../../source/how-to-use-strategies.rst:19
+#: ../../source/how-to-use-strategies.rst:62
+msgid ""
+"Flower built-in strategies communicate one |arrayrecord_link|_ and one "
+"|metricrecord_link|_ in a ``Message`` to the ``ClientApps``. The "
+"strategies expect replies containing one ``MetricRecord`` and, if it's a "
+"round where ``ClientApps`` do local training, one ``ArrayRecord`` as "
+"well. The ``Message`` abstraction allows for unlimited records of any "
+"type. If you want to communicate multiple records you'd need to either "
+"expand an existing strategy or implement one from scratch."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:70
 msgid "Use an existing strategy"
 msgstr "使用现有策略"
 
-#: ../../source/how-to-use-strategies.rst:21
+#: ../../source/how-to-use-strategies.rst:72
 #, fuzzy
 msgid ""
-"Flower comes with a number of popular federated learning Strategies which"
-" can be instantiated as follows:"
+"Flower comes with a number of popular federated learning ``Strategies`` "
+"which can be instantiated as follows as part of a simple "
+"|serverapp_link|_:"
 msgstr "Flower 内置了许多流行的联邦学习策略。内置策略的实例化方法如下："
 
-#: ../../source/how-to-use-strategies.rst:50
+#: ../../source/how-to-use-strategies.rst:98
 msgid ""
-"To make the ``ServerApp`` use this strategy, pass a ``server_fn`` "
-"function to the ``ServerApp`` constructor. The ``server_fn`` function "
-"should return a ``ServerAppComponents`` object that contains the strategy"
-" instance and a ``ServerConfig`` instance."
+"In the code above, instantiating ``FedAvg`` does not launch the logic "
+"built into the strategy (i.e. sampling nodes, communicating "
+"|message_link|_, performing aggregation, etc). In order to do so, we need"
+" to execute the |strategy_start_link|_ method."
 msgstr ""
 
-#: ../../source/how-to-use-strategies.rst:55
+#: ../../source/how-to-use-strategies.rst:102
 msgid ""
-"Both ``Strategy`` and ``ServerConfig`` classes can be configured with "
-"parameters. The ``Context`` object passed to ``server_fn`` contains the "
-"values specified in the ``[tool.flwr.app.config]`` table in your "
-"``pyproject.toml`` (a snippet is shown below). To access these values, "
-"use ``context.run_config``."
+"The above ``ServerApp`` is very minimal, makes use of the default "
+"settings for ``FedAvg`` and only passes the required arguments to the "
+"``start`` method. Let's see in a bit more detail what options we have "
+"when instantiating strategies and when launching it."
 msgstr ""
 
-#: ../../source/how-to-use-strategies.rst:73
+#: ../../source/how-to-use-strategies.rst:108
 #, fuzzy
-msgid ""
-"Existing strategies provide several ways to customize their behavior. "
-"Callback functions allow strategies to call user-provided code during "
-"execution. This approach enables you to modify the strategy's partial "
-"behavior without rewriting the whole class from zero."
-msgstr "现有的策略提供了多种自定义行为的方法。回调函数允许策略在执行过程中调用用户提供的代码。"
+msgid "Parameterizing an existing strategy"
+msgstr "使用现有策略"
 
-#: ../../source/how-to-use-strategies.rst:78
-msgid "Configuring client fit and client evaluate"
-msgstr "配置客户匹配和客户评估"
-
-#: ../../source/how-to-use-strategies.rst:80
-#, fuzzy
+#: ../../source/how-to-use-strategies.rst:110
 msgid ""
-"The server can pass new configuration values to the client each round by "
-"providing a function to ``on_fit_config_fn``. The provided function will "
-"be called by the strategy and must return a dictionary of configuration "
-"key value pairs that will be sent to the client. It must return a "
-"dictionary of arbitrary configuration values ``client.fit`` and "
-"``client.evaluate`` functions during each round of federated learning."
+"The constructor of strategies accepts different parameters based on, "
+"primarily, the aggregation algorithm they implement. For example, "
+"|fedadam_link|_ accepts additional arguments (i.e. to apply momentum "
+"during aggregation) compared to those that |fedavg_link|_ requires. "
+"However, common to all strategies are settings to control how nodes that "
+"run ``ClientApp`` instances get sampled. Let's take a look at this set of"
+" arguments:"
 msgstr ""
-"服务器可以通过向 :code:`on_fit_config_fn` "
-"提供一个函数，在每一轮向客户端传递新的配置值。提供的函数将被策略调用，并且必须返回一个配置键值对的字典，该字典将被发送到客户端。在每一轮联邦学习期间，它必须返回一个任意配置值"
-" dictionary :code:`client.fit`和 :code:`client.evaluate`函数。"
 
-#: ../../source/how-to-use-strategies.rst:127
-#, fuzzy
+#: ../../source/how-to-use-strategies.rst:128
+#, python-format
 msgid ""
-"The ``on_fit_config_fn`` can be used to pass arbitrary configuration "
-"values from server to client and potentially change these values each "
-"round, for example, to adjust the learning rate. The client will receive "
-"the dictionary returned by the ``on_fit_config_fn`` in its own "
-"``client.fit()`` function. And while the values can be also passed "
-"directly via the context this function can be a place to implement finer "
-"control over the `fit` behaviour that may not be achieved by the context,"
-" which sets fixed values."
+"For most applications specifying one or all of the arguments shown above "
+"is sufficient. A Flower strategy defined like the one above would wait "
+"for 100 nodes to be connected before any federated stage begins. Then, "
+"50% of the connected nodes will be involved in a stage of federated "
+"training, followed by another stage of federated evaluation where all "
+"connected nodes will participate. It is possible to set the "
+"``min_train_nodes`` and ``min_evaluate_nodes`` arguments for finer "
+"control."
 msgstr ""
-":code:`on_fit_config_fn`可用于将任意配置值从服务器传递到客户端，并在每一轮改变这些值，例如，调整学习率。客户端将在自己的 "
-":code:`client.fit()` 函数中接收 :code:`on_fit_config_fn` 返回的字典。"
 
 #: ../../source/how-to-use-strategies.rst:135
-#, fuzzy
 msgid ""
-"Similar to ``on_fit_config_fn``, there is also ``on_evaluate_config_fn`` "
-"to customize the configuration sent to ``client.evaluate()``"
+"In addition to arguments to customize how the strategy performs sampling,"
+" we can define at construction time which keys will be used to "
+"communicate different information between the strategy in the "
+"``ServerApp`` and the ``ClientApp``. Note that these keys are used in "
+"both types of stages within the strategy ``start`` logic, i.e. federated "
+"training and federated evaluation."
 msgstr ""
-"与 :code:`on_fit_config_fn` 类似，还有 :code:`on_evaluate_config_fn` 用于定制发送到 "
-":code:`client.evaluate()` 的配置"
 
-#: ../../source/how-to-use-strategies.rst:139
-msgid "Configuring server-side evaluation"
-msgstr "配置服务器端评估"
-
-#: ../../source/how-to-use-strategies.rst:141
-#, fuzzy
+#: ../../source/how-to-use-strategies.rst:153
 msgid ""
-"Server-side evaluation can be enabled by passing an evaluation function "
-"to ``evaluate_fn``."
-msgstr "服务器端评估可通过向 :code:`evaluate_fn` 传递评估函数来启用。"
-
-#: ../../source/how-to-use-strategies.rst:147
-msgid ""
-"Writing a fully custom strategy is a bit more involved, but it provides "
-"the most flexibility. Read the `Implementing Strategies <how-to-"
-"implement-strategies.html>`_ guide to learn more."
+"``arrayrecord_key``: the ``Message`` communicated to the ``ClientApp`` "
+"will contain an ``ArrayRecord`` containing the arrays of the global model"
+" under this key. By default the key is ``\"arrays\"``."
 msgstr ""
-"编写完全自定义的策略涉及的内容较多，但灵活性最高。阅读 `实施策略 <how-to-implement-strategies.html>_ "
-"指南，了解更多信息。"
+
+#: ../../source/how-to-use-strategies.rst:156
+msgid ""
+"``configrecord_key``: the ``Message`` communicated to the ``ClientApp`` "
+"will contain a ``ConfigRecord`` containing config settings. By default "
+"the key is ``\"config\"``."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:158
+msgid ""
+"``weighted_by_key``: A key inside the |metricrecord_link|_ that the "
+"``ClientApp`` returns as part of its reply to the ``ServerApp``. The "
+"value under this key is used to perform weighted aggregation of "
+"``MetricRecords`` and, after a round of federated training, "
+"``ArrayRecords``. The default value is ``\"num-examples\"``."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:163
+msgid ""
+"With a strategy defined as in the code snippet above, the ``ClientApp`` "
+"should receive a ``Message`` with the following structure:"
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:197
+msgid ""
+"While the strategies fix the keys used to communicate the ``ArrayRecord``"
+" and ``MetricRecord`` to the ``ClientApps``, the replies these send back "
+"to the ``ServerApp`` can use different keys. In the code snippet above we"
+" used ``\"locally-updated-params\"`` and ``\"local-metrics\"``. However, "
+"all ``ClientApps`` need to use the same keys in their reply ``Messages`` "
+"otherwise the aggregation of replies (``ArrayRecord`` and "
+"``MetricRecord``) cannot be performed."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:204
+msgid ""
+"Finally, the strategy constructor also allows passing two callbacks to "
+"control how the ``MetricRecords`` in the replies that ``ClientApps`` send"
+" are aggregated. Follow the :doc:`how-to-aggregate-evaluation-results` "
+"guide for a walkthrough on how to define these callbacks."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:210
+msgid "Using the strategy's ``start`` method"
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:212
+msgid ""
+"As mentioned earlier, it is the ``start`` method of the strategy that "
+"launches the federated learning process. Let's see what each argument "
+"passed to this method represents."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:218
+msgid ""
+"Check the |strategy_explainer_link|_ explainer for a deep dive into how "
+"the different stages implemented as part of the ``start`` method operate."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:221
+msgid ""
+"The only required arguments are the |grid_link|_ and an ``ArrayRecord``. "
+"The former is an object that will be used to interface with the nodes "
+"running the ``ClientApp`` to involve them in a round of "
+"train/evaluate/query or other. The latter contains the parameters of the "
+"model we want to federate. Therefore, a minimal execution of the "
+"``start`` method looks like this:"
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:235
+msgid ""
+"In most settings, we want to customize how the ``start`` method is "
+"executed by passing also the number of rounds to execute and, a pair of "
+"``ConfigRecord`` objects to be sent to the ``ClientApp`` during a step of"
+" training and evaluation respectively."
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:255
+msgid ""
+"The ``start`` method also allows you to limit for how long the "
+"``strategy`` will wait for replies from the ``ClientApps`` until it "
+"proceeds with the rest of the stages. This can be controlled with the "
+"argument ``timeout`` (which defaults to 3600s, i.e., 1h). For example, if"
+" we want to increase the timeout to 2 hours, we would do:"
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:277
+msgid ""
+"Finally, the last argument in ``start`` is named ``evaluate_fn`` and it "
+"allows passing to it a callback function to evaluate the aggregated model"
+" on some local data that the ``ServerApp`` might have access to. This "
+"callback is also useful if you want to save the global model at the end "
+"of every round (or every N rounds). Let's see what the signature of this "
+"callback is and how to use it:"
+msgstr ""
+
+#: ../../source/how-to-use-strategies.rst:308
+msgid ""
+"Take a look at the `quickstart-pytorch "
+"<https://github.com/adap/flower/blob/main/examples/quickstart-pytorch>`_ "
+"example on GitHub for a complete example using several of the concepts "
+"presented in this how-to guide."
+msgstr ""
 
 #: ../../source/index.rst:34
 msgid "Tutorial"
@@ -15221,7 +15323,7 @@ msgstr "调配"
 msgid "How-to Guides"
 msgstr "操作指南"
 
-#: ../../source/index.rst:119
+#: ../../source/index.rst:120
 msgid "Contributor docs"
 msgstr "贡献者文档"
 
@@ -15767,6 +15869,7 @@ msgstr ""
 #: ../../source/ref-api/flwr.app.rst:17
 #: ../../source/ref-api/flwr.client.mod.rst:30
 #: ../../source/ref-api/flwr.client.rst:25
+#: ../../source/ref-api/flwr.clientapp.mod.rst:27
 #: ../../source/ref-api/flwr.clientapp.rst:17
 #: ../../source/ref-api/flwr.common.rst:32
 #: ../../source/ref-api/flwr.server.rst:24
@@ -16003,7 +16106,9 @@ msgstr ""
 #: flwr.client.client_app.ClientApp.lifespan:7
 #: flwr.client.client_app.ClientApp.query:12
 #: flwr.client.client_app.ClientApp.train:12
-#: flwr.client.mod.localdp_mod.LocalDpMod:22 flwr.common.record.array.Array:35
+#: flwr.client.mod.localdp_mod.LocalDpMod:22
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:22
+#: flwr.common.record.array.Array:35
 #: flwr.common.record.arrayrecord.ArrayRecord:36
 #: flwr.common.record.arrayrecord.ParametersRecord:12
 #: flwr.common.record.configrecord.ConfigRecord:20
@@ -16057,6 +16162,7 @@ msgstr ""
 #: ../../source/ref-api/flwr.client.NumPyClient.rst:15
 #: ../../source/ref-api/flwr.client.mod.LocalDpMod.rst:15
 #: ../../source/ref-api/flwr.clientapp.ClientApp.rst:15
+#: ../../source/ref-api/flwr.clientapp.mod.LocalDpMod.rst:15
 #: ../../source/ref-api/flwr.common.Array.rst:15
 #: ../../source/ref-api/flwr.common.ArrayRecord.rst:15
 #: ../../source/ref-api/flwr.common.ClientMessage.rst:15
@@ -16126,6 +16232,7 @@ msgstr ""
 #: ../../source/ref-api/flwr.server.workflow.SecAggWorkflow.rst:15
 #: ../../source/ref-api/flwr.serverapp.Grid.rst:15
 #: ../../source/ref-api/flwr.serverapp.ServerApp.rst:15
+#: ../../source/ref-api/flwr.serverapp.strategy.Bulyan.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.DifferentialPrivacyClientSideFixedClipping.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.DifferentialPrivacyServerSideAdaptiveClipping.rst:15
@@ -16141,6 +16248,7 @@ msgstr ""
 #: ../../source/ref-api/flwr.serverapp.strategy.FedXgbCyclic.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.FedYogi.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.Krum.rst:15
+#: ../../source/ref-api/flwr.serverapp.strategy.MultiKrum.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.QFedAvg.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.Result.rst:15
 #: ../../source/ref-api/flwr.serverapp.strategy.Strategy.rst:15
@@ -17128,6 +17236,7 @@ msgstr "背景"
 
 #: flwr.app.error.Error:1 flwr.app.metadata.Metadata:1
 #: flwr.client.client_app.ClientApp:1 flwr.client.mod.localdp_mod.LocalDpMod:1
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:1
 #: flwr.common.constant.MessageType:1 flwr.common.constant.MessageTypeLegacy:1
 #: flwr.common.context.Context:1 flwr.common.typing.ClientMessage:1
 #: flwr.common.typing.DisconnectRes:1 flwr.common.typing.EvaluateIns:1
@@ -18640,7 +18749,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/ref-api/flwr.client.mod.rst:28:<autosummary>:1
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #: flwr.client.mod.centraldp_mods.adaptiveclipping_mod:1
 #: flwr.clientapp.mod.centraldp_mods.adaptiveclipping_mod:1 of
 #, fuzzy
@@ -18657,7 +18766,7 @@ msgstr ""
 "\\(\\[array\\_dict\\, keep\\_input\\]\\)"
 
 #: ../../source/ref-api/flwr.client.mod.rst:28:<autosummary>:1
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #: flwr.client.mod.comms_mods.arrays_size_mod:1 of
 #, fuzzy
 msgid "Arrays size mod."
@@ -18670,7 +18779,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/ref-api/flwr.client.mod.rst:28:<autosummary>:1
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #: flwr.client.mod.centraldp_mods.fixedclipping_mod:1
 #: flwr.clientapp.mod.centraldp_mods.fixedclipping_mod:1 of
 #, fuzzy
@@ -18697,7 +18806,7 @@ msgstr ""
 "error\\]\\)"
 
 #: ../../source/ref-api/flwr.client.mod.rst:28:<autosummary>:1
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #: flwr.client.mod.comms_mods.message_size_mod:1 of
 #, fuzzy
 msgid "Message size mod."
@@ -18741,17 +18850,21 @@ msgstr ""
 "mods\\]\\)"
 
 #: ../../source/ref-api/flwr.client.mod.rst:35:<autosummary>:1
-#: flwr.client.mod.localdp_mod.LocalDpMod:1 of
+#: ../../source/ref-api/flwr.clientapp.mod.rst:32:<autosummary>:1
+#: flwr.client.mod.localdp_mod.LocalDpMod:1
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:1 of
 #, fuzzy
 msgid "Modifier for local differential privacy."
 msgstr "差分隐私"
 
 #: ../../source/ref-api/flwr.client.mod.LocalDpMod.rst:2
+#: ../../source/ref-api/flwr.clientapp.mod.LocalDpMod.rst:2
 #, fuzzy
 msgid "LocalDpMod"
 msgstr "本地 DP 模式"
 
-#: flwr.client.mod.localdp_mod.LocalDpMod:3 of
+#: flwr.client.mod.localdp_mod.LocalDpMod:3
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:3 of
 msgid ""
 "This mod clips the client model updates and adds noise to the params "
 "before sending them to the server."
@@ -18761,11 +18874,13 @@ msgstr ""
 #: flwr.client.mod.centraldp_mods.fixedclipping_mod:10
 #: flwr.client.mod.localdp_mod.LocalDpMod:6
 #: flwr.clientapp.mod.centraldp_mods.adaptiveclipping_mod:12
-#: flwr.clientapp.mod.centraldp_mods.fixedclipping_mod:10 of
+#: flwr.clientapp.mod.centraldp_mods.fixedclipping_mod:10
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:6 of
 msgid "It operates on messages of type `MessageType.TRAIN`."
 msgstr ""
 
 #: flwr.client.mod.localdp_mod.LocalDpMod:8
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:8
 #: flwr.server.strategy.dp_fixed_clipping.DifferentialPrivacyClientSideFixedClipping:15
 #: flwr.server.strategy.dp_fixed_clipping.DifferentialPrivacyServerSideFixedClipping:8
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyClientSideFixedClipping:15
@@ -18775,24 +18890,28 @@ msgstr ""
 msgid "The value of the clipping norm."
 msgstr "削波法线的值。"
 
-#: flwr.client.mod.localdp_mod.LocalDpMod:10 of
+#: flwr.client.mod.localdp_mod.LocalDpMod:10
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:10 of
 msgid "The sensitivity of the client model."
 msgstr ""
 
-#: flwr.client.mod.localdp_mod.LocalDpMod:12 of
+#: flwr.client.mod.localdp_mod.LocalDpMod:12
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:12 of
 msgid ""
 "The privacy budget. Smaller value of epsilon indicates a higher level of "
 "privacy protection."
 msgstr ""
 
-#: flwr.client.mod.localdp_mod.LocalDpMod:15 of
+#: flwr.client.mod.localdp_mod.LocalDpMod:15
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:15 of
 msgid ""
 "The failure probability. The probability that the privacy mechanism fails"
 " to provide the desired level of privacy. A smaller value of delta "
 "indicates a stricter privacy guarantee."
 msgstr ""
 
-#: flwr.client.mod.localdp_mod.LocalDpMod:23 of
+#: flwr.client.mod.localdp_mod.LocalDpMod:23
+#: flwr.clientapp.mod.localdp_mod.LocalDpMod:23 of
 msgid ""
 "Create an instance of the local DP mod and add it to the client-side "
 "mods::"
@@ -18841,7 +18960,7 @@ msgstr ""
 #: flwr.server.grid.grid.Grid.send_and_receive:18
 #: flwr.server.workflow.secure_aggregation.secagg_workflow.SecAggWorkflow:54
 #: flwr.server.workflow.secure_aggregation.secaggplus_workflow.SecAggPlusWorkflow:61
-#: of
+#: flwr.serverapp.strategy.multikrum.MultiKrum:42 of
 #, fuzzy
 msgid "Notes"
 msgstr "无"
@@ -19087,7 +19206,7 @@ msgid ""
 "mods\\]\\)"
 msgstr "server.strategy.Strategy"
 
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`adaptiveclipping_mod "
@@ -19095,7 +19214,7 @@ msgid ""
 "call\\_next\\)"
 msgstr ":py:obj:`set_context <flwr.client.Client.set_context>`\\ \\(context\\)"
 
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`arrays_size_mod <flwr.clientapp.mod.arrays_size_mod>`\\ "
@@ -19104,14 +19223,14 @@ msgstr ""
 ":py:obj:`ParametersRecord <flwr.common.ParametersRecord>`\\ "
 "\\(\\[array\\_dict\\, keep\\_input\\]\\)"
 
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`fixedclipping_mod <flwr.clientapp.mod.fixedclipping_mod>`\\ "
 "\\(msg\\, ctxt\\, call\\_next\\)"
 msgstr ":py:obj:`set_context <flwr.client.Client.set_context>`\\ \\(context\\)"
 
-#: ../../source/ref-api/flwr.clientapp.mod.rst:20:<autosummary>:1
+#: ../../source/ref-api/flwr.clientapp.mod.rst:25:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`message_size_mod <flwr.clientapp.mod.message_size_mod>`\\ "
@@ -19119,6 +19238,15 @@ msgid ""
 msgstr ""
 ":py:obj:`Message <flwr.common.Message>`\\ \\(metadata\\[\\, content\\, "
 "error\\]\\)"
+
+#: ../../source/ref-api/flwr.clientapp.mod.rst:32:<autosummary>:1
+#, fuzzy
+msgid ""
+":py:obj:`LocalDpMod <flwr.clientapp.mod.LocalDpMod>`\\ "
+"\\(clipping\\_norm\\, sensitivity\\, ...\\)"
+msgstr ""
+":py:obj:`ClientApp <flwr.client.ClientApp>`\\ \\(\\[client\\_fn\\, "
+"mods\\]\\)"
 
 #: flwr.clientapp.mod.centraldp_mods.fixedclipping_mod:3 of
 #, fuzzy
@@ -23447,7 +23575,9 @@ msgstr ""
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: flwr.server.strategy.bulyan.Bulyan:1 of
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
+#: flwr.server.strategy.bulyan.Bulyan:1 flwr.serverapp.strategy.bulyan.Bulyan:1
+#: of
 msgid "Bulyan strategy."
 msgstr "Bulyan 策略。"
 
@@ -23491,7 +23621,7 @@ msgstr ""
 "\\(...\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping:1
 #: of
@@ -23511,7 +23641,7 @@ msgstr ""
 "\\(...\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.dp_fixed_clipping.DifferentialPrivacyClientSideFixedClipping:1
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyClientSideFixedClipping:1
 #: of
@@ -23549,7 +23679,7 @@ msgstr ""
 "\\(...\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.dp_fixed_clipping.DifferentialPrivacyServerSideFixedClipping:1
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyServerSideFixedClipping:1
 #: of
@@ -23583,7 +23713,7 @@ msgstr ""
 "fraction\\_fit\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedadagrad.FedAdagrad:1
 #: flwr.serverapp.strategy.fedadagrad.FedAdagrad:1 of
 msgid "FedAdagrad strategy - Adaptive Federated Optimization using Adagrad."
@@ -23599,7 +23729,7 @@ msgstr ""
 "fraction\\_fit\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedadam.FedAdam:1
 #: flwr.serverapp.strategy.fedadam.FedAdam:1 of
 msgid "FedAdam - Adaptive Federated Optimization using Adam."
@@ -23615,7 +23745,7 @@ msgstr ""
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedavg.FedAvg:1
 #: flwr.server.strategy.fedavg_android.FedAvgAndroid:1
 #: flwr.serverapp.strategy.fedavg.FedAvg:1 of
@@ -23641,7 +23771,7 @@ msgstr ""
 "fraction\\_fit\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedavgm.FedAvgM:1
 #: flwr.serverapp.strategy.fedavgm.FedAvgM:1 of
 msgid "Federated Averaging with Momentum strategy."
@@ -23687,7 +23817,7 @@ msgstr ""
 "fraction\\_fit\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedprox.FedProx:1
 #: flwr.serverapp.strategy.fedprox.FedProx:1 of
 msgid "Federated Optimization strategy."
@@ -23703,7 +23833,7 @@ msgstr ""
 "\\(\\*\\[\\, fraction\\_fit\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedtrimmedavg.FedTrimmedAvg:1
 #: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:1 of
 msgid "Federated Averaging with Trimmed Mean [Dong Yin, et al., 2021]."
@@ -23719,7 +23849,7 @@ msgstr ""
 "\\(\\[evaluate\\_function\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedxgb_bagging.FedXgbBagging:1
 #: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:1 of
 #, fuzzy
@@ -23736,7 +23866,7 @@ msgstr ""
 "\\(\\*\\*kwargs\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedxgb_cyclic.FedXgbCyclic:1
 #: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:1 of
 #, fuzzy
@@ -23767,7 +23897,7 @@ msgstr ""
 "fraction\\_fit\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.fedyogi.FedYogi:1
 #: flwr.serverapp.strategy.fedyogi.FedYogi:1 of
 msgid "FedYogi [Reddi et al., 2020] strategy."
@@ -23783,7 +23913,7 @@ msgstr ""
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.krum.Krum:1 flwr.serverapp.strategy.krum.Krum:1 of
 #, fuzzy
 msgid "Krum [Blanchard et al., 2017] strategy."
@@ -23809,13 +23939,14 @@ msgid ":py:obj:`Strategy <flwr.server.strategy.Strategy>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
 
 #: ../../source/ref-api/flwr.server.strategy.rst:45:<autosummary>:1
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.server.strategy.strategy.Strategy:1
 #: flwr.serverapp.strategy.strategy.Strategy:1 of
 msgid "Abstract base class for server strategy implementations."
 msgstr "服务器策略实现的抽象基类。"
 
 #: ../../source/ref-api/flwr.server.strategy.Bulyan.rst:2
+#: ../../source/ref-api/flwr.serverapp.strategy.Bulyan.rst:2
 #, fuzzy
 msgid "Bulyan"
 msgstr "Bulyan"
@@ -23834,7 +23965,8 @@ msgstr "Bulyan"
 msgid "Bases: :py:class:`~flwr.server.strategy.fedavg.FedAvg`"
 msgstr "server.strategy.DPFedAvgFixed"
 
-#: flwr.server.strategy.bulyan.Bulyan:3 of
+#: flwr.server.strategy.bulyan.Bulyan:3 flwr.serverapp.strategy.bulyan.Bulyan:3
+#: of
 msgid "Implementation based on https://arxiv.org/abs/1802.07927."
 msgstr "实施基于 https://arxiv.org/abs/1802.07927。"
 
@@ -26609,7 +26741,8 @@ msgstr ""
 msgid "Krum"
 msgstr "Krum"
 
-#: flwr.server.strategy.krum.Krum:3 flwr.serverapp.strategy.krum.Krum:3 of
+#: flwr.server.strategy.krum.Krum:3 flwr.serverapp.strategy.krum.Krum:3
+#: flwr.serverapp.strategy.multikrum.MultiKrum:3 of
 #, fuzzy
 msgid "Implementation based on https://arxiv.org/abs/1703.02757"
 msgstr "实施基于 https://arxiv.org/abs/2304.07537。"
@@ -27510,7 +27643,16 @@ msgstr "server.strategy.Strategy"
 msgid ":py:obj:`main <flwr.serverapp.ServerApp.main>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
+#, fuzzy
+msgid ""
+":py:obj:`Bulyan <flwr.serverapp.strategy.Bulyan>`\\ "
+"\\(\\[fraction\\_train\\, fraction\\_evaluate\\, ...\\]\\)"
+msgstr ""
+":py:obj:`Krum <flwr.server.strategy.Krum>`\\ \\(\\*\\[\\, "
+"fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
+
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`DifferentialPrivacyClientSideAdaptiveClipping "
@@ -27521,7 +27663,7 @@ msgstr ""
 "<flwr.server.strategy.DifferentialPrivacyClientSideAdaptiveClipping>`\\ "
 "\\(...\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`DifferentialPrivacyClientSideFixedClipping "
@@ -27532,7 +27674,7 @@ msgstr ""
 "<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping>`\\ "
 "\\(...\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`DifferentialPrivacyServerSideAdaptiveClipping "
@@ -27543,14 +27685,14 @@ msgstr ""
 "<flwr.server.strategy.DifferentialPrivacyServerSideAdaptiveClipping>`\\ "
 "\\(...\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyServerSideAdaptiveClipping:1
 #: of
 #, fuzzy
 msgid "Message-based central DP with server-side adaptive clipping."
 msgstr "用于配置具有自适应剪切功能的 DP 策略的包装器。"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`DifferentialPrivacyServerSideFixedClipping "
@@ -27561,7 +27703,7 @@ msgstr ""
 "<flwr.server.strategy.DifferentialPrivacyServerSideFixedClipping>`\\ "
 "\\(...\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedAdagrad <flwr.serverapp.strategy.FedAdagrad>`\\ \\(\\*\\[\\, "
@@ -27570,7 +27712,7 @@ msgstr ""
 ":py:obj:`FedAdagrad <flwr.server.strategy.FedAdagrad>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedAdam <flwr.serverapp.strategy.FedAdam>`\\ \\(\\*\\[\\, "
@@ -27579,7 +27721,7 @@ msgstr ""
 ":py:obj:`FedAdam <flwr.server.strategy.FedAdam>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedAvg <flwr.serverapp.strategy.FedAvg>`\\ "
@@ -27588,7 +27730,7 @@ msgstr ""
 ":py:obj:`FedAvg <flwr.server.strategy.FedAvg>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedAvgM <flwr.serverapp.strategy.FedAvgM>`\\ "
@@ -27597,7 +27739,7 @@ msgstr ""
 ":py:obj:`FedAvg <flwr.server.strategy.FedAvg>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedMedian <flwr.serverapp.strategy.FedMedian>`\\ "
@@ -27606,13 +27748,13 @@ msgstr ""
 ":py:obj:`FedMedian <flwr.server.strategy.FedMedian>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.serverapp.strategy.fedmedian.FedMedian:1 of
 #, fuzzy
 msgid "Federated Median (FedMedian) strategy."
 msgstr "联邦平均策略。"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedProx <flwr.serverapp.strategy.FedProx>`\\ "
@@ -27621,7 +27763,7 @@ msgstr ""
 ":py:obj:`FedAvg <flwr.server.strategy.FedAvg>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedTrimmedAvg <flwr.serverapp.strategy.FedTrimmedAvg>`\\ "
@@ -27630,7 +27772,7 @@ msgstr ""
 ":py:obj:`FedTrimmedAvg <flwr.server.strategy.FedTrimmedAvg>`\\ "
 "\\(\\*\\[\\, fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedXgbBagging <flwr.serverapp.strategy.FedXgbBagging>`\\ "
@@ -27639,7 +27781,7 @@ msgstr ""
 ":py:obj:`FedYogi <flwr.server.strategy.FedYogi>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedXgbCyclic <flwr.serverapp.strategy.FedXgbCyclic>`\\ "
@@ -27648,7 +27790,7 @@ msgstr ""
 ":py:obj:`FedYogi <flwr.server.strategy.FedYogi>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`FedYogi <flwr.serverapp.strategy.FedYogi>`\\ \\(\\*\\[\\, "
@@ -27657,7 +27799,7 @@ msgstr ""
 ":py:obj:`FedYogi <flwr.server.strategy.FedYogi>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`Krum <flwr.serverapp.strategy.Krum>`\\ \\(\\[fraction\\_train\\,"
@@ -27666,7 +27808,22 @@ msgstr ""
 ":py:obj:`Krum <flwr.server.strategy.Krum>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, fraction\\_evaluate\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
+#, fuzzy
+msgid ""
+":py:obj:`MultiKrum <flwr.serverapp.strategy.MultiKrum>`\\ "
+"\\(\\[fraction\\_train\\, ...\\]\\)"
+msgstr ""
+":py:obj:`FedMedian <flwr.server.strategy.FedMedian>`\\ \\(\\*\\[\\, "
+"fraction\\_fit\\, ...\\]\\)"
+
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
+#: flwr.serverapp.strategy.multikrum.MultiKrum:1 of
+#, fuzzy
+msgid "MultiKrum [Blanchard et al., 2017] strategy."
+msgstr "FedYogi [Reddi 等人，2020] 策略。"
+
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`QFedAvg <flwr.serverapp.strategy.QFedAvg>`\\ "
@@ -27675,13 +27832,13 @@ msgstr ""
 ":py:obj:`QFedAvg <flwr.server.strategy.QFedAvg>`\\ \\(\\*\\[\\, "
 "q\\_param\\, qffl\\_learning\\_rate\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.serverapp.strategy.qfedavg.QFedAvg:1 of
 #, fuzzy
 msgid "Q-FedAvg strategy."
 msgstr "联邦平均策略。"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ""
 ":py:obj:`Result <flwr.serverapp.strategy.Result>`\\ \\(arrays\\, "
@@ -27690,36 +27847,249 @@ msgstr ""
 ":py:obj:`RecordSet <flwr.common.RecordSet>`\\ "
 "\\(\\[parameters\\_records\\, ...\\]\\)"
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #: flwr.serverapp.strategy.result.Result:1 of
 msgid "Data class carrying records generated during the execution of a strategy."
 msgstr ""
 
-#: ../../source/ref-api/flwr.serverapp.strategy.rst:39:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.rst:41:<autosummary>:1
 #, fuzzy
 msgid ":py:obj:`Strategy <flwr.serverapp.strategy.Strategy>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping:1
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyServerSideAdaptiveClipping:1
-#: of
+#: flwr.serverapp.strategy.bulyan.Bulyan:1
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:1
+#: flwr.serverapp.strategy.fedmedian.FedMedian:1
+#: flwr.serverapp.strategy.fedprox.FedProx:1
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:1
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:1
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:1
+#: flwr.serverapp.strategy.multikrum.MultiKrum:1
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:1 of
+#, fuzzy
+msgid "Bases: :py:class:`~flwr.serverapp.strategy.fedavg.FedAvg`"
+msgstr "server.strategy.DPFedAvgFixed"
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:5
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:5
+#: flwr.serverapp.strategy.fedadam.FedAdam:5
+#: flwr.serverapp.strategy.fedavg.FedAvg:5
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:5
+#: flwr.serverapp.strategy.fedmedian.FedMedian:5
+#: flwr.serverapp.strategy.fedprox.FedProx:45
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:5
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:3
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:3
+#: flwr.serverapp.strategy.fedyogi.FedYogi:6
+#: flwr.serverapp.strategy.krum.Krum:5
+#: flwr.serverapp.strategy.multikrum.MultiKrum:5
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:16 of
 #, fuzzy
 msgid ""
-"Bases: "
-":py:class:`~flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase`"
-msgstr "Bases: :py:class:`~flwr.server.strategy.dpfedavg_fixed.DPFedAvgFixed`"
+"Fraction of nodes used during training. In case `min_train_nodes` is "
+"larger than `fraction_train * total_connected_nodes`, `min_train_nodes` "
+"will still be sampled."
+msgstr ""
+"训练过程中使用的客户端比例。如果 `min_fit_clients` 大于 `fraction_fit * "
+"available_clients`，则仍会对 `min_fit_clients` 进行采样。默认为 1.0。"
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: flwr.serverapp.strategy.bulyan.Bulyan:9
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:9
+#: flwr.serverapp.strategy.fedadam.FedAdam:9
+#: flwr.serverapp.strategy.fedavg.FedAvg:9
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:9
+#: flwr.serverapp.strategy.fedmedian.FedMedian:9
+#: flwr.serverapp.strategy.fedprox.FedProx:49
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:9
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:7
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:7
+#: flwr.serverapp.strategy.fedyogi.FedYogi:10
+#: flwr.serverapp.strategy.krum.Krum:9
+#: flwr.serverapp.strategy.multikrum.MultiKrum:9
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:20 of
+#, fuzzy
+msgid ""
+"Fraction of nodes used during validation. In case `min_evaluate_nodes` is"
+" larger than `fraction_evaluate * total_connected_nodes`, "
+"`min_evaluate_nodes` will still be sampled."
+msgstr ""
+"验证过程中使用的客户端的比例。如果 `min_evaluate_clients` 大于 `fraction_evaluate * "
+"available_clients`，则仍会对 `min_evaluate_clients` 进行采样。默认为 1.0。"
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:13
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:13
+#: flwr.serverapp.strategy.fedadam.FedAdam:13
+#: flwr.serverapp.strategy.fedavg.FedAvg:13
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:13
+#: flwr.serverapp.strategy.fedmedian.FedMedian:13
+#: flwr.serverapp.strategy.fedprox.FedProx:53
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:13
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:11
+#: flwr.serverapp.strategy.fedyogi.FedYogi:14
+#: flwr.serverapp.strategy.krum.Krum:13
+#: flwr.serverapp.strategy.multikrum.MultiKrum:13
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:24 of
+#, fuzzy
+msgid "Minimum number of nodes used during training."
+msgstr "训练期间使用的最少客户数。默认为 2。"
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:15
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:15
+#: flwr.serverapp.strategy.fedadam.FedAdam:15
+#: flwr.serverapp.strategy.fedavg.FedAvg:15
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:15
+#: flwr.serverapp.strategy.fedmedian.FedMedian:15
+#: flwr.serverapp.strategy.fedprox.FedProx:55
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:15
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:13
+#: flwr.serverapp.strategy.fedyogi.FedYogi:16
+#: flwr.serverapp.strategy.krum.Krum:15
+#: flwr.serverapp.strategy.multikrum.MultiKrum:15
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:26 of
+#, fuzzy
+msgid "Minimum number of nodes used during validation."
+msgstr "验证过程中使用的最少客户端数量。默认为 2。"
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:17
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:17
+#: flwr.serverapp.strategy.fedadam.FedAdam:17
+#: flwr.serverapp.strategy.fedavg.FedAvg:17
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:17
+#: flwr.serverapp.strategy.fedmedian.FedMedian:17
+#: flwr.serverapp.strategy.fedprox.FedProx:57
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:17
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:15
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:11
+#: flwr.serverapp.strategy.fedyogi.FedYogi:18
+#: flwr.serverapp.strategy.krum.Krum:17
+#: flwr.serverapp.strategy.multikrum.MultiKrum:17
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:28 of
+#, fuzzy
+msgid "Minimum number of total nodes in the system."
+msgstr "系统中客户总数的最小值。默认为 2。"
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:19 of
+#, fuzzy
+msgid "Number of malicious nodes in the system."
+msgstr "系统中恶意客户端的数量。默认为 0。"
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:21
+#: flwr.serverapp.strategy.fedmedian.FedMedian:19
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:17
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:13
+#: flwr.serverapp.strategy.krum.Krum:21
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:30 of
+msgid ""
+"The key within each MetricRecord whose value is used as the weight when "
+"computing weighted averages for MetricRecords."
+msgstr ""
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:24
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:22
+#: flwr.serverapp.strategy.fedadam.FedAdam:22
+#: flwr.serverapp.strategy.fedavg.FedAvg:22
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:22
+#: flwr.serverapp.strategy.fedmedian.FedMedian:22
+#: flwr.serverapp.strategy.fedprox.FedProx:62
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:22
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:20
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:16
+#: flwr.serverapp.strategy.fedyogi.FedYogi:23
+#: flwr.serverapp.strategy.krum.Krum:24
+#: flwr.serverapp.strategy.multikrum.MultiKrum:26
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:33 of
+msgid "Key used to store the ArrayRecord when constructing Messages."
+msgstr ""
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:26
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:24
+#: flwr.serverapp.strategy.fedadam.FedAdam:24
+#: flwr.serverapp.strategy.fedavg.FedAvg:24
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:24
+#: flwr.serverapp.strategy.fedmedian.FedMedian:24
+#: flwr.serverapp.strategy.fedprox.FedProx:64
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:24
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:22
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:18
+#: flwr.serverapp.strategy.fedyogi.FedYogi:25
+#: flwr.serverapp.strategy.krum.Krum:26
+#: flwr.serverapp.strategy.multikrum.MultiKrum:28
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:35 of
+msgid "Key used to store the ConfigRecord when constructing Messages."
+msgstr ""
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:28
+#: flwr.serverapp.strategy.bulyan.Bulyan:33
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:26
+#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:31
+#: flwr.serverapp.strategy.fedadam.FedAdam:26
+#: flwr.serverapp.strategy.fedadam.FedAdam:31
+#: flwr.serverapp.strategy.fedavg.FedAvg:26
+#: flwr.serverapp.strategy.fedavg.FedAvg:31
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:26
+#: flwr.serverapp.strategy.fedavgm.FedAvgM:31
+#: flwr.serverapp.strategy.fedmedian.FedMedian:26
+#: flwr.serverapp.strategy.fedmedian.FedMedian:31
+#: flwr.serverapp.strategy.fedprox.FedProx:66
+#: flwr.serverapp.strategy.fedprox.FedProx:71
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:26
+#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:31
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:24
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:29
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:20
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:25
+#: flwr.serverapp.strategy.fedyogi.FedYogi:27
+#: flwr.serverapp.strategy.fedyogi.FedYogi:32
+#: flwr.serverapp.strategy.krum.Krum:28 flwr.serverapp.strategy.krum.Krum:33
+#: flwr.serverapp.strategy.multikrum.MultiKrum:30
+#: flwr.serverapp.strategy.multikrum.MultiKrum:35
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:37
+#: flwr.serverapp.strategy.qfedavg.QFedAvg:42 of
+msgid ""
+"Function with signature (list[RecordDict], str) -> MetricRecord, used to "
+"aggregate MetricRecords from training round replies. If `None`, defaults "
+"to `aggregate_metricrecords`, which performs a weighted average using the"
+" provided weight factor key."
+msgstr ""
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:38 of
+msgid ""
+"Function with signature (list[RecordDict], int, int) -> list[RecordDict]."
+" The inputs are: - a list of contents from reply messages, - the assumed "
+"number of malicious nodes (`num_malicious_nodes`), - the number of nodes "
+"to select (`num_nodes_to_select`).  The function should implement a "
+"Byzantine-resilient selection rule that serves as the first step of "
+"Bulyan. If None, defaults to `select_multikrum`, which selects nodes "
+"according to the Multi-Krum algorithm."
+msgstr ""
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:38 of
+msgid ""
+"Function with signature (list[RecordDict], int, int) -> list[RecordDict]."
+" The inputs are: - a list of contents from reply messages, - the assumed "
+"number of malicious nodes (`num_malicious_nodes`), - the number of nodes "
+"to select (`num_nodes_to_select`)."
+msgstr ""
+
+#: flwr.serverapp.strategy.bulyan.Bulyan:44 of
+msgid ""
+"The function should implement a Byzantine-resilient selection rule that "
+"serves as the first step of Bulyan. If None, defaults to "
+"`select_multikrum`, which selects nodes according to the Multi-Krum "
+"algorithm."
+msgstr ""
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
 #, fuzzy
 msgid ""
 ":py:obj:`aggregate_evaluate "
-"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.aggregate_evaluate>`\\"
-" \\(server\\_round\\, replies\\)"
+"<flwr.serverapp.strategy.Bulyan.aggregate_evaluate>`\\ "
+"\\(server\\_round\\, replies\\)"
 msgstr ""
 ":py:obj:`aggregate_evaluate "
-"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.aggregate_evaluate>`\\"
-" \\(server\\_round\\, results\\, ...\\)"
+"<flwr.server.strategy.Krum.aggregate_evaluate>`\\ \\(server\\_round\\, "
+"results\\, ...\\)"
 
 #: ../../source/ref-api/flwr.serverapp.strategy.FedXgbBagging.rst:41:<autosummary>:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1
@@ -27733,19 +28103,19 @@ msgstr ""
 msgid "Aggregate MetricRecords in the received Messages."
 msgstr "使用给定的策略汇总评估损失。"
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
 #, fuzzy
 msgid ""
 ":py:obj:`aggregate_train "
-"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.aggregate_train>`\\"
-" \\(server\\_round\\, replies\\)"
+"<flwr.serverapp.strategy.Bulyan.aggregate_train>`\\ \\(server\\_round\\, "
+"replies\\)"
 msgstr ""
-":py:obj:`aggregate_fit "
-"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.aggregate_fit>`\\"
-" \\(server\\_round\\, results\\, failures\\)"
+":py:obj:`aggregate_fit <flwr.server.strategy.Krum.aggregate_fit>`\\ "
+"\\(server\\_round\\, results\\, failures\\)"
 
 #: ../../source/ref-api/flwr.serverapp.strategy.FedXgbBagging.rst:41:<autosummary>:1
+#: flwr.serverapp.strategy.bulyan.Bulyan.aggregate_train:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping.aggregate_train:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyServerSideAdaptiveClipping.aggregate_train:1
@@ -27762,22 +28132,22 @@ msgstr ""
 #: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging.aggregate_train:1
 #: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic.aggregate_train:1
 #: flwr.serverapp.strategy.fedyogi.FedYogi.aggregate_train:1
-#: flwr.serverapp.strategy.krum.Krum.aggregate_train:1
+#: flwr.serverapp.strategy.multikrum.MultiKrum.aggregate_train:1
 #: flwr.serverapp.strategy.qfedavg.QFedAvg.aggregate_train:1 of
 msgid "Aggregate ArrayRecords and MetricRecords in the received Messages."
 msgstr ""
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
 #, fuzzy
 msgid ""
 ":py:obj:`configure_evaluate "
-"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.configure_evaluate>`\\"
-" \\(server\\_round\\, arrays\\, ...\\)"
+"<flwr.serverapp.strategy.Bulyan.configure_evaluate>`\\ "
+"\\(server\\_round\\, arrays\\, ...\\)"
 msgstr ""
 ":py:obj:`configure_evaluate "
-"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.configure_evaluate>`\\"
-" \\(server\\_round\\, parameters\\, ...\\)"
+"<flwr.server.strategy.Krum.configure_evaluate>`\\ \\(server\\_round\\, "
+"parameters\\, ...\\)"
 
 #: ../../source/ref-api/flwr.serverapp.strategy.FedXgbBagging.rst:41:<autosummary>:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
@@ -27791,25 +28161,36 @@ msgstr ""
 msgid "Configure the next round of federated evaluation."
 msgstr "配置下一轮评估。"
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
 #, fuzzy
 msgid ""
 ":py:obj:`configure_train "
-"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.configure_train>`\\"
-" \\(server\\_round\\, arrays\\, ...\\)"
+"<flwr.serverapp.strategy.Bulyan.configure_train>`\\ \\(server\\_round\\, "
+"arrays\\, ...\\)"
 msgstr ""
-":py:obj:`configure_fit "
-"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.configure_fit>`\\"
-" \\(server\\_round\\, parameters\\, ...\\)"
+":py:obj:`configure_fit <flwr.server.strategy.Krum.configure_fit>`\\ "
+"\\(server\\_round\\, parameters\\, ...\\)"
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: ../../source/ref-api/flwr.serverapp.strategy.FedXgbBagging.rst:41:<autosummary>:1
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: flwr.serverapp.strategy.fedavg.FedAvg.configure_train:1
+#: flwr.serverapp.strategy.fedavgm.FedAvgM.configure_train:1
+#: flwr.serverapp.strategy.fedopt.FedOpt.configure_train:1
+#: flwr.serverapp.strategy.fedprox.FedProx.configure_train:1
+#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging.configure_train:1
+#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic.configure_train:1
+#: flwr.serverapp.strategy.qfedavg.QFedAvg.configure_train:1 of
+#, fuzzy
+msgid "Configure the next round of federated training."
+msgstr "配置下一轮训练。"
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
 #, fuzzy
 msgid ""
-":py:obj:`start "
-"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.start>`\\"
-" \\(grid\\, initial\\_arrays\\[\\, num\\_rounds\\, ...\\]\\)"
+":py:obj:`start <flwr.serverapp.strategy.Bulyan.start>`\\ \\(grid\\, "
+"initial\\_arrays\\[\\, num\\_rounds\\, ...\\]\\)"
 msgstr ""
 ":py:obj:`FedAdagrad <flwr.server.strategy.FedAdagrad>`\\ \\(\\*\\[\\, "
 "fraction\\_fit\\, ...\\]\\)"
@@ -27824,16 +28205,14 @@ msgstr ""
 msgid "Execute the federated learning strategy."
 msgstr "使用联邦学习策略"
 
-#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
 #, fuzzy
-msgid ""
-":py:obj:`summary "
-"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.summary>`\\"
-" \\(\\)"
+msgid ":py:obj:`summary <flwr.serverapp.strategy.Bulyan.summary>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
 
 #: ../../source/ref-api/flwr.serverapp.strategy.FedXgbBagging.rst:41:<autosummary>:1
+#: flwr.serverapp.strategy.bulyan.Bulyan.summary:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping.summary:1
 #: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyServerSideAdaptiveClipping.summary:1
@@ -27847,6 +28226,7 @@ msgstr "server.strategy.Strategy"
 #: flwr.serverapp.strategy.fedprox.FedProx.summary:1
 #: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg.summary:1
 #: flwr.serverapp.strategy.krum.Krum.summary:1
+#: flwr.serverapp.strategy.multikrum.MultiKrum.summary:1
 #: flwr.serverapp.strategy.qfedavg.QFedAvg.summary:1
 #: flwr.serverapp.strategy.strategy.Strategy.aggregate_evaluate:1:<autosummary>:1
 #: flwr.serverapp.strategy.strategy.Strategy.summary:1 of
@@ -27905,6 +28285,83 @@ msgid ""
 "evaluation metrics and global evaluation metrics (if provided) from all "
 "rounds."
 msgstr ""
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyClientSideAdaptiveClipping:1
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyServerSideAdaptiveClipping:1
+#: of
+#, fuzzy
+msgid ""
+"Bases: "
+":py:class:`~flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase`"
+msgstr "Bases: :py:class:`~flwr.server.strategy.dpfedavg_fixed.DPFedAvgFixed`"
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`aggregate_evaluate "
+"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.aggregate_evaluate>`\\"
+" \\(server\\_round\\, replies\\)"
+msgstr ""
+":py:obj:`aggregate_evaluate "
+"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.aggregate_evaluate>`\\"
+" \\(server\\_round\\, results\\, ...\\)"
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`aggregate_train "
+"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.aggregate_train>`\\"
+" \\(server\\_round\\, replies\\)"
+msgstr ""
+":py:obj:`aggregate_fit "
+"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.aggregate_fit>`\\"
+" \\(server\\_round\\, results\\, failures\\)"
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`configure_evaluate "
+"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.configure_evaluate>`\\"
+" \\(server\\_round\\, arrays\\, ...\\)"
+msgstr ""
+":py:obj:`configure_evaluate "
+"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.configure_evaluate>`\\"
+" \\(server\\_round\\, parameters\\, ...\\)"
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`configure_train "
+"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.configure_train>`\\"
+" \\(server\\_round\\, arrays\\, ...\\)"
+msgstr ""
+":py:obj:`configure_fit "
+"<flwr.server.strategy.DifferentialPrivacyClientSideFixedClipping.configure_fit>`\\"
+" \\(server\\_round\\, parameters\\, ...\\)"
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`start "
+"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.start>`\\"
+" \\(grid\\, initial\\_arrays\\[\\, num\\_rounds\\, ...\\]\\)"
+msgstr ""
+":py:obj:`FedAdagrad <flwr.server.strategy.FedAdagrad>`\\ \\(\\*\\[\\, "
+"fraction\\_fit\\, ...\\]\\)"
+
+#: flwr.serverapp.strategy.dp_adaptive_clipping.DifferentialPrivacyAdaptiveBase.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`summary "
+"<flwr.serverapp.strategy.DifferentialPrivacyClientSideAdaptiveClipping.summary>`\\"
+" \\(\\)"
+msgstr "server.strategy.Strategy"
 
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyClientSideFixedClipping:1
 #: flwr.serverapp.strategy.dp_fixed_clipping.DifferentialPrivacyServerSideFixedClipping:1
@@ -28134,148 +28591,17 @@ msgstr "server.strategy.Strategy"
 msgid "Bases: :py:class:`~flwr.serverapp.strategy.fedopt.FedOpt`"
 msgstr "Bases: :py:class:`~flwr.server.strategy.fedopt.FedOpt`"
 
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:5
-#: flwr.serverapp.strategy.fedadam.FedAdam:5
-#: flwr.serverapp.strategy.fedavg.FedAvg:5
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:5
-#: flwr.serverapp.strategy.fedprox.FedProx:45
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:5
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:3
-#: flwr.serverapp.strategy.fedyogi.FedYogi:6
-#: flwr.serverapp.strategy.krum.Krum:5
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:16 of
-#, fuzzy
-msgid ""
-"Fraction of nodes used during training. In case `min_train_nodes` is "
-"larger than `fraction_train * total_connected_nodes`, `min_train_nodes` "
-"will still be sampled."
-msgstr ""
-"训练过程中使用的客户端比例。如果 `min_fit_clients` 大于 `fraction_fit * "
-"available_clients`，则仍会对 `min_fit_clients` 进行采样。默认为 1.0。"
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:9
-#: flwr.serverapp.strategy.fedadam.FedAdam:9
-#: flwr.serverapp.strategy.fedavg.FedAvg:9
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:9
-#: flwr.serverapp.strategy.fedprox.FedProx:49
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:9
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:7
-#: flwr.serverapp.strategy.fedyogi.FedYogi:10
-#: flwr.serverapp.strategy.krum.Krum:9
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:20 of
-#, fuzzy
-msgid ""
-"Fraction of nodes used during validation. In case `min_evaluate_nodes` is"
-" larger than `fraction_evaluate * total_connected_nodes`, "
-"`min_evaluate_nodes` will still be sampled."
-msgstr ""
-"验证过程中使用的客户端的比例。如果 `min_evaluate_clients` 大于 `fraction_evaluate * "
-"available_clients`，则仍会对 `min_evaluate_clients` 进行采样。默认为 1.0。"
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:13
-#: flwr.serverapp.strategy.fedadam.FedAdam:13
-#: flwr.serverapp.strategy.fedavg.FedAvg:13
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:13
-#: flwr.serverapp.strategy.fedprox.FedProx:53
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:13
-#: flwr.serverapp.strategy.fedyogi.FedYogi:14
-#: flwr.serverapp.strategy.krum.Krum:13
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:24 of
-#, fuzzy
-msgid "Minimum number of nodes used during training."
-msgstr "训练期间使用的最少客户数。默认为 2。"
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:15
-#: flwr.serverapp.strategy.fedadam.FedAdam:15
-#: flwr.serverapp.strategy.fedavg.FedAvg:15
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:15
-#: flwr.serverapp.strategy.fedprox.FedProx:55
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:15
-#: flwr.serverapp.strategy.fedyogi.FedYogi:16
-#: flwr.serverapp.strategy.krum.Krum:15
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:26 of
-#, fuzzy
-msgid "Minimum number of nodes used during validation."
-msgstr "验证过程中使用的最少客户端数量。默认为 2。"
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:17
-#: flwr.serverapp.strategy.fedadam.FedAdam:17
-#: flwr.serverapp.strategy.fedavg.FedAvg:17
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:17
-#: flwr.serverapp.strategy.fedprox.FedProx:57
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:17
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:11
-#: flwr.serverapp.strategy.fedyogi.FedYogi:18
-#: flwr.serverapp.strategy.krum.Krum:17
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:28 of
-#, fuzzy
-msgid "Minimum number of total nodes in the system."
-msgstr "系统中客户总数的最小值。默认为 2。"
-
 #: flwr.serverapp.strategy.fedadagrad.FedAdagrad:19
 #: flwr.serverapp.strategy.fedadam.FedAdam:19
 #: flwr.serverapp.strategy.fedavg.FedAvg:19
 #: flwr.serverapp.strategy.fedavgm.FedAvgM:19
 #: flwr.serverapp.strategy.fedprox.FedProx:59
 #: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:19
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:13
 #: flwr.serverapp.strategy.fedyogi.FedYogi:20
-#: flwr.serverapp.strategy.krum.Krum:24 of
+#: flwr.serverapp.strategy.multikrum.MultiKrum:23 of
 msgid ""
 "The key within each MetricRecord whose value is used as the weight when "
 "computing weighted averages for both ArrayRecords and MetricRecords."
-msgstr ""
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:22
-#: flwr.serverapp.strategy.fedadam.FedAdam:22
-#: flwr.serverapp.strategy.fedavg.FedAvg:22
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:22
-#: flwr.serverapp.strategy.fedprox.FedProx:62
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:22
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:16
-#: flwr.serverapp.strategy.fedyogi.FedYogi:23
-#: flwr.serverapp.strategy.krum.Krum:27
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:33 of
-msgid "Key used to store the ArrayRecord when constructing Messages."
-msgstr ""
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:24
-#: flwr.serverapp.strategy.fedadam.FedAdam:24
-#: flwr.serverapp.strategy.fedavg.FedAvg:24
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:24
-#: flwr.serverapp.strategy.fedprox.FedProx:64
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:24
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:18
-#: flwr.serverapp.strategy.fedyogi.FedYogi:25
-#: flwr.serverapp.strategy.krum.Krum:29
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:35 of
-msgid "Key used to store the ConfigRecord when constructing Messages."
-msgstr ""
-
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:26
-#: flwr.serverapp.strategy.fedadagrad.FedAdagrad:31
-#: flwr.serverapp.strategy.fedadam.FedAdam:26
-#: flwr.serverapp.strategy.fedadam.FedAdam:31
-#: flwr.serverapp.strategy.fedavg.FedAvg:26
-#: flwr.serverapp.strategy.fedavg.FedAvg:31
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:26
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:31
-#: flwr.serverapp.strategy.fedprox.FedProx:66
-#: flwr.serverapp.strategy.fedprox.FedProx:71
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:26
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:31
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:20
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:25
-#: flwr.serverapp.strategy.fedyogi.FedYogi:27
-#: flwr.serverapp.strategy.fedyogi.FedYogi:32
-#: flwr.serverapp.strategy.krum.Krum:31 flwr.serverapp.strategy.krum.Krum:36
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:37
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:42 of
-msgid ""
-"Function with signature (list[RecordDict], str) -> MetricRecord, used to "
-"aggregate MetricRecords from training round replies. If `None`, defaults "
-"to `aggregate_metricrecords`, which performs a weighted average using the"
-" provided weight factor key."
 msgstr ""
 
 #: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
@@ -28323,19 +28649,6 @@ msgid ""
 msgstr ""
 ":py:obj:`configure_fit <flwr.server.strategy.Krum.configure_fit>`\\ "
 "\\(server\\_round\\, parameters\\, ...\\)"
-
-#: ../../source/ref-api/flwr.serverapp.strategy.FedXgbBagging.rst:41:<autosummary>:1
-#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
-#: flwr.serverapp.strategy.fedavg.FedAvg.configure_train:1
-#: flwr.serverapp.strategy.fedavgm.FedAvgM.configure_train:1
-#: flwr.serverapp.strategy.fedopt.FedOpt.configure_train:1
-#: flwr.serverapp.strategy.fedprox.FedProx.configure_train:1
-#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging.configure_train:1
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic.configure_train:1
-#: flwr.serverapp.strategy.qfedavg.QFedAvg.configure_train:1 of
-#, fuzzy
-msgid "Configure the next round of federated training."
-msgstr "配置下一轮训练。"
 
 #: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
@@ -28481,18 +28794,6 @@ msgstr ""
 #, fuzzy
 msgid ":py:obj:`summary <flwr.serverapp.strategy.FedAvg.summary>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
-
-#: flwr.serverapp.strategy.fedavgm.FedAvgM:1
-#: flwr.serverapp.strategy.fedmedian.FedMedian:1
-#: flwr.serverapp.strategy.fedprox.FedProx:1
-#: flwr.serverapp.strategy.fedtrimmedavg.FedTrimmedAvg:1
-#: flwr.serverapp.strategy.fedxgb_bagging.FedXgbBagging:1
-#: flwr.serverapp.strategy.fedxgb_cyclic.FedXgbCyclic:1
-#: flwr.serverapp.strategy.krum.Krum:1
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:1 of
-#, fuzzy
-msgid "Bases: :py:class:`~flwr.serverapp.strategy.fedavg.FedAvg`"
-msgstr "server.strategy.DPFedAvgFixed"
 
 #: flwr.serverapp.strategy.fedavgm.FedAvgM:36 of
 #, fuzzy
@@ -28990,17 +29291,16 @@ msgstr ""
 msgid ":py:obj:`summary <flwr.serverapp.strategy.FedYogi.summary>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
 
-#: flwr.serverapp.strategy.krum.Krum:19 of
+#: flwr.serverapp.strategy.krum.Krum:1 of
+#, fuzzy
+msgid "Bases: :py:class:`~flwr.serverapp.strategy.multikrum.MultiKrum`"
+msgstr "Bases: :py:class:`~flwr.server.strategy.fedopt.FedOpt`"
+
+#: flwr.serverapp.strategy.krum.Krum:19
+#: flwr.serverapp.strategy.multikrum.MultiKrum:19 of
 #, fuzzy
 msgid "Number of malicious nodes in the system. Defaults to 0."
 msgstr "系统中恶意客户端的数量。默认为 0。"
-
-#: flwr.serverapp.strategy.krum.Krum:21 of
-#, fuzzy
-msgid ""
-"Number of nodes to keep before averaging (MultiKrum). Defaults to 0, in "
-"that case classical Krum is applied."
-msgstr "求平均值前保留的客户端数量（MultiKrum）。默认值为 0，在这种情况下会应用经典 Krum。"
 
 #: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
 #: of
@@ -29064,6 +29364,84 @@ msgstr ""
 msgid ":py:obj:`summary <flwr.serverapp.strategy.Krum.summary>`\\ \\(\\)"
 msgstr "server.strategy.Strategy"
 
+#: ../../source/ref-api/flwr.serverapp.strategy.MultiKrum.rst:2
+#, fuzzy
+msgid "MultiKrum"
+msgstr "Krum"
+
+#: flwr.serverapp.strategy.multikrum.MultiKrum:21 of
+#, fuzzy
+msgid "Number of nodes to select before averaging."
+msgstr "训练期间使用的最少客户数。默认为 2。"
+
+#: flwr.serverapp.strategy.multikrum.MultiKrum:43 of
+msgid ""
+"MultiKrum is a generalization of Krum. If `num_nodes_to_select` is set to"
+" 1, MultiKrum will reduce to classical Krum."
+msgstr ""
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`aggregate_evaluate "
+"<flwr.serverapp.strategy.MultiKrum.aggregate_evaluate>`\\ "
+"\\(server\\_round\\, replies\\)"
+msgstr ""
+":py:obj:`aggregate_evaluate "
+"<flwr.server.strategy.Krum.aggregate_evaluate>`\\ \\(server\\_round\\, "
+"results\\, ...\\)"
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`aggregate_train "
+"<flwr.serverapp.strategy.MultiKrum.aggregate_train>`\\ "
+"\\(server\\_round\\, replies\\)"
+msgstr ""
+":py:obj:`aggregate_fit <flwr.server.strategy.Krum.aggregate_fit>`\\ "
+"\\(server\\_round\\, results\\, failures\\)"
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`configure_evaluate "
+"<flwr.serverapp.strategy.MultiKrum.configure_evaluate>`\\ "
+"\\(server\\_round\\, arrays\\, ...\\)"
+msgstr ""
+":py:obj:`configure_evaluate "
+"<flwr.server.strategy.Krum.configure_evaluate>`\\ \\(server\\_round\\, "
+"parameters\\, ...\\)"
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`configure_train "
+"<flwr.serverapp.strategy.MultiKrum.configure_train>`\\ "
+"\\(server\\_round\\, arrays\\, ...\\)"
+msgstr ""
+":py:obj:`configure_fit <flwr.server.strategy.Krum.configure_fit>`\\ "
+"\\(server\\_round\\, parameters\\, ...\\)"
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ""
+":py:obj:`start <flwr.serverapp.strategy.MultiKrum.start>`\\ \\(grid\\, "
+"initial\\_arrays\\[\\, num\\_rounds\\, ...\\]\\)"
+msgstr ""
+":py:obj:`FedAdagrad <flwr.server.strategy.FedAdagrad>`\\ \\(\\*\\[\\, "
+"fraction\\_fit\\, ...\\]\\)"
+
+#: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
+#: of
+#, fuzzy
+msgid ":py:obj:`summary <flwr.serverapp.strategy.MultiKrum.summary>`\\ \\(\\)"
+msgstr "server.strategy.Strategy"
+
 #: flwr.serverapp.strategy.qfedavg.QFedAvg:3 of
 msgid "Implementation based on openreview.net/pdf?id=ByexElSYDr"
 msgstr ""
@@ -29086,12 +29464,6 @@ msgstr ""
 msgid ""
 "The key within the MetricRecord whose value is used as the training loss "
 "when aggregating ArrayRecords following q-FedAvg."
-msgstr ""
-
-#: flwr.serverapp.strategy.qfedavg.QFedAvg:30 of
-msgid ""
-"The key within each MetricRecord whose value is used as the weight when "
-"computing weighted averages for MetricRecords."
 msgstr ""
 
 #: flwr.serverapp.strategy.fedavg.FedAvg.aggregate_evaluate:1:<autosummary>:1
@@ -63056,4 +63428,867 @@ msgstr ""
 #~ " that shows the new APIs (as "
 #~ "the content above does)"
 #~ msgstr ""
+
+#~ msgid ""
+#~ "Aggregate custom evaluation results from "
+#~ "federated clients in Flower using a "
+#~ "strategy that applies weighted averaging "
+#~ "for metrics like accuracy."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The Flower server does not prescribe "
+#~ "a way to aggregate evaluation results,"
+#~ " but it enables the user to "
+#~ "fully customize result aggregation."
+#~ msgstr "Flower 服务器没有规定整合评估结果的方法，但用户可以完全自定义如何整合。"
+
+#~ msgid "Aggregate Custom Evaluation Results"
+#~ msgstr "自定义整合评估结果"
+
+#~ msgid ""
+#~ "The same ``Strategy``-customization approach "
+#~ "can be used to aggregate custom "
+#~ "evaluation results coming from individual "
+#~ "clients. Clients can return custom "
+#~ "metrics to the server by returning "
+#~ "a dictionary:"
+#~ msgstr ""
+#~ "同样的 :code:`Strategy` "
+#~ "定制方法也可用于汇总来自单个客户端的自定义评估结果。客户端可以通过返回字典的方式向服务器返回自定义指标："
+
+#~ msgid ""
+#~ "The server can then use a "
+#~ "customized strategy to aggregate the "
+#~ "metrics provided in these dictionaries:"
+#~ msgstr "然后，服务器可以使用定制的策略来汇总这些字典中提供的指标："
+
+#~ msgid ""
+#~ "Configure Flower clients by sending "
+#~ "parameters from the server to control"
+#~ " client-side hyperparameters using "
+#~ "configuration dictionaries and strategies."
+#~ msgstr ""
+
+#~ msgid "Configuration values"
+#~ msgstr "配置值"
+
+#~ msgid ""
+#~ "``FitConfig`` and ``EvaluateConfig`` are "
+#~ "dictionaries containing configuration values "
+#~ "that the server sends to clients "
+#~ "during federated learning rounds. These "
+#~ "values must be of type ``Scalar``, "
+#~ "which includes ``bool``, ``bytes``, ``float``,"
+#~ " ``int``, or ``str`` (or equivalent "
+#~ "types in different languages). Scalar is"
+#~ " the value type directly supported by"
+#~ " Flower for these configurations."
+#~ msgstr ""
+
+#~ msgid "For example, a ``FitConfig`` dictionary might look like this:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Flower serializes these configuration "
+#~ "dictionaries (or *config dicts* for "
+#~ "short) to their ProtoBuf representation, "
+#~ "transports them to the client using "
+#~ "gRPC, and then deserializes them back"
+#~ " to Python dictionaries."
+#~ msgstr ""
+#~ "Flower 将这些配置字典（简称 *config dict*）序列化为 ProtoBuf"
+#~ " 表示形式，使用 gRPC 将其传输到客户端，然后再反序列化为 Python 字典。"
+
+#~ msgid ""
+#~ "Currently, there is no support for "
+#~ "directly sending collection types (e.g., "
+#~ "``Set``, ``List``, ``Map``) as values in"
+#~ " configuration dictionaries. To send "
+#~ "collections, convert them to a supported"
+#~ " type (e.g., JSON string) and decode"
+#~ " on the client side."
+#~ msgstr ""
+#~ "目前，还不支持在配置字典中直接发送作为值的集合类型（例如，`Set``, `List`, "
+#~ "`Map``）。有几种变通方法可将集合转换为支持的值类型之一（并在客户端将其转换回），从而将集合作为值发送。"
+
+#~ msgid "Example:"
+#~ msgstr "实例"
+
+#~ msgid "Configuration through Built-in Strategies"
+#~ msgstr "通过内置策略进行配置"
+
+#~ msgid ""
+#~ "Flower provides configuration options to "
+#~ "control client behavior dynamically through"
+#~ " ``FitConfig`` and ``EvaluateConfig``. These "
+#~ "configurations allow server-side control "
+#~ "over client-side parameters such as "
+#~ "batch size, number of local epochs, "
+#~ "learning rate, and evaluation settings, "
+#~ "improving collaboration and experimentation."
+#~ msgstr ""
+
+#~ msgid "``FitConfig`` and ``EvaluateConfig``"
+#~ msgstr "``eval_fn`` --> ``evaluate_fn``"
+
+#~ msgid ""
+#~ "``FitConfig`` and ``EvaluateConfig`` are "
+#~ "dictionaries containing configuration values "
+#~ "that the server sends to clients "
+#~ "during federated learning rounds. These "
+#~ "dictionaries enable the server to adjust"
+#~ " client-side hyperparameters and monitor"
+#~ " progress effectively."
+#~ msgstr ""
+
+#~ msgid "``FitConfig``"
+#~ msgstr "配置日志记录"
+
+#~ msgid ""
+#~ "``FitConfig`` specifies the hyperparameters "
+#~ "for training rounds, such as the "
+#~ "batch size, number of local epochs, "
+#~ "and other parameters that influence "
+#~ "training."
+#~ msgstr ""
+
+#~ msgid "For example, a ``fit_config`` callback might look like this:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can then pass this ``fit_config``"
+#~ " callback to a built-in strategy "
+#~ "such as ``FedAvg``:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "On the client side, the configuration"
+#~ " is received in the ``fit`` method,"
+#~ " where it can be read and used:"
+#~ msgstr ""
+
+#~ msgid "``EvaluateConfig``"
+#~ msgstr ":code:`evaluate`"
+
+#~ msgid ""
+#~ "``EvaluateConfig`` specifies hyperparameters for "
+#~ "the evaluation process, such as the "
+#~ "batch size, evaluation frequency, or "
+#~ "metrics to compute during evaluation."
+#~ msgstr ""
+
+#~ msgid "For example, an ``evaluate_config`` callback might look like this:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You can pass this ``evaluate_config`` "
+#~ "callback to a built-in strategy "
+#~ "like ``FedAvg``:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "On the client side, the configuration"
+#~ " is received in the ``evaluate`` "
+#~ "method, where it can be used "
+#~ "during the evaluation process:"
+#~ msgstr ""
+
+#~ msgid "Example: Sending Training Configurations"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Imagine we want to send (a) the"
+#~ " batch size, (b) the current global"
+#~ " round, and (c) the number of "
+#~ "local epochs. Our configuration function "
+#~ "could look like this:"
+#~ msgstr "让我们从一个简单的例子开始。想象一下，我们想要发送给客户端（a）应该使用的批次大小，（b）当前联邦学习的全局轮次，以及（c）客户端训练的遍历数。我们的配置函数可以是这样的："
+
+#~ msgid ""
+#~ "To use this function with a "
+#~ "built-in strategy like ``FedAvg``, pass "
+#~ "it to the ``FedAvg`` constructor "
+#~ "(typically in your ``server_fn``):"
+#~ msgstr ""
+
+#~ msgid "Client-Side Configuration"
+#~ msgstr "客户端逻辑"
+
+#~ msgid ""
+#~ "On the client side, configurations are"
+#~ " received as input to the ``fit`` "
+#~ "and ``evaluate`` methods. For example:"
+#~ msgstr ""
+
+#~ msgid "Dynamic Configurations per Round"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Configuration functions are called at "
+#~ "the beginning of every round. This "
+#~ "allows for dynamic adjustments based on"
+#~ " progress. For example, you can "
+#~ "increase the number of local epochs "
+#~ "in later rounds:"
+#~ msgstr ""
+
+#~ msgid "Customizing Client Configurations"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "In some cases, it may be necessary"
+#~ " to send different configurations to "
+#~ "individual clients. To achieve this, you"
+#~ " can create a custom strategy by "
+#~ "extending a built-in one, such as"
+#~ " ``FedAvg``:"
+#~ msgstr ""
+
+#~ msgid "Example: Client-Specific Configuration"
+#~ msgstr ""
+
+#~ msgid "Next, use this custom strategy as usual:"
+#~ msgstr ""
+
+#~ msgid "Summary of Enhancements"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Dynamic Configurations**: Enables per-round"
+#~ " adjustments via functions."
+#~ msgstr ""
+
+#~ msgid "**Advanced Customization**: Supports client-specific strategies."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Client-Side Integration**: Configurations "
+#~ "accessible in ``fit`` and ``evaluate``."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "By design, ClientApp_ objects are "
+#~ "stateless. This means that the "
+#~ "``ClientApp`` object is recreated each "
+#~ "time a new ``Message`` is to be"
+#~ " processed. This behaviour is identical "
+#~ "with Flower's Simulation Engine and "
+#~ "Deployment Engine. For the former, it"
+#~ " allows us to simulate the running"
+#~ " of a large number of nodes on"
+#~ " a single machine or across multiple"
+#~ " machines. For the latter, it enables"
+#~ " each ``SuperNode`` to be part of "
+#~ "multiple runs, each running a different"
+#~ " ``ClientApp``."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "When a ``ClientApp`` is executed it "
+#~ "receives a Context_. This context is "
+#~ "unique for each ``ClientApp``, meaning "
+#~ "that subsequent executions of the same"
+#~ " ``ClientApp`` from the same node "
+#~ "will receive the same ``Context`` "
+#~ "object. In the ``Context``, the "
+#~ "``.state`` attribute can be used to "
+#~ "store information that you would like"
+#~ " the ``ClientApp`` to have access to"
+#~ " for the duration of the run. "
+#~ "This could be anything from intermediate"
+#~ " results such as the history of "
+#~ "training losses (e.g. as a list of"
+#~ " ``float`` values with a new entry"
+#~ " appended each time the ``ClientApp`` "
+#~ "is executed), certain parts of the "
+#~ "model that should persist on the "
+#~ "client side, or some other arbitrary "
+#~ "Python objects. These items would need"
+#~ " to be serialized before saving them"
+#~ " into the context."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This section will demonstrate how to "
+#~ "save metrics such as accuracy/loss "
+#~ "values to the Context_ so they can"
+#~ " be used in subsequent executions of"
+#~ " the ``ClientApp``. If your ``ClientApp``"
+#~ " makes use of NumPyClient_ then "
+#~ "entire object is also re-created "
+#~ "for each call to methods like "
+#~ "``fit()`` or ``evaluate()``."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Let's begin with a simple setting "
+#~ "in which ``ClientApp`` is defined as "
+#~ "follows. The ``evaluate()`` method only "
+#~ "generates a random number and prints "
+#~ "it."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Let's say we want to save that "
+#~ "randomly generated integer and append it"
+#~ " to a list that persists in the"
+#~ " context. To do that, you'll need "
+#~ "to do two key things:"
+#~ msgstr ""
+
+#~ msgid "Make the ``context.state`` reachable within your client class"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Initialise the appropriate record type "
+#~ "(in this example we use ConfigRecord_)"
+#~ " and save/read your entry when "
+#~ "required."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you run the app, you'll see "
+#~ "an output similar to the one "
+#~ "below. See how after each round "
+#~ "the ``n_val`` entry in the context "
+#~ "gets one additional integer ? Note "
+#~ "that the order in which the "
+#~ "``ClientApp`` logs these messages might "
+#~ "differ slightly between rounds."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Using ConfigRecord_ or MetricRecord_ to "
+#~ "save \"simple\" components is fine "
+#~ "(e.g., float, integer, boolean, string, "
+#~ "bytes, and lists of these types. "
+#~ "Note that MetricRecord_ only supports "
+#~ "float, integer, and lists of these "
+#~ "types) Flower has a specific type "
+#~ "of record, a ArrayRecord_, for storing"
+#~ " model parameters or more generally "
+#~ "data arrays."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Elements stored in a ``ArrayRecord`` are"
+#~ " of type Array_, which is a "
+#~ "data structure that holds ``bytes`` and"
+#~ " metadata that can be used for "
+#~ "deserialization. Let's see how to create"
+#~ " an ``Array`` from a NumPy array "
+#~ "and insert it into a ``ArrayRecord``."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To extract the data in a "
+#~ "``ArrayRecord``, you just need to "
+#~ "deserialize the array if interest. For"
+#~ " example, following the example above:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Let say now you want to apply "
+#~ "the parameters stored in your context"
+#~ " to a new instance of the model"
+#~ " (as it happens each time a "
+#~ "``ClientApp`` is executed). You will "
+#~ "need to:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "And that's it! Recall that even "
+#~ "though this example shows how to "
+#~ "store the entire ``state_dict`` in a "
+#~ "``ArrayRecord``, you can just save part"
+#~ " of it. The process would be "
+#~ "identical, but you might need to "
+#~ "adjust how it is loaded into an"
+#~ " existing model using PyTorch APIs."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "A full introduction to federated "
+#~ "learning with PyTorch and Flower can "
+#~ "be found in :doc:`Quickstart PyTorch "
+#~ "<tutorial-quickstart-pytorch>`. This how-to"
+#~ " guide varies only a few details "
+#~ "in ``task.py``. FedBN requires a model"
+#~ " architecture (defined in class ``Net()``)"
+#~ " that uses Batch Normalization layers:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To adopt FedBN, only the "
+#~ "``get_parameters`` and ``set_parameters`` functions"
+#~ " in ``task.py`` need to be revised."
+#~ " FedBN only changes the client-side"
+#~ " by excluding batch normalization "
+#~ "parameters from being exchanged with the"
+#~ " server."
+#~ msgstr ""
+
+#~ msgid "To test the new appraoch, run the project again:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The strategy abstraction enables "
+#~ "implementation of fully custom strategies. "
+#~ "A strategy is basically the federated"
+#~ " learning algorithm that runs on the"
+#~ " server. Strategies decide how to "
+#~ "sample clients, how to configure clients"
+#~ " for training, how to aggregate "
+#~ "updates, and how to evaluate models. "
+#~ "Flower provides a few built-in "
+#~ "strategies which are based on the "
+#~ "same API described below."
+#~ msgstr ""
+#~ "策略抽象类可以实现完全定制的策略。策略基本上就是在服务器上运行的联邦学习算法。策略决定如何对客户端进行采样、如何配置客户端进行训练、如何聚合参数更新以及如何评估模型。Flower"
+#~ " 提供了一些内置策略，这些策略基于下文所述的相同 API。"
+
+#~ msgid ""
+#~ "The strategy abstraction defines a few"
+#~ " abstract methods that need to be "
+#~ "implemented:"
+#~ msgstr "策略抽象定义了一些需要实现的抽象方法："
+
+#~ msgid ""
+#~ "Creating a new strategy means "
+#~ "implementing a new ``class`` (derived "
+#~ "from the abstract base class "
+#~ "``Strategy``) that implements for the "
+#~ "previously shown abstract methods:"
+#~ msgstr ""
+#~ "创建一个新策略意味着要实现一个新的 :code:`class`（从抽象基类 :code:`Strategy` "
+#~ "派生），该类要实现前面显示的抽象方法："
+
+#~ msgid "The Flower server calls these methods in the following order:"
+#~ msgstr "Flower 服务器按以下顺序调用这些方法："
+
+#~ msgid "The following sections describe each of those methods in more detail."
+#~ msgstr "下文将详细介绍每种方法。"
+
+#~ msgid "The ``initialize_parameters`` method"
+#~ msgstr ":code:`初始化参数` 方法"
+
+#~ msgid ""
+#~ "``initialize_parameters`` is called only once,"
+#~ " at the very beginning of an "
+#~ "execution. It is responsible for "
+#~ "providing the initial global model "
+#~ "parameters in a serialized form (i.e.,"
+#~ " as a ``Parameters`` object)."
+#~ msgstr ""
+#~ ":code:`initialize_parameters` 只调用一次，即在执行开始时。它负责以序列化形式（即 "
+#~ ":code:`Parameters` 对象）提供初始全局模型参数。"
+
+#~ msgid ""
+#~ "Built-in strategies return user-provided"
+#~ " initial parameters. The following example"
+#~ " shows how initial parameters can be"
+#~ " passed to ``FedAvg``:"
+#~ msgstr "内置策略会返回用户提供的初始参数。下面的示例展示了如何将初始参数传递给 :code:`FedAvg`："
+
+#~ msgid ""
+#~ "The Flower server will call "
+#~ "``initialize_parameters``, which either returns "
+#~ "the parameters that were passed to "
+#~ "``initial_parameters``, or ``None``. If no "
+#~ "parameters are returned from "
+#~ "``initialize_parameters`` (i.e., ``None``), the "
+#~ "server will randomly select one client"
+#~ " and ask it to provide its "
+#~ "parameters. This is a convenience "
+#~ "feature and not recommended in practice,"
+#~ " but it can be useful for "
+#~ "prototyping. In practice, it is "
+#~ "recommended to always use server-side"
+#~ " parameter initialization."
+#~ msgstr ""
+#~ "Flower 服务器将调用 :code:`initialize_parameters`，返回传给 "
+#~ ":code:`initial_parameters` 的参数或 :code:`None`。如果 "
+#~ ":code:`initialize_parameters` 没有返回任何参数（即 "
+#~ ":code:`None`），服务器将随机选择一个客户端并要求其提供参数。这只是一个便捷的功能，在实际应用中并不推荐使用，但在原型开发中可能很有用。在实践中，建议始终使用服务器端参数初始化。"
+
+#~ msgid ""
+#~ "Server-side parameter initialization is "
+#~ "a powerful mechanism. It can be "
+#~ "used, for example, to resume training"
+#~ " from a previously saved checkpoint. "
+#~ "It is also the fundamental capability"
+#~ " needed to implement hybrid approaches, "
+#~ "for example, to fine-tune a "
+#~ "pre-trained model using federated learning."
+#~ msgstr "服务器端参数初始化是一种强大的机制。例如，它可以用来从先前保存的检查点恢复训练。它也是实现混合方法所需的基本能力，例如，使用联邦学习对预先训练好的模型进行微调。"
+
+#~ msgid ""
+#~ "Use the ``client_manager`` to randomly "
+#~ "sample all (or a subset of) "
+#~ "available clients (each represented as a"
+#~ " ``ClientProxy`` object)"
+#~ msgstr ""
+#~ "使用 :code:`client_manager` 随机抽样所有（或部分）可用客户端（每个客户端都表示为 "
+#~ ":code:`ClientProxy` 对象）"
+
+#~ msgid ""
+#~ "Pair each ``ClientProxy`` with the same"
+#~ " ``FitIns`` holding the current global "
+#~ "model ``parameters`` and ``config`` dict"
+#~ msgstr ""
+#~ "将每个 :code:`ClientProxy` 与持有当前全局模型 :code:`parameters`"
+#~ " 和 :code:`config` dict 的 :code:`FitIns` "
+#~ "配对"
+
+#~ msgid ""
+#~ "More sophisticated implementations can use "
+#~ "``configure_fit`` to implement custom client"
+#~ " selection logic. A client will only"
+#~ " participate in a round if the "
+#~ "corresponding ``ClientProxy`` is included in"
+#~ " the list returned from ``configure_fit``."
+#~ msgstr ""
+#~ "更复杂的实现可以使用 :code:`configure_fit` 来实现自定义的客户端选择逻辑。只有当相应的 "
+#~ ":code:`ClientProxy` 包含在 :code:`configure_fit` "
+#~ "返回的列表中时，客户端才会参与进来。"
+
+#~ msgid ""
+#~ "The structure of this return value "
+#~ "provides a lot of flexibility to "
+#~ "the user. Since instructions are defined"
+#~ " on a per-client basis, different "
+#~ "instructions can be sent to each "
+#~ "client. This enables custom strategies "
+#~ "to train, for example, different models"
+#~ " on different clients, or use "
+#~ "different hyperparameters on different clients"
+#~ " (via the ``config`` dict)."
+#~ msgstr ""
+#~ "该返回值的结构为用户提供了很大的灵活性。由于指令是按客户端定义的，因此可以向每个客户端发送不同的指令。这使得自定义策略成为可能，例如在不同的客户端上训练不同的模型，或在不同的客户端上使用不同的超参数（通过"
+#~ " :code:`config` dict）。"
+
+#~ msgid ""
+#~ "Of course, failures can happen, so "
+#~ "there is no guarantee that the "
+#~ "server will get results from all "
+#~ "the clients it sent instructions to "
+#~ "(via ``configure_fit``). ``aggregate_fit`` therefore"
+#~ " receives a list of ``results``, but"
+#~ " also a list of ``failures``."
+#~ msgstr ""
+#~ "当然，失败是有可能发生的，因此无法保证服务器会从它发送指令（通过 "
+#~ ":code:`configure_fit`）的所有客户端获得结果。因此 :code:`aggregate_fit` "
+#~ "会收到 :code:`results` 的列表，但也会收到 :code:`failures` "
+#~ "的列表。"
+
+#~ msgid ""
+#~ "``aggregate_fit`` returns an optional "
+#~ "``Parameters`` object and a dictionary "
+#~ "of aggregated metrics. The ``Parameters`` "
+#~ "return value is optional because "
+#~ "``aggregate_fit`` might decide that the "
+#~ "results provided are not sufficient for"
+#~ " aggregation (e.g., too many failures)."
+#~ msgstr ""
+#~ ":code:`aggregate_fit` 返回一个可选的 :code:`Parameters` "
+#~ "对象和一个聚合度量的字典。:code:`Parameters` 返回值是可选的，因为 "
+#~ ":code:`aggregate_fit` 可能会认为所提供的结果不足以进行聚合（例如，失败次数过多）。"
+
+#~ msgid ""
+#~ "The return value is a list of "
+#~ "tuples, each representing the instructions "
+#~ "that will be sent to a particular"
+#~ " client. Strategy implementations usually "
+#~ "perform the following steps in "
+#~ "``configure_evaluate``:"
+#~ msgstr ""
+#~ "返回值是一个元组列表，每个元组代表将发送到特定客户端的指令。策略实现通常在 :code:`configure_evaluate`"
+#~ " 中执行以下步骤："
+
+#~ msgid ""
+#~ "Pair each ``ClientProxy`` with the same"
+#~ " ``EvaluateIns`` holding the current global"
+#~ " model ``parameters`` and ``config`` dict"
+#~ msgstr ""
+#~ "将每个 :code:`ClientProxy` 与持有当前全局模型 :code:`parameters`"
+#~ " 和 :code:`config` dict 的 "
+#~ ":code:`EvaluateIns` 配对"
+
+#~ msgid ""
+#~ "More sophisticated implementations can use "
+#~ "``configure_evaluate`` to implement custom "
+#~ "client selection logic. A client will"
+#~ " only participate in a round if "
+#~ "the corresponding ``ClientProxy`` is included"
+#~ " in the list returned from "
+#~ "``configure_evaluate``."
+#~ msgstr ""
+#~ "更复杂的实现可以使用 :code:`configure_evaluate` "
+#~ "来实现自定义的客户端选择逻辑。只有当相应的 :code:`ClientProxy` 包含在 "
+#~ ":code:`configure_evaluate` 返回的列表中时，客户端才会参与进来。"
+
+#~ msgid ""
+#~ "The structure of this return value "
+#~ "provides a lot of flexibility to "
+#~ "the user. Since instructions are defined"
+#~ " on a per-client basis, different "
+#~ "instructions can be sent to each "
+#~ "client. This enables custom strategies "
+#~ "to evaluate, for example, different "
+#~ "models on different clients, or use "
+#~ "different hyperparameters on different clients"
+#~ " (via the ``config`` dict)."
+#~ msgstr ""
+#~ "该返回值的结构为用户提供了很大的灵活性。由于指令是按客户端定义的，因此可以向每个客户端发送不同的指令。这使得自定义策略可以在不同客户端上评估不同的模型，或在不同客户端上使用不同的超参数（通过"
+#~ " :code:`config` dict）。"
+
+#~ msgid ""
+#~ "Of course, failures can happen, so "
+#~ "there is no guarantee that the "
+#~ "server will get results from all "
+#~ "the clients it sent instructions to "
+#~ "(via ``configure_evaluate``). ``aggregate_evaluate`` "
+#~ "therefore receives a list of "
+#~ "``results``, but also a list of "
+#~ "``failures``."
+#~ msgstr ""
+#~ "当然，失败是有可能发生的，因此无法保证服务器会从它发送指令（通过 "
+#~ ":code:`configure_evaluate`）的所有客户端获得结果。因此， "
+#~ ":code:`aggregate_evaluate` 会接收 :code:`results` "
+#~ "的列表，但也会接收 :code:`failures` 的列表。"
+
+#~ msgid ""
+#~ "``aggregate_evaluate`` returns an optional "
+#~ "``float`` (loss) and a dictionary of "
+#~ "aggregated metrics. The ``float`` return "
+#~ "value is optional because "
+#~ "``aggregate_evaluate`` might decide that the"
+#~ " results provided are not sufficient "
+#~ "for aggregation (e.g., too many "
+#~ "failures)."
+#~ msgstr ""
+#~ ":code:`aggregate_evaluate` 返回一个可选的 "
+#~ ":code:`float`（损失值）和一个聚合指标字典。:code:`float` 返回值是可选的，因为 "
+#~ ":code:`aggregate_evaluate` 可能会认为所提供的结果不足以进行聚合（例如，失败次数过多）。"
+
+#~ msgid ""
+#~ "``evaluate`` is responsible for evaluating "
+#~ "model parameters on the server-side. "
+#~ "Having ``evaluate`` in addition to "
+#~ "``configure_evaluate``/``aggregate_evaluate`` enables "
+#~ "strategies to perform both servers-side"
+#~ " and client-side (federated) evaluation."
+#~ msgstr ""
+#~ ":code:`evaluate` 负责在服务器端评估模型参数。除了 "
+#~ ":code:`configure_evaluate`/:code:`aggregate_evaluate` "
+#~ "之外，:code:`evaluate` 可以使策略同时执行服务器端和客户端（联邦）评估。"
+
+#~ msgid ""
+#~ "The return value is again optional "
+#~ "because the strategy might not need "
+#~ "to implement server-side evaluation or"
+#~ " because the user-defined ``evaluate`` "
+#~ "method might not complete successfully "
+#~ "(e.g., it might fail to load the"
+#~ " server-side evaluation data)."
+#~ msgstr ""
+#~ "返回值也是可选的，因为策略可能不需要执行服务器端评估，或者因为用户定义的 :code:`evaluate` "
+#~ "方法可能无法成功完成（例如，它可能无法加载服务器端评估数据）。"
+
+#~ msgid "Model Checkpointing"
+#~ msgstr "模型检查点"
+
+#~ msgid ""
+#~ "Model updates can be persisted on "
+#~ "the server-side by customizing "
+#~ "``Strategy`` methods. Implementing custom "
+#~ "strategies is always an option, but "
+#~ "for many cases it may be more "
+#~ "convenient to simply customize an "
+#~ "existing strategy. The following code "
+#~ "example defines a new ``SaveModelStrategy``"
+#~ " which customized the existing built-"
+#~ "in ``FedAvg`` strategy. In particular, "
+#~ "it customizes ``aggregate_fit`` by calling "
+#~ "``aggregate_fit`` in the base class "
+#~ "(``FedAvg``). It then continues to save"
+#~ " returned (aggregated) weights before it"
+#~ " returns those aggregated weights to "
+#~ "the caller (i.e., the server):"
+#~ msgstr ""
+#~ "模型更新可通过自定义 :code:`Strategy` "
+#~ "方法在服务器端持久化。实现自定义策略始终是一种选择，但在许多情况下，简单地自定义现有策略可能更方便。下面的代码示例定义了一个新的 "
+#~ ":code:`SaveModelStrategy`，它自定义了现有的内置 :code:`FedAvg` "
+#~ "策略。特别是，它通过调用基类（:code:`FedAvg`）中的 :code:`aggregate_fit` 来定制"
+#~ " :code:`aggregate_fit`。然后继续保存返回的（聚合）参数，然后再将这些聚合参数返回给调用者（即服务器）："
+
+#~ msgid "Save and Load PyTorch Checkpoints"
+#~ msgstr "保存和加载 PyTorch 检查点"
+
+#~ msgid ""
+#~ "Similar to the previous example but "
+#~ "with a few extra steps, we'll show"
+#~ " how to store a PyTorch checkpoint"
+#~ " we'll use the ``torch.save`` function. "
+#~ "Firstly, ``aggregate_fit`` returns a "
+#~ "``Parameters`` object that has to be "
+#~ "transformed into a list of NumPy "
+#~ "``ndarray``'s, then those are transformed "
+#~ "into the PyTorch ``state_dict`` following "
+#~ "the ``OrderedDict`` class structure."
+#~ msgstr ""
+#~ "与前面的例子类似，但多了几个步骤，我们将展示如何存储一个 PyTorch 检查点，我们将使用 "
+#~ "``torch.save`` 函数。首先，``aggregate_fit`` 返回一个 "
+#~ "``Parameters`` 对象，它必须被转换成一个 NumPy ``ndarray`` "
+#~ "的列表，然后这些对象按照 ``OrderedDict`` 类结构被转换成 PyTorch "
+#~ "`state_dict` 对象。"
+
+#~ msgid ""
+#~ "To load your progress, you simply "
+#~ "append the following lines to your "
+#~ "code. Note that this will iterate "
+#~ "over all saved checkpoints and load "
+#~ "the latest one:"
+#~ msgstr "要加载进度，只需在代码中添加以下几行。请注意，这将遍历所有已保存的检查点，并加载最新的检查点："
+
+#~ msgid ""
+#~ "Return/use this object of type "
+#~ "``Parameters`` wherever necessary, such as "
+#~ "in the ``initial_parameters`` when defining"
+#~ " a ``Strategy``."
+#~ msgstr ""
+#~ "在必要时返回/使用此 ``Parameters`` 类型的对象，例如在定义 ``Strategy`"
+#~ " 时的 ``initial_parameters` 中。"
+
+#~ msgid ""
+#~ "Alternatively, we can save and load "
+#~ "the model updates during evaluation "
+#~ "phase by overriding ``evaluate()`` or "
+#~ "``aggregate_evaluate()`` method of the "
+#~ "strategy (``FedAvg``). Checkout the details"
+#~ " in `Advanced PyTorch Example "
+#~ "<https://github.com/adap/flower/tree/main/examples/advanced-"
+#~ "pytorch>`_ and `Advanced TensorFlow Example"
+#~ " <https://github.com/adap/flower/tree/main/examples/advanced-"
+#~ "tensorflow>`_."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "If you define functions to handle "
+#~ "messages using decorators instead of "
+#~ "``client_fn``, e.g., ``@app.train()``, you do"
+#~ " not need to pass the ``client_fn``"
+#~ " argument."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "To make the ``ServerApp`` use this "
+#~ "strategy, pass a ``server_fn`` function "
+#~ "to the ``ServerApp`` constructor. The "
+#~ "``server_fn`` function should return a "
+#~ "``ServerAppComponents`` object that contains "
+#~ "the strategy instance and a "
+#~ "``ServerConfig`` instance."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Both ``Strategy`` and ``ServerConfig`` classes"
+#~ " can be configured with parameters. "
+#~ "The ``Context`` object passed to "
+#~ "``server_fn`` contains the values specified"
+#~ " in the ``[tool.flwr.app.config]`` table in"
+#~ " your ``pyproject.toml`` (a snippet is "
+#~ "shown below). To access these values,"
+#~ " use ``context.run_config``."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Existing strategies provide several ways "
+#~ "to customize their behavior. Callback "
+#~ "functions allow strategies to call "
+#~ "user-provided code during execution. This"
+#~ " approach enables you to modify the"
+#~ " strategy's partial behavior without "
+#~ "rewriting the whole class from zero."
+#~ msgstr "现有的策略提供了多种自定义行为的方法。回调函数允许策略在执行过程中调用用户提供的代码。"
+
+#~ msgid "Configuring client fit and client evaluate"
+#~ msgstr "配置客户匹配和客户评估"
+
+#~ msgid ""
+#~ "The server can pass new configuration"
+#~ " values to the client each round "
+#~ "by providing a function to "
+#~ "``on_fit_config_fn``. The provided function "
+#~ "will be called by the strategy and"
+#~ " must return a dictionary of "
+#~ "configuration key value pairs that will"
+#~ " be sent to the client. It must"
+#~ " return a dictionary of arbitrary "
+#~ "configuration values ``client.fit`` and "
+#~ "``client.evaluate`` functions during each "
+#~ "round of federated learning."
+#~ msgstr ""
+#~ "服务器可以通过向 :code:`on_fit_config_fn` "
+#~ "提供一个函数，在每一轮向客户端传递新的配置值。提供的函数将被策略调用，并且必须返回一个配置键值对的字典，该字典将被发送到客户端。在每一轮联邦学习期间，它必须返回一个任意配置值"
+#~ " dictionary :code:`client.fit`和 "
+#~ ":code:`client.evaluate`函数。"
+
+#~ msgid ""
+#~ "The ``on_fit_config_fn`` can be used to"
+#~ " pass arbitrary configuration values from"
+#~ " server to client and potentially "
+#~ "change these values each round, for "
+#~ "example, to adjust the learning rate."
+#~ " The client will receive the "
+#~ "dictionary returned by the "
+#~ "``on_fit_config_fn`` in its own "
+#~ "``client.fit()`` function. And while the "
+#~ "values can be also passed directly "
+#~ "via the context this function can "
+#~ "be a place to implement finer "
+#~ "control over the `fit` behaviour that"
+#~ " may not be achieved by the "
+#~ "context, which sets fixed values."
+#~ msgstr ""
+#~ ":code:`on_fit_config_fn`可用于将任意配置值从服务器传递到客户端，并在每一轮改变这些值，例如，调整学习率。客户端将在自己的"
+#~ " :code:`client.fit()` 函数中接收 :code:`on_fit_config_fn`"
+#~ " 返回的字典。"
+
+#~ msgid ""
+#~ "Similar to ``on_fit_config_fn``, there is "
+#~ "also ``on_evaluate_config_fn`` to customize "
+#~ "the configuration sent to "
+#~ "``client.evaluate()``"
+#~ msgstr ""
+#~ "与 :code:`on_fit_config_fn` 类似，还有 "
+#~ ":code:`on_evaluate_config_fn` 用于定制发送到 "
+#~ ":code:`client.evaluate()` 的配置"
+
+#~ msgid "Configuring server-side evaluation"
+#~ msgstr "配置服务器端评估"
+
+#~ msgid ""
+#~ "Server-side evaluation can be enabled"
+#~ " by passing an evaluation function to"
+#~ " ``evaluate_fn``."
+#~ msgstr "服务器端评估可通过向 :code:`evaluate_fn` 传递评估函数来启用。"
+
+#~ msgid ""
+#~ "Writing a fully custom strategy is "
+#~ "a bit more involved, but it "
+#~ "provides the most flexibility. Read the"
+#~ " `Implementing Strategies <how-to-"
+#~ "implement-strategies.html>`_ guide to learn "
+#~ "more."
+#~ msgstr ""
+#~ "编写完全自定义的策略涉及的内容较多，但灵活性最高。阅读 `实施策略 <how-to-"
+#~ "implement-strategies.html>_ 指南，了解更多信息。"
+
+#~ msgid ""
+#~ "Number of nodes to keep before "
+#~ "averaging (MultiKrum). Defaults to 0, in"
+#~ " that case classical Krum is applied."
+#~ msgstr "求平均值前保留的客户端数量（MultiKrum）。默认值为 0，在这种情况下会应用经典 Krum。"
 
