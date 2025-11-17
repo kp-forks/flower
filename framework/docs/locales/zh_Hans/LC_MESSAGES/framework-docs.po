@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flower main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 00:08+0000\n"
+"POT-Creation-Date: 2025-11-17 23:46+0000\n"
 "PO-Revision-Date: 2024-06-12 10:09+0000\n"
 "Last-Translator: Yan Gao <y.gaogy@gmail.com>\n"
 "Language: zh_Hans\n"
@@ -1256,12 +1256,10 @@ msgstr "Python 版本"
 
 #: ../../source/contributor-how-to-set-up-a-virtual-env.rst:12
 #: ../../source/how-to-install-flower.rst:11
-msgid ""
-"Flower requires at least `Python 3.10 <https://docs.python.org/3.10/>`_."
-msgstr ""
-"Flower 至少需要 `Python 3.10 <https://docs.python.org/3.10/>`_."
+msgid "Flower requires at least `Python 3.10 <https://docs.python.org/3.10/>`_."
+msgstr "Flower 至少需要 `Python 3.10 <https://docs.python.org/3.10/>`_."
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:17
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:16
 #, fuzzy
 msgid ""
 "Due to a known incompatibility with `ray "
@@ -1272,12 +1270,12 @@ msgstr ""
 "由于已知与 `ray <https://docs.ray.io/en/latest/>`_ 不兼容，我们目前建议最多使用 `Python 3.11"
 " <https://docs.python.org/3.11/>`_ 运行 Flower 仿真。"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:22
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:21
 #, fuzzy
 msgid "Virtualenv with Pyenv/Virtualenv"
 msgstr "Virutualenv 和 Pyenv/Virtualenv"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:24
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:23
 msgid ""
 "One of the recommended virtual environment is `pyenv "
 "<https://github.com/pyenv/pyenv>`_/`virtualenv <https://github.com/pyenv"
@@ -1288,25 +1286,25 @@ msgstr ""
 "<https://github.com/pyenv/pyenv-virtualenv>`_。详情请参见 `Flower 示例 "
 "<https://github.com/adap/flower/tree/main/examples/>`_。"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:29
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:28
 msgid ""
 "Once Pyenv is set up, you can use it to install `Python Version 3.10 "
 "<https://docs.python.org/3.10/>`_ or above:"
 msgstr "一旦设置好 Pyenv，就可以用它来安装 `Python 3.10 <https://docs.python.org/3.10/>`_ 或更高版本："
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:36
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:35
 msgid "Create the virtualenv with:"
 msgstr "创建虚拟环境："
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:42
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:41
 msgid "Activate the virtualenv by running the following command:"
 msgstr "运行以下命令激活 virtualenv："
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:49
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:48
 msgid "Virtualenv with Poetry"
 msgstr "有诗意的 Virtualenv"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:51
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:50
 msgid ""
 "The Flower examples are based on `Poetry <https://python-"
 "poetry.org/docs/>`_ to manage dependencies. After installing Poetry you "
@@ -1315,17 +1313,17 @@ msgstr ""
 "Flower 示例基于 `Poetry <https://python-poetry.org/docs/>`_ 来管理依赖关系。安装 Poetry"
 " 后，只需创建一个虚拟环境即可："
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:58
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:57
 msgid ""
 "If you open a new terminal you can activate the previously created "
 "virtual environment with the following command:"
 msgstr "如果打开一个新终端，可以使用以下命令激活之前创建的虚拟环境："
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:66
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:65
 msgid "Virtualenv with Anaconda"
 msgstr "使用 Anaconda 的 Virtualenv"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:68
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:67
 #, fuzzy
 msgid ""
 "If you prefer to use Anaconda for your virtual environment then install "
@@ -1337,7 +1335,7 @@ msgstr ""
 "<https://docs.conda.io/projects/conda/en/latest/user-"
 "guide/install/index.html>`_ 软件包。设置完成后，您就可以使用以下工具创建虚拟环境："
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:76
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:75
 msgid "and activate the virtual environment with:"
 msgstr "并激活虚拟环境："
 
@@ -1587,7 +1585,7 @@ msgstr ""
 msgid "Setting up the repository"
 msgstr "建立资源库"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:29
+#: ../../source/contributor-tutorial-contribute-on-github.rst:14
 msgid "**Create a GitHub account and setup Git**"
 msgstr "**创建 GitHub 账户并设置 Git**"
 
@@ -1626,7 +1624,7 @@ msgstr ""
 "通用的 Git 和 GitHub 工作流程背后的理念可以归结为：从 GitHub 上的远程仓库下载代码，在本地进行修改并使用 Git "
 "进行跟踪，然后将新的历史记录上传回 GitHub。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:42
+#: ../../source/contributor-tutorial-contribute-on-github.rst:31
 msgid "**Forking the Flower repository**"
 msgstr "**叉花仓库**"
 
@@ -1651,7 +1649,7 @@ msgstr ""
 "您可以更改名称，但没有必要，因为这个版本的 Flower "
 "将是您自己的，并位于您自己的账户中（即，在您自己的版本库列表中）。创建完成后，您会在左上角看到自己的 Flower 版本。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:59
+#: ../../source/contributor-tutorial-contribute-on-github.rst:44
 msgid "**Cloning your forked repository**"
 msgstr "**克隆你的分叉仓库**"
 
@@ -1678,7 +1676,7 @@ msgid ""
 "it) folder in the current working directory."
 msgstr "这将在当前工作目录下创建一个 `flower/`（如果重命名了，则使用 fork 的名称）文件夹。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:78
+#: ../../source/contributor-tutorial-contribute-on-github.rst:61
 msgid "**Add origin**"
 msgstr "**添加原产地**"
 
@@ -1702,7 +1700,7 @@ msgid ""
 "terminal:"
 msgstr "一旦复制了 \\<URL\\> ，我们就可以在终端中键入以下命令："
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:102
+#: ../../source/contributor-tutorial-contribute-on-github.rst:80
 msgid "**Add upstream**"
 msgstr "**增加上游**"
 
@@ -1761,7 +1759,7 @@ msgstr "在进行任何更改之前，请确保您的版本库是最新的："
 msgid "And with Flower's repository:"
 msgstr "还有Flower的存储库："
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:134
+#: ../../source/contributor-tutorial-contribute-on-github.rst:127
 msgid "**Create a new branch**"
 msgstr "**创建一个新分支**"
 
@@ -1786,7 +1784,7 @@ msgstr "**进行修改**"
 msgid "Write great code and create wonderful changes using your favorite editor!"
 msgstr "使用您最喜欢的编辑器编写优秀的代码并创建精彩的更改！"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:147
+#: ../../source/contributor-tutorial-contribute-on-github.rst:138
 msgid "**Test and format your code**"
 msgstr "**测试并格式化您的代码**"
 
@@ -1801,7 +1799,7 @@ msgstr "不要忘记测试和格式化您的代码！否则您的代码将无法
 msgid "To do so, we have written a few scripts that you can execute:"
 msgstr "为此，我们编写了一些脚本供您执行："
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:160
+#: ../../source/contributor-tutorial-contribute-on-github.rst:149
 msgid "**Stage changes**"
 msgstr "**舞台变化**"
 
@@ -1823,7 +1821,7 @@ msgid ""
 "the ``git status`` command."
 msgstr "要查看与上一版本（上次提交）相比哪些文件已被修改，以及哪些文件处于提交阶段，可以使用 :code:`git status` 命令。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:171
+#: ../../source/contributor-tutorial-contribute-on-github.rst:162
 msgid "**Commit changes**"
 msgstr "**提交更改**"
 
@@ -1844,7 +1842,7 @@ msgstr ""
 "<commit_message\\> 用于向他人解释提交的作用。它应该以命令式风格书写，并且简明扼要。例如 :code:`git commit "
 "-m \"Add images to README\"`。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:183
+#: ../../source/contributor-tutorial-contribute-on-github.rst:173
 msgid "**Push the changes to the fork**"
 msgstr "**将更改推送到分叉**"
 
@@ -1865,7 +1863,7 @@ msgstr "完成此操作后，您将在 GitHub 上看到您的分叉仓库已根�
 msgid "Creating and merging a pull request (PR)"
 msgstr "创建和合并拉取请求 (PR)"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:224
+#: ../../source/contributor-tutorial-contribute-on-github.rst:188
 msgid "**Create the PR**"
 msgstr "**创建 PR**"
 
@@ -1934,7 +1932,7 @@ msgid ""
 "anyone, you have the option to create a draft pull request:"
 msgstr "如果您的 PR 尚未准备好接受审核，而且您不想通知任何人，您可以选择创建一个草案拉取请求："
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:228
+#: ../../source/contributor-tutorial-contribute-on-github.rst:226
 msgid "**Making new changes**"
 msgstr "**作出新的改变**"
 
@@ -1945,7 +1943,7 @@ msgid ""
 " associated with the PR."
 msgstr "一旦 PR 被打开（无论是否作为草案），你仍然可以像以前一样，通过修改与 PR 关联的分支来推送新的提交。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:251
+#: ../../source/contributor-tutorial-contribute-on-github.rst:230
 msgid "**Review the PR**"
 msgstr "**审查 PR**"
 
@@ -1981,7 +1979,7 @@ msgid ""
 "review."
 msgstr "一旦所有对话都得到解决，您就可以重新申请审核。"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:272
+#: ../../source/contributor-tutorial-contribute-on-github.rst:253
 msgid "**Once the PR is merged**"
 msgstr "**一旦 PR 被合并**"
 
@@ -4672,7 +4670,7 @@ msgstr ""
 "的数据）之外完全相同。差分隐私（DP）可以保证任何分析（M），比如计算平均收入，对两个数据集都会产生几乎相同的结果（O 和 O' "
 "将是相似的）。这既保留了群体模式，又掩盖了个人细节，确保个人的信息隐藏在人群中。"
 
-#: ../../source/explanation-differential-privacy.rst:-1
+#: ../../source/explanation-differential-privacy.rst:26
 #, fuzzy
 msgid "DP Intro"
 msgstr "DP 介绍"
@@ -4810,8 +4808,8 @@ msgid ""
 "the client's data."
 msgstr "**本地差分隐私**： 在向服务器发送任何信息之前，在客户端应用 DP，目的是防止向服务器发送的更新泄露任何有关客户端数据的信息。"
 
-#: ../../source/explanation-differential-privacy.rst:-1
 #: ../../source/explanation-differential-privacy.rst:97
+#: ../../source/explanation-differential-privacy.rst:103
 #: ../../source/how-to-use-differential-privacy.rst:51
 #, fuzzy
 msgid "Central Differential Privacy"
@@ -4843,7 +4841,7 @@ msgstr ""
 "虽然在联合学习中实现中央数据处理的方法有很多种，但我们将重点放在[2]和[3]提出的算法上。总体方法是剪辑客户端发送的模型更新，并在聚合模型中添加一定量的噪声。在每次迭代中，以特定概率随机选择一组客户端进行训练。每个客户端对自己的数据进行局部训练。然后，每个客户端的更新会被某个值`S`（灵敏度`S`）剪切。这将限制任何单个客户端的影响，这对隐私至关重要，通常也有利于稳健性。实现这一点的常用方法是限制客户机模型更新的"
 " `L2` 准则，确保较大的更新被缩减以适应 `S` 准则。"
 
-#: ../../source/explanation-differential-privacy.rst:-1
+#: ../../source/explanation-differential-privacy.rst:119
 #, fuzzy
 msgid "clipping"
 msgstr "剪贴"
@@ -4897,8 +4895,8 @@ msgid ""
 "others."
 msgstr "在固定剪切和自适应剪切之间做出选择取决于各种因素，如隐私要求、数据分布、模型复杂性等。"
 
-#: ../../source/explanation-differential-privacy.rst:-1
 #: ../../source/explanation-differential-privacy.rst:145
+#: ../../source/explanation-differential-privacy.rst:151
 #: ../../source/how-to-use-differential-privacy.rst:144
 #, fuzzy
 msgid "Local Differential Privacy"
@@ -5180,12 +5178,12 @@ msgstr ""
 msgid "This is sometimes called a hub-and-spoke topology:"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:19
 #, fuzzy
 msgid "Hub-and-spoke topology in federated learning"
 msgstr "什么是联邦学习？"
 
-#: ../../source/explanation-flower-architecture.rst:29
+#: ../../source/explanation-flower-architecture.rst:24
 #, fuzzy
 msgid "Hub-and-spoke topology in federated learning (dark theme)"
 msgstr "什么是联邦学习？"
@@ -5280,12 +5278,12 @@ msgid ""
 "*missing link* among all those SuperNodes."
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:70
 #, fuzzy
 msgid "Basic Flower architecture"
 msgstr "Flower的架构"
 
-#: ../../source/explanation-flower-architecture.rst:80
+#: ../../source/explanation-flower-architecture.rst:75
 #, fuzzy
 msgid "Basic Flower architecture (dark theme)"
 msgstr "Flower的架构"
@@ -5323,12 +5321,12 @@ msgid ""
 "SuperNodes."
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:98
 #, fuzzy
 msgid "Multi-run federated learning architecture"
 msgstr "使用联邦学习策略"
 
-#: ../../source/explanation-flower-architecture.rst:108
+#: ../../source/explanation-flower-architecture.rst:103
 #, fuzzy
 msgid "Multi-run federated learning architecture (dark theme)"
 msgstr "使用联邦学习策略"
@@ -5352,12 +5350,12 @@ msgid ""
 "their corresponding ``ClientApp``\\s:"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:118
 #, fuzzy
 msgid "Multi-tenancy federated learning architecture - Run 1"
 msgstr "使用联邦学习策略"
 
-#: ../../source/explanation-flower-architecture.rst:128
+#: ../../source/explanation-flower-architecture.rst:123
 #, fuzzy
 msgid "Multi-tenancy federated learning architecture - Run 1 (dark theme)"
 msgstr "使用联邦学习策略"
@@ -5374,12 +5372,12 @@ msgid ""
 "selected to participate in the training:"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:134
 #, fuzzy
 msgid "Multi-tenancy federated learning architecture - Run 2"
 msgstr "使用联邦学习策略"
 
-#: ../../source/explanation-flower-architecture.rst:144
+#: ../../source/explanation-flower-architecture.rst:139
 #, fuzzy
 msgid "Multi-tenancy federated learning architecture - Run 2 (dark theme)"
 msgstr "使用联邦学习策略"
@@ -10917,61 +10915,61 @@ msgstr "安装Flower"
 msgid "Python version"
 msgstr "Python 版本"
 
-#: ../../source/how-to-install-flower.rst:15
+#: ../../source/how-to-install-flower.rst:14
 msgid "Install stable release"
 msgstr "安装稳定版"
 
-#: ../../source/how-to-install-flower.rst:18
+#: ../../source/how-to-install-flower.rst:17
 #, fuzzy
 msgid "Using pip"
 msgstr "使用 pip"
 
-#: ../../source/how-to-install-flower.rst:20
+#: ../../source/how-to-install-flower.rst:19
 #, fuzzy
 msgid "Stable releases are available on `PyPI <https://pypi.org/project/flwr/>`_:"
 msgstr "稳定版本可在 `PyPI <https://pypi.org/project/flwr/>`_:："
 
-#: ../../source/how-to-install-flower.rst:26
+#: ../../source/how-to-install-flower.rst:25
 #, fuzzy
 msgid ""
 "For simulations that use the Virtual Client Engine, ``flwr`` should be "
 "installed with the ``simulation`` extra:"
 msgstr "对于使用虚拟客户端引擎的模拟，`flwr`` 应与`simulation`` 一起安装："
 
-#: ../../source/how-to-install-flower.rst:34
+#: ../../source/how-to-install-flower.rst:33
 #, fuzzy
 msgid "Using conda (or mamba)"
 msgstr "使用 conda（或 mamba）"
 
-#: ../../source/how-to-install-flower.rst:36
+#: ../../source/how-to-install-flower.rst:35
 #, fuzzy
 msgid "Flower can also be installed from the ``conda-forge`` channel."
 msgstr "Flower 也可以从 ``conda-forge`` 频道安装。"
 
-#: ../../source/how-to-install-flower.rst:38
+#: ../../source/how-to-install-flower.rst:37
 #, fuzzy
 msgid ""
 "If you have not added ``conda-forge`` to your channels, you will first "
 "need to run the following:"
 msgstr "如果您尚未在频道中添加 ``conda-forge``，则首先需要运行以下程序：："
 
-#: ../../source/how-to-install-flower.rst:46
+#: ../../source/how-to-install-flower.rst:45
 #, fuzzy
 msgid ""
 "Once the ``conda-forge`` channel has been enabled, ``flwr`` can be "
 "installed with ``conda``:"
 msgstr "一旦启用了 ``conda-forge`` 频道，就可以使用 ``conda``: 安装 ``flwr``："
 
-#: ../../source/how-to-install-flower.rst:53
+#: ../../source/how-to-install-flower.rst:52
 #, fuzzy
 msgid "or with ``mamba``:"
 msgstr "或用 ``mamba`` ：："
 
-#: ../../source/how-to-install-flower.rst:60
+#: ../../source/how-to-install-flower.rst:59
 msgid "Verify installation"
 msgstr "验证安装"
 
-#: ../../source/how-to-install-flower.rst:62
+#: ../../source/how-to-install-flower.rst:61
 #, fuzzy
 msgid ""
 "The following command can be used to verify if Flower was successfully "
@@ -10979,27 +10977,27 @@ msgid ""
 " the command line:"
 msgstr "可以使用以下命令来验证 Flower 是否安装成功。如果一切正常，它将在命令行中打印 Flower 的版本：："
 
-#: ../../source/how-to-install-flower.rst:72
+#: ../../source/how-to-install-flower.rst:71
 msgid "Advanced installation options"
 msgstr "高级安装选项"
 
-#: ../../source/how-to-install-flower.rst:75
+#: ../../source/how-to-install-flower.rst:74
 #, fuzzy
 msgid "Install via Docker"
 msgstr "安装Flower"
 
-#: ../../source/how-to-install-flower.rst:77
+#: ../../source/how-to-install-flower.rst:76
 #, fuzzy
 msgid ":doc:`Run Flower using Docker <docker/index>`"
 msgstr ""
 "`TensorFlow快速入门 (教程) <https://flower.ai/docs/framework/tutorial-"
 "quickstart-tensorflow.html>`_"
 
-#: ../../source/how-to-install-flower.rst:80
+#: ../../source/how-to-install-flower.rst:79
 msgid "Install pre-release"
 msgstr "安装预发布版本"
 
-#: ../../source/how-to-install-flower.rst:82
+#: ../../source/how-to-install-flower.rst:81
 #, fuzzy
 msgid ""
 "New (possibly unstable) versions of Flower are sometimes available as "
@@ -11007,25 +11005,25 @@ msgid ""
 "release happens:"
 msgstr "在稳定版发布之前，Flower 的新版本（可能是不稳定版）有时会作为预发布版本（alpha、beta、候选发布版本）提供：："
 
-#: ../../source/how-to-install-flower.rst:89
+#: ../../source/how-to-install-flower.rst:88
 #, fuzzy
 msgid ""
 "For simulations that use the Virtual Client Engine, ``flwr`` pre-releases"
 " should be installed with the ``simulation`` extra:"
 msgstr "对于使用虚拟客户端引擎的模拟，`flwr``预发行版应与`simulation``一起安装："
 
-#: ../../source/how-to-install-flower.rst:97
+#: ../../source/how-to-install-flower.rst:96
 msgid "Install nightly release"
 msgstr "安装隔夜版本"
 
-#: ../../source/how-to-install-flower.rst:99
+#: ../../source/how-to-install-flower.rst:98
 #, fuzzy
 msgid ""
 "The latest (potentially unstable) changes in Flower are available as "
 "nightly releases:"
 msgstr "Flower 中最新（可能不稳定）的更改以隔夜发布的形式提供：："
 
-#: ../../source/how-to-install-flower.rst:105
+#: ../../source/how-to-install-flower.rst:104
 #, fuzzy
 msgid ""
 "For simulations that use the Virtual Client Engine, ``flwr-nightly`` "
@@ -11637,7 +11635,7 @@ msgid ""
 " Flower SuperExec (`flower-superexec`)."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-gcp.rst:21
+#: ../../source/how-to-run-flower-on-gcp.rst:15
 #, fuzzy
 msgid "Running Flower on GCP using GKE Architecture"
 msgstr "Flower的架构"
@@ -12172,7 +12170,7 @@ msgid ""
 "Operator from the OperatorHub:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:72
+#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:67
 msgid "Red Hat Service Interconnect Operator"
 msgstr ""
 
@@ -12180,7 +12178,7 @@ msgstr ""
 msgid "Search for Red Hat Service Interconnect Operator on OperatorHub."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:83
+#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:78
 msgid "Install Red Hat Service Interconnect Operator"
 msgstr ""
 
@@ -12503,7 +12501,7 @@ msgid ""
 "``Red Hat OpenShift`` card."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:27
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:22
 msgid "Red Hat OpenShift link in Red Hat Hybrid Cloud Console"
 msgstr ""
 
@@ -12651,7 +12649,7 @@ msgid ""
 "``Deploy with web interface`` card:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:125
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:120
 msgid "Deploy Red Hat OpenShift cluster with web interface"
 msgstr ""
 
@@ -12755,7 +12753,7 @@ msgid ""
 "(``flower-demo-cluster``) to view the cluster details:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:175
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:170
 msgid "Red Hat OpenShift cluster details"
 msgstr ""
 
@@ -12770,7 +12768,7 @@ msgid ""
 "Once logged in, you will be taken to the OpenShift web console:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:186
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:181
 msgid "Red Hat OpenShift web console"
 msgstr ""
 
@@ -12837,7 +12835,7 @@ msgid ""
 "Flower pods in the \"Running\" status as shown in the screenshot below:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:418
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:413
 msgid "Flower SuperLink and SuperNode pods in Red Hat OpenShift"
 msgstr ""
 
@@ -12888,7 +12886,7 @@ msgid ""
 "OpenShift AI`` Operator in the ``Installed Operators`` tab:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:453
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:448
 msgid "Red Hat OpenShift AI Operator in OpenShift"
 msgstr ""
 
@@ -12931,7 +12929,7 @@ msgid ""
 "Clusters`` tab with a green check mark:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:521
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:516
 msgid "View of a successfully created Red Hat OpenShift AI Data Science Cluster"
 msgstr ""
 
@@ -12946,7 +12944,7 @@ msgid ""
 "clicking on the ``Red Hat OpenShift AI`` link:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:532
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:527
 msgid "Launch Red Hat OpenShift AI from OpenShift console"
 msgstr ""
 
@@ -13028,7 +13026,7 @@ msgid ""
 "of workbench images:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:597
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:592
 msgid "Custom OpenShift AI workbench image with Flower"
 msgstr ""
 
@@ -13057,7 +13055,7 @@ msgid ""
 "open it."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:615
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:610
 msgid "Data Science project in Red Hat OpenShift AI"
 msgstr ""
 
@@ -13077,7 +13075,7 @@ msgid ""
 "after a few minutes:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:630
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:625
 msgid "Running workbench in Red Hat OpenShift AI"
 msgstr ""
 
@@ -13103,7 +13101,7 @@ msgid ""
 "``flwr --version`` to check the Flower version:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:647
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:642
 msgid "Verify Flower installation in OpenShift AI workbench"
 msgstr ""
 
@@ -13126,7 +13124,7 @@ msgstr ""
 msgid "And finally, run your Flower app as usual with ``flwr run``:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:671
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:666
 msgid "Running Flower app in OpenShift AI workbench"
 msgstr ""
 
@@ -13141,7 +13139,7 @@ msgid ""
 "then click on the ``Logs``:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:681
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:676
 msgid "SuperLink logs showing connected SuperNodes and running Flower app"
 msgstr ""
 
@@ -15656,7 +15654,7 @@ msgstr ""
 ":code:`DifferentialPrivacyServerSideFixedClipping` 和 "
 ":code:`DifferentialPrivacyServerSideAdaptiveClipping` ，用于固定剪辑和自适应剪辑。"
 
-#: ../../source/how-to-use-differential-privacy.rst:-1
+#: ../../source/how-to-use-differential-privacy.rst:74
 #, fuzzy
 msgid "server side clipping"
 msgstr "服务器端逻辑"
@@ -15695,7 +15693,7 @@ msgstr ""
 ":code:`DifferentialPrivacyClientSideFixedClipping` 和 "
 ":code:`DifferentialPrivacyClientSideAdaptiveClipping`。"
 
-#: ../../source/how-to-use-differential-privacy.rst:-1
+#: ../../source/how-to-use-differential-privacy.rst:108
 #, fuzzy
 msgid "client side clipping"
 msgstr "客户端逻辑"
@@ -15732,7 +15730,7 @@ msgstr ""
 "要利用本地差分隐私（DP）并在将客户端模型参数传输到 Flower 服务器之前为其添加噪声，可以使用 "
 "`LocalDpMod`。需要设置以下超参数：剪切规范值、灵敏度、ε 和 delta。"
 
-#: ../../source/how-to-use-differential-privacy.rst:-1
+#: ../../source/how-to-use-differential-privacy.rst:151
 #, fuzzy
 msgid "local DP mod"
 msgstr "本地 DP 模式"
@@ -16200,16 +16198,6 @@ msgstr "工作流程"
 msgid "``'default'``"
 msgstr "工作流程"
 
-#: ../../flwr federation list:1 supernode
-#, fuzzy
-msgid "Enable verbose output"
-msgstr "项目实例"
-
-#: ../../flwr federation list:1 run:1 supernode
-#, fuzzy
-msgid "``False``"
-msgstr "``FLWR_VERSION``"
-
 #: ../../source/ref-api-cli.rst
 #, fuzzy
 msgid "Arguments"
@@ -16293,10 +16281,11 @@ msgid "**Run ID:** Unique identifier for the run."
 msgstr "当前运行的标识符。"
 
 #: ../../flwr list:1
-#, python-brace-format
-msgid ""
-"**FAB:** Name of the FAB associated with the run (``{FAB_ID} "
-"(v{FAB_VERSION})``)."
+msgid "**Federation:** The federation to which the run belongs."
+msgstr ""
+
+#: ../../flwr list:1
+msgid "**App:** The App associated with the run (``<APP_ID>==<APP_VERSION>``)."
 msgstr ""
 
 #: ../../flwr list:1
@@ -16311,17 +16300,8 @@ msgstr ""
 
 #: ../../flwr list:1
 #, fuzzy
-msgid "**Created At:** Timestamp when the run was created."
+msgid "**Status Changed @:** Timestamp of the most recent status change."
 msgstr "创建信息时的 Unix 时间戳。"
-
-#: ../../flwr list:1
-#, fuzzy
-msgid "**Running At:** Timestamp when the run started running."
-msgstr "创建信息时的 Unix 时间戳。"
-
-#: ../../flwr list:1
-msgid "**Finished At:** Timestamp when the run finished."
-msgstr ""
 
 #: ../../flwr list:1
 msgid ""
@@ -16354,6 +16334,11 @@ msgstr ""
 #: ../../flwr list:1
 msgid "List all runs"
 msgstr ""
+
+#: ../../flwr list:1 run:1 supernode
+#, fuzzy
+msgid "``False``"
+msgstr "``FLWR_VERSION``"
 
 #: ../../flwr list:1
 msgid "Specific run ID to display"
@@ -16494,6 +16479,11 @@ msgstr "加入 Flower 社区"
 #, fuzzy
 msgid "Manage SuperNodes"
 msgstr "验证超级节点"
+
+#: ../../flwr list:1 supernode
+#, fuzzy
+msgid "Enable verbose output"
+msgstr "项目实例"
 
 #: ../../flwr register:1 supernode
 #, fuzzy
@@ -33822,50 +33812,53 @@ msgid ""
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:2
-msgid "[304] SUPERNODE_TRUST_ENTITY_REQUIRED"
+msgid "[304] SUPERNODE_INVALID_TRUSTED_ENTITIES"
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:7
 msgid ""
-"This error occurs when entity verification is enabled using the "
-"``--enable-entities-verification`` flag, but no trusted entities have "
-"been provided. The SuperNode should be restarted with a valid list of "
-"trusted entities."
+"This error occurs when an invalid YAML file for trusted entities is "
+"provided via the ``--trusted-entities`` option. The SuperNode must be "
+"restarted with a valid trusted entities list."
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:14
-msgid "To fix this issue, you can either:"
+msgid "To resolve this issue, you can do one of the following:"
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:16
 msgid ""
-"Provide a trusted entities list with ``--trust-entities`` when launching "
-"the SuperNode. Supply a YAML file (for example, ``--trust-entities "
-"./pks.yaml``) containing the trusted entities’ public key IDs and their "
-"corresponding public keys."
+"**Provide a valid trusted entities list** using the ``--trusted-"
+"entities`` option when launching the SuperNode. Supply a YAML file (for "
+"example, ``--trusted-entities ./pks.yaml``) that contains the trusted "
+"entities’ public key IDs and their corresponding public keys."
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:20
+#: ../../source/ref-exit-codes/304.rst:21
 msgid ""
-"The public keys must be in **OpenSSH format**, and currently only the "
-"**ssh-ed25519** key type is supported."
+"Public keys must be in **OpenSSH format**, and currently only the **ssh-"
+"ed25519** key type is supported."
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:22
+#: ../../source/ref-exit-codes/304.rst:23
 msgid ""
 "Public key IDs must follow the format ``fpk_<UUID>``, where ``fpk`` "
 "stands for Flower Public Key."
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:24
+#: ../../source/ref-exit-codes/304.rst:25
 msgid "The YAML file should follow this structure:"
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:31
+#: ../../source/ref-exit-codes/304.rst:32
+msgid "\\*Comments are optional."
+msgstr ""
+
+#: ../../source/ref-exit-codes/304.rst:34
 msgid ""
-"Disable entity verification. Remove the ``--enable-entities-"
-"verification`` flag when starting the SuperNode to run without entity "
-"verification."
+"**Disable entity verification** by removing the ``--trusted-entities`` "
+"option when starting the SuperNode. This allows the SuperNode to run "
+"without entity verification."
 msgstr ""
 
 #: ../../source/ref-exit-codes/400.rst:2
@@ -33946,7 +33939,7 @@ msgid ""
 "URL, IPv4, or IPv6 address."
 msgstr ""
 
-#: ../../source/ref-exit-codes/600.rst:15
+#: ../../source/ref-exit-codes/600.rst:13
 msgid "Verify that the address is correctly formatted as one of the following:"
 msgstr ""
 
@@ -34090,7 +34083,7 @@ msgid ""
 "blockchain environment is available here:"
 msgstr "当然可以。有关在区块链环境中使用 Flower 的可用示例列表，请点击此处："
 
-#: ../../source/ref-faq.rst:30
+#: ../../source/ref-faq.rst:29
 msgid "`FLock: A Decentralised AI Training Platform <https://www.flock.io/#/>`_."
 msgstr ""
 
@@ -63383,4 +63376,55 @@ msgstr ""
 
 #~ msgid "start\\_simulation"
 #~ msgstr "start_simulation"
+
+#~ msgid ""
+#~ "**FAB:** Name of the FAB associated "
+#~ "with the run (``{FAB_ID} (v{FAB_VERSION})``)."
+#~ msgstr ""
+
+#~ msgid "**Created At:** Timestamp when the run was created."
+#~ msgstr "创建信息时的 Unix 时间戳。"
+
+#~ msgid "**Finished At:** Timestamp when the run finished."
+#~ msgstr ""
+
+#~ msgid "[304] SUPERNODE_TRUST_ENTITY_REQUIRED"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This error occurs when entity "
+#~ "verification is enabled using the "
+#~ "``--enable-entities-verification`` flag, but "
+#~ "no trusted entities have been provided."
+#~ " The SuperNode should be restarted "
+#~ "with a valid list of trusted "
+#~ "entities."
+#~ msgstr ""
+
+#~ msgid "To fix this issue, you can either:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Provide a trusted entities list with "
+#~ "``--trust-entities`` when launching the "
+#~ "SuperNode. Supply a YAML file (for "
+#~ "example, ``--trust-entities ./pks.yaml``) "
+#~ "containing the trusted entities’ public "
+#~ "key IDs and their corresponding public"
+#~ " keys."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The public keys must be in "
+#~ "**OpenSSH format**, and currently only "
+#~ "the **ssh-ed25519** key type is "
+#~ "supported."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Disable entity verification. Remove the "
+#~ "``--enable-entities-verification`` flag when "
+#~ "starting the SuperNode to run without"
+#~ " entity verification."
+#~ msgstr ""
 

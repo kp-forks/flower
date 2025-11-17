@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flower main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-13 00:08+0000\n"
+"POT-Creation-Date: 2025-11-17 23:46+0000\n"
 "PO-Revision-Date: 2024-08-23 13:09+0000\n"
 "Last-Translator: Seulki Yun <icstuckyi@gmail.com>\n"
 "Language: ko\n"
@@ -1248,12 +1248,10 @@ msgstr "Python 버전"
 
 #: ../../source/contributor-how-to-set-up-a-virtual-env.rst:12
 #: ../../source/how-to-install-flower.rst:11
-msgid ""
-"Flower requires at least `Python 3.10 <https://docs.python.org/3.10/>`_."
-msgstr ""
-"Flower는 `Python 3.10 <https://docs.python.org/3.10/>`_이상이 필요하지만."
+msgid "Flower requires at least `Python 3.10 <https://docs.python.org/3.10/>`_."
+msgstr "Flower는 `Python 3.10 <https://docs.python.org/3.10/>`_이상이 필요하지만."
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:17
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:16
 msgid ""
 "Due to a known incompatibility with `ray "
 "<https://docs.ray.io/en/latest/>`_, we currently recommend utilizing at "
@@ -1264,11 +1262,11 @@ msgstr ""
 " 시뮬레이션을 실행할 때는 최대 `Python 3.11 <https://docs.python.org/3.11/>`_을 사용하는 것이"
 " 좋습니다."
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:22
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:21
 msgid "Virtualenv with Pyenv/Virtualenv"
 msgstr "Pyenv/Virtualenv를 사용한 가상 환경"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:24
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:23
 msgid ""
 "One of the recommended virtual environment is `pyenv "
 "<https://github.com/pyenv/pyenv>`_/`virtualenv <https://github.com/pyenv"
@@ -1279,7 +1277,7 @@ msgstr ""
 "<https://github.com/pyenv/pyenv-virtualenv>`_입니다. 자세한 내용은 `Flower "
 "examples <https://github.com/adap/flower/tree/main/examples/>`_를 참조하세요."
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:29
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:28
 msgid ""
 "Once Pyenv is set up, you can use it to install `Python Version 3.10 "
 "<https://docs.python.org/3.10/>`_ or above:"
@@ -1287,19 +1285,19 @@ msgstr ""
 "Pyenv가 설정되면 이를 사용하여 'Python 버전 3.10 <https://docs.python.org/3.10/>`_ "
 "이상'을 설치할 수 있습니다:"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:36
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:35
 msgid "Create the virtualenv with:"
 msgstr "가상 환경을 만듭니다:"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:42
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:41
 msgid "Activate the virtualenv by running the following command:"
 msgstr "다음 명령을 실행하여 가상 환경을 활성화합니다:"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:49
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:48
 msgid "Virtualenv with Poetry"
 msgstr "Poetry를 사용한 가상 환경"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:51
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:50
 msgid ""
 "The Flower examples are based on `Poetry <https://python-"
 "poetry.org/docs/>`_ to manage dependencies. After installing Poetry you "
@@ -1308,17 +1306,17 @@ msgstr ""
 "Flower examples은 의존성을 관리하기 위해 `Poetry <https://python-"
 "poetry.org/docs/>`_를 기반으로 합니다. Poetry를 설치한 후 가상 환경을 생성하기만 하면 됩니다:"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:58
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:57
 msgid ""
 "If you open a new terminal you can activate the previously created "
 "virtual environment with the following command:"
 msgstr "새 터미널을 열면 다음 명령을 사용하여 이전에 생성한 가상 환경을 활성화할 수 있습니다:"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:66
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:65
 msgid "Virtualenv with Anaconda"
 msgstr "Anaconda를 사용한 가상 환경"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:68
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:67
 #, fuzzy
 msgid ""
 "If you prefer to use Anaconda for your virtual environment then install "
@@ -1331,7 +1329,7 @@ msgstr ""
 "guide/install/index.html>`_ 패키지를 설치 및 설정하세요. 설정 후 다음을 사용하여 가상 환경을 만들 수 "
 "있습니다:"
 
-#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:76
+#: ../../source/contributor-how-to-set-up-a-virtual-env.rst:75
 msgid "and activate the virtual environment with:"
 msgstr "그 후 가상 환경을 활성화합니다:"
 
@@ -1584,7 +1582,7 @@ msgstr ""
 msgid "Setting up the repository"
 msgstr "레포지토리 설정하기"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:29
+#: ../../source/contributor-tutorial-contribute-on-github.rst:14
 msgid "**Create a GitHub account and setup Git**"
 msgstr "**GitHub 계정을 만들고 Git을 설정합니다**"
 
@@ -1625,7 +1623,7 @@ msgstr ""
 "일반적인 Git 및 GitHub 워크플로우의 기본 개념은 다음과 같이 요약됩니다. GitHub의 원격 레포지토리에서 코드를 "
 "다운로드하고 로컬에서 변경한 후 Git을 사용하여 추적한 다음 새 기록을 다시 GitHub에 업로드하는 것입니다."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:42
+#: ../../source/contributor-tutorial-contribute-on-github.rst:31
 msgid "**Forking the Flower repository**"
 msgstr "**Flower 레포지토리 포크하기**"
 
@@ -1651,7 +1649,7 @@ msgstr ""
 "원하는 경우 이름을 변경할 수 있지만, 이 버전의 Flower는 자신의 계정(즉, 자신의 리포지토리 목록)에 위치하게 되므로 변경할"
 " 필요는 없습니다. 만들기가 완료되면 왼쪽 상단에Flower 버전이 표시되는 것을 볼 수 있습니다."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:59
+#: ../../source/contributor-tutorial-contribute-on-github.rst:44
 msgid "**Cloning your forked repository**"
 msgstr "**포크된 레포지토리 클론하기**"
 
@@ -1677,7 +1675,7 @@ msgid ""
 "it) folder in the current working directory."
 msgstr "현재 작업 디렉터리에``flower/``(또는 포크 이름을 변경한 경우 포크 이름) 폴더가 생성됩니다."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:78
+#: ../../source/contributor-tutorial-contribute-on-github.rst:61
 msgid "**Add origin**"
 msgstr "**origin 추가**"
 
@@ -1701,7 +1699,7 @@ msgid ""
 "terminal:"
 msgstr "\\<URL\\> 이 복사되면 터미널에 다음 명령을 입력하면 됩니다:"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:102
+#: ../../source/contributor-tutorial-contribute-on-github.rst:80
 msgid "**Add upstream**"
 msgstr "**Upstream 추가하기**"
 
@@ -1762,7 +1760,7 @@ msgstr "변경하기 전에 레포지토리를 최신 상태로 유지하세요:
 msgid "And with Flower's repository:"
 msgstr "Flower의 레포지토리도 있습니다:"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:134
+#: ../../source/contributor-tutorial-contribute-on-github.rst:127
 msgid "**Create a new branch**"
 msgstr "**새 브랜치 만들기**"
 
@@ -1787,7 +1785,7 @@ msgstr "**변경하기**"
 msgid "Write great code and create wonderful changes using your favorite editor!"
 msgstr "선호하는 편집기를 사용하여 멋진 코드를 작성하고 훌륭한 변화를 만들어 보세요!"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:147
+#: ../../source/contributor-tutorial-contribute-on-github.rst:138
 msgid "**Test and format your code**"
 msgstr "**코드 테스트 및 서식 지정**"
 
@@ -1804,7 +1802,7 @@ msgstr ""
 msgid "To do so, we have written a few scripts that you can execute:"
 msgstr "이를 위해 실행할 수 있는 몇 가지 스크립트를 작성했습니다:"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:160
+#: ../../source/contributor-tutorial-contribute-on-github.rst:149
 msgid "**Stage changes**"
 msgstr "**변경사항 스테이징**"
 
@@ -1828,7 +1826,7 @@ msgstr ""
 "마지막 버전(마지막 커밋)과 비교하여 수정된 파일을 확인하고 커밋을 위해 스테이징된 파일을 확인하려면 :code:`git "
 "status` 명령을 사용하면 됩니다."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:171
+#: ../../source/contributor-tutorial-contribute-on-github.rst:162
 msgid "**Commit changes**"
 msgstr "**변경사항 커밋**"
 
@@ -1849,7 +1847,7 @@ msgstr ""
 "커밋의 내용을 다른 사람에게 설명하기 위해 \\<commit_message\\>가 있습니다. 명령형 스타일로 작성해야 하며 간결해야"
 " 합니다. 예를 들면 :code:`git commit -m \"Add images to README\"`."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:183
+#: ../../source/contributor-tutorial-contribute-on-github.rst:173
 msgid "**Push the changes to the fork**"
 msgstr "**변경 사항을 포크에 푸시**"
 
@@ -1872,7 +1870,7 @@ msgstr "이 작업이 완료되면 변경한 내용으로 포크된 레포지토
 msgid "Creating and merging a pull request (PR)"
 msgstr "pull request(PR) 만들기 및 병합하기"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:224
+#: ../../source/contributor-tutorial-contribute-on-github.rst:188
 msgid "**Create the PR**"
 msgstr "**PR 만들기**"
 
@@ -1943,7 +1941,7 @@ msgid ""
 "anyone, you have the option to create a draft pull request:"
 msgstr "PR이 아직 검토할 준비가 되지 않았고 다른 사람에게 알리고 싶지 않은 경우 pull request 초안을 만드는 옵션이 있습니다:"
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:228
+#: ../../source/contributor-tutorial-contribute-on-github.rst:226
 msgid "**Making new changes**"
 msgstr "**new changes 만들기**"
 
@@ -1954,7 +1952,7 @@ msgid ""
 " associated with the PR."
 msgstr "PR이 초안으로 열렸든 아니든, PR과 연결된 브랜치를 변경하여 이전과 같은 방식으로 새 커밋을 푸시할 수 있습니다."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:251
+#: ../../source/contributor-tutorial-contribute-on-github.rst:230
 msgid "**Review the PR**"
 msgstr "**PR 검토하기**"
 
@@ -1990,7 +1988,7 @@ msgid ""
 "review."
 msgstr "모든 대화가 해결되면 검토를 다시 요청할 수 있습니다."
 
-#: ../../source/contributor-tutorial-contribute-on-github.rst:272
+#: ../../source/contributor-tutorial-contribute-on-github.rst:253
 msgid "**Once the PR is merged**"
 msgstr "**PR이 병합되면**"
 
@@ -4658,7 +4656,7 @@ msgstr ""
 "평균 소득 계산과 같은 모든 분석(M)이 두 데이터 세트에 대해 거의 동일한 결과를 산출하도록 보장합니다(O와 O' 는 비슷할 "
 "것입니다). 이렇게 하면 그룹 패턴은 보존하면서 개별 세부 정보는 가려져 개인의 정보가 군중 속에 숨겨집니다."
 
-#: ../../source/explanation-differential-privacy.rst:-1
+#: ../../source/explanation-differential-privacy.rst:26
 msgid "DP Intro"
 msgstr "DP 소개"
 
@@ -4797,8 +4795,8 @@ msgstr ""
 "**로컬 차등 프라이버시**: DP는 정보를 서버로 보내기 전에 클라이언트 측에서 적용되며, 서버로 전송되는 업데이트가 클라이언트 "
 "데이터에 대한 정보를 유출하는 것을 방지하는 것이 목표입니다."
 
-#: ../../source/explanation-differential-privacy.rst:-1
 #: ../../source/explanation-differential-privacy.rst:97
+#: ../../source/explanation-differential-privacy.rst:103
 #: ../../source/how-to-use-differential-privacy.rst:51
 msgid "Central Differential Privacy"
 msgstr "중앙 차등 프라이버시"
@@ -4833,7 +4831,7 @@ msgstr ""
 "개인정보 보호에 중요하고 견고성에 도움이 되는 경우가 많습니다. 이를 달성하기 위한 일반적인 접근 방식은 클라이언트 모델 업데이트의"
 " `L2` 규범을 제한하여 더 큰 업데이트가 규범 `S`에 맞도록 축소되도록 하는 것입니다."
 
-#: ../../source/explanation-differential-privacy.rst:-1
+#: ../../source/explanation-differential-privacy.rst:119
 msgid "clipping"
 msgstr "클리핑"
 
@@ -4885,8 +4883,8 @@ msgid ""
 "others."
 msgstr "고정 클리핑과 조정 클리핑 중 선택은 개인정보 보호 요구 사항, 데이터 배포, 모델 복잡성 등 다양한 요인에 따라 달라집니다."
 
-#: ../../source/explanation-differential-privacy.rst:-1
 #: ../../source/explanation-differential-privacy.rst:145
+#: ../../source/explanation-differential-privacy.rst:151
 #: ../../source/how-to-use-differential-privacy.rst:144
 msgid "Local Differential Privacy"
 msgstr "로컬 차등 프라이버시"
@@ -5168,12 +5166,12 @@ msgstr ""
 msgid "This is sometimes called a hub-and-spoke topology:"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:19
 #, fuzzy
 msgid "Hub-and-spoke topology in federated learning"
 msgstr "연합 학습이란 무엇입니까?"
 
-#: ../../source/explanation-flower-architecture.rst:29
+#: ../../source/explanation-flower-architecture.rst:24
 #, fuzzy
 msgid "Hub-and-spoke topology in federated learning (dark theme)"
 msgstr "연합 학습이란 무엇입니까?"
@@ -5268,12 +5266,12 @@ msgid ""
 "*missing link* among all those SuperNodes."
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:70
 #, fuzzy
 msgid "Basic Flower architecture"
 msgstr "Flower 아키텍처"
 
-#: ../../source/explanation-flower-architecture.rst:80
+#: ../../source/explanation-flower-architecture.rst:75
 #, fuzzy
 msgid "Basic Flower architecture (dark theme)"
 msgstr "Flower 아키텍처"
@@ -5310,12 +5308,12 @@ msgid ""
 "SuperNodes."
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:98
 #, fuzzy
 msgid "Multi-run federated learning architecture"
 msgstr "연합 학습"
 
-#: ../../source/explanation-flower-architecture.rst:108
+#: ../../source/explanation-flower-architecture.rst:103
 #, fuzzy
 msgid "Multi-run federated learning architecture (dark theme)"
 msgstr "연합 학습"
@@ -5339,11 +5337,11 @@ msgid ""
 "their corresponding ``ClientApp``\\s:"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:118
 msgid "Multi-tenancy federated learning architecture - Run 1"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:128
+#: ../../source/explanation-flower-architecture.rst:123
 #, fuzzy
 msgid "Multi-tenancy federated learning architecture - Run 1 (dark theme)"
 msgstr "연합 학습"
@@ -5360,11 +5358,11 @@ msgid ""
 "selected to participate in the training:"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:-1
+#: ../../source/explanation-flower-architecture.rst:134
 msgid "Multi-tenancy federated learning architecture - Run 2"
 msgstr ""
 
-#: ../../source/explanation-flower-architecture.rst:144
+#: ../../source/explanation-flower-architecture.rst:139
 #, fuzzy
 msgid "Multi-tenancy federated learning architecture - Run 2 (dark theme)"
 msgstr "연합 학습"
@@ -10895,58 +10893,58 @@ msgstr "Flower 설치"
 msgid "Python version"
 msgstr "Python 버전"
 
-#: ../../source/how-to-install-flower.rst:15
+#: ../../source/how-to-install-flower.rst:14
 msgid "Install stable release"
 msgstr "안정적인 릴리즈 설치"
 
-#: ../../source/how-to-install-flower.rst:18
+#: ../../source/how-to-install-flower.rst:17
 msgid "Using pip"
 msgstr "pip 사용"
 
-#: ../../source/how-to-install-flower.rst:20
+#: ../../source/how-to-install-flower.rst:19
 #, fuzzy
 msgid "Stable releases are available on `PyPI <https://pypi.org/project/flwr/>`_:"
 msgstr "안정적인 릴리즈는 `PyPI <https://pypi.org/project/flwr/>`_:: 에서 확인할 수 있습니다::"
 
-#: ../../source/how-to-install-flower.rst:26
+#: ../../source/how-to-install-flower.rst:25
 #, fuzzy
 msgid ""
 "For simulations that use the Virtual Client Engine, ``flwr`` should be "
 "installed with the ``simulation`` extra:"
 msgstr "가상 클라이언트 엔진을 사용하는 시뮬레이션의 경우 ``flwr``을 ``simulation``extra와 함께 설치해야 합니다:"
 
-#: ../../source/how-to-install-flower.rst:34
+#: ../../source/how-to-install-flower.rst:33
 msgid "Using conda (or mamba)"
 msgstr "conda(또는 mamba) 사용"
 
-#: ../../source/how-to-install-flower.rst:36
+#: ../../source/how-to-install-flower.rst:35
 msgid "Flower can also be installed from the ``conda-forge`` channel."
 msgstr "Flower은 'conda-forge' 채널에서도 설치할 수 있습니다."
 
-#: ../../source/how-to-install-flower.rst:38
+#: ../../source/how-to-install-flower.rst:37
 #, fuzzy
 msgid ""
 "If you have not added ``conda-forge`` to your channels, you will first "
 "need to run the following:"
 msgstr "채널에 'conda-forge'를 추가하지 않은 경우 먼저 다음을 실행해야 합니다:"
 
-#: ../../source/how-to-install-flower.rst:46
+#: ../../source/how-to-install-flower.rst:45
 #, fuzzy
 msgid ""
 "Once the ``conda-forge`` channel has been enabled, ``flwr`` can be "
 "installed with ``conda``:"
 msgstr "conda-forge`` 채널이 활성화되면 ``flwr``을 ``conda``로 설치할 수 있습니다::"
 
-#: ../../source/how-to-install-flower.rst:53
+#: ../../source/how-to-install-flower.rst:52
 #, fuzzy
 msgid "or with ``mamba``:"
 msgstr "또는 ``mamba``::"
 
-#: ../../source/how-to-install-flower.rst:60
+#: ../../source/how-to-install-flower.rst:59
 msgid "Verify installation"
 msgstr "설치 확인"
 
-#: ../../source/how-to-install-flower.rst:62
+#: ../../source/how-to-install-flower.rst:61
 #, fuzzy
 msgid ""
 "The following command can be used to verify if Flower was successfully "
@@ -10956,24 +10954,24 @@ msgstr ""
 "다음 명령을 사용하여 Flower가 성공적으로 설치되었는지 확인할 수 있습니다. 모든 것이 정상적으로 작동하면 명령줄에 "
 "Flower의 버전이 출력됩니다:"
 
-#: ../../source/how-to-install-flower.rst:72
+#: ../../source/how-to-install-flower.rst:71
 msgid "Advanced installation options"
 msgstr "고급 설치 옵션"
 
-#: ../../source/how-to-install-flower.rst:75
+#: ../../source/how-to-install-flower.rst:74
 msgid "Install via Docker"
 msgstr "Docker를 통해 설치"
 
-#: ../../source/how-to-install-flower.rst:77
+#: ../../source/how-to-install-flower.rst:76
 #, fuzzy
 msgid ":doc:`Run Flower using Docker <docker/index>`"
 msgstr ":doc:`Docker를 사용하여 Flower를 실행하는 방법 <how-to-run-flower-using-docker>`"
 
-#: ../../source/how-to-install-flower.rst:80
+#: ../../source/how-to-install-flower.rst:79
 msgid "Install pre-release"
 msgstr "사전 릴리즈 설치"
 
-#: ../../source/how-to-install-flower.rst:82
+#: ../../source/how-to-install-flower.rst:81
 #, fuzzy
 msgid ""
 "New (possibly unstable) versions of Flower are sometimes available as "
@@ -10983,7 +10981,7 @@ msgstr ""
 "새(불안정할 수 있는) 버전의 Flower는 안정 버전이 출시되기 전에 사전 릴리즈 버전(알파, 베타, 릴리즈 후보)으로 제공되는 "
 "경우가 있습니다:"
 
-#: ../../source/how-to-install-flower.rst:89
+#: ../../source/how-to-install-flower.rst:88
 #, fuzzy
 msgid ""
 "For simulations that use the Virtual Client Engine, ``flwr`` pre-releases"
@@ -10992,18 +10990,18 @@ msgstr ""
 "가상 클라이언트 엔진을 사용하는 시뮬레이션의 경우 ``flwr`` 사전 릴리즈를 ``simulation`` extra와 함께 "
 "설치해야 합니다:"
 
-#: ../../source/how-to-install-flower.rst:97
+#: ../../source/how-to-install-flower.rst:96
 msgid "Install nightly release"
 msgstr "야간 릴리즈 설치"
 
-#: ../../source/how-to-install-flower.rst:99
+#: ../../source/how-to-install-flower.rst:98
 #, fuzzy
 msgid ""
 "The latest (potentially unstable) changes in Flower are available as "
 "nightly releases:"
 msgstr "Flower의 최신 (불안정할 수 있는) 변경 사항은 다음과 같이 야간 릴리즈로 제공됩니다:"
 
-#: ../../source/how-to-install-flower.rst:105
+#: ../../source/how-to-install-flower.rst:104
 #, fuzzy
 msgid ""
 "For simulations that use the Virtual Client Engine, ``flwr-nightly`` "
@@ -11614,7 +11612,7 @@ msgid ""
 " Flower SuperExec (`flower-superexec`)."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-gcp.rst:21
+#: ../../source/how-to-run-flower-on-gcp.rst:15
 #, fuzzy
 msgid "Running Flower on GCP using GKE Architecture"
 msgstr "Flower 아키텍처"
@@ -12146,7 +12144,7 @@ msgid ""
 "Operator from the OperatorHub:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:72
+#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:67
 msgid "Red Hat Service Interconnect Operator"
 msgstr ""
 
@@ -12154,7 +12152,7 @@ msgstr ""
 msgid "Search for Red Hat Service Interconnect Operator on OperatorHub."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:83
+#: ../../source/how-to-run-flower-on-multiple-openshift-clusters.rst:78
 msgid "Install Red Hat Service Interconnect Operator"
 msgstr ""
 
@@ -12473,7 +12471,7 @@ msgid ""
 "``Red Hat OpenShift`` card."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:27
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:22
 msgid "Red Hat OpenShift link in Red Hat Hybrid Cloud Console"
 msgstr ""
 
@@ -12621,7 +12619,7 @@ msgid ""
 "``Deploy with web interface`` card:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:125
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:120
 msgid "Deploy Red Hat OpenShift cluster with web interface"
 msgstr ""
 
@@ -12725,7 +12723,7 @@ msgid ""
 "(``flower-demo-cluster``) to view the cluster details:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:175
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:170
 msgid "Red Hat OpenShift cluster details"
 msgstr ""
 
@@ -12740,7 +12738,7 @@ msgid ""
 "Once logged in, you will be taken to the OpenShift web console:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:186
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:181
 msgid "Red Hat OpenShift web console"
 msgstr ""
 
@@ -12807,7 +12805,7 @@ msgid ""
 "Flower pods in the \"Running\" status as shown in the screenshot below:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:418
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:413
 msgid "Flower SuperLink and SuperNode pods in Red Hat OpenShift"
 msgstr ""
 
@@ -12858,7 +12856,7 @@ msgid ""
 "OpenShift AI`` Operator in the ``Installed Operators`` tab:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:453
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:448
 msgid "Red Hat OpenShift AI Operator in OpenShift"
 msgstr ""
 
@@ -12901,7 +12899,7 @@ msgid ""
 "Clusters`` tab with a green check mark:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:521
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:516
 msgid "View of a successfully created Red Hat OpenShift AI Data Science Cluster"
 msgstr ""
 
@@ -12916,7 +12914,7 @@ msgid ""
 "clicking on the ``Red Hat OpenShift AI`` link:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:532
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:527
 msgid "Launch Red Hat OpenShift AI from OpenShift console"
 msgstr ""
 
@@ -12998,7 +12996,7 @@ msgid ""
 "of workbench images:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:597
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:592
 msgid "Custom OpenShift AI workbench image with Flower"
 msgstr ""
 
@@ -13027,7 +13025,7 @@ msgid ""
 "open it."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:615
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:610
 msgid "Data Science project in Red Hat OpenShift AI"
 msgstr ""
 
@@ -13047,7 +13045,7 @@ msgid ""
 "after a few minutes:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:630
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:625
 msgid "Running workbench in Red Hat OpenShift AI"
 msgstr ""
 
@@ -13072,7 +13070,7 @@ msgid ""
 "``flwr --version`` to check the Flower version:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:647
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:642
 msgid "Verify Flower installation in OpenShift AI workbench"
 msgstr ""
 
@@ -13095,7 +13093,7 @@ msgstr ""
 msgid "And finally, run your Flower app as usual with ``flwr run``:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:671
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:666
 msgid "Running Flower app in OpenShift AI workbench"
 msgstr ""
 
@@ -13110,7 +13108,7 @@ msgid ""
 "then click on the ``Logs``:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:681
+#: ../../source/how-to-run-flower-on-red-hat-openshift.rst:676
 msgid "SuperLink logs showing connected SuperNodes and running Flower app"
 msgstr ""
 
@@ -15643,7 +15641,7 @@ msgstr ""
 " 위한 :code:`DifferentialPrivacyServerSideFixedClipping`과 "
 ":code:`DifferentialPrivacyServerSideAdaptiveClipping`입니다."
 
-#: ../../source/how-to-use-differential-privacy.rst:-1
+#: ../../source/how-to-use-differential-privacy.rst:74
 msgid "server side clipping"
 msgstr "서버 측 클리핑"
 
@@ -15682,7 +15680,7 @@ msgstr ""
 " 해당 서버 측 래퍼 :code:`DifferentialPrivacyClientSideFixedClipping` 및 "
 ":code:`DifferentialPrivacyClientSideAdaptiveClipping`이 있습니다."
 
-#: ../../source/how-to-use-differential-privacy.rst:-1
+#: ../../source/how-to-use-differential-privacy.rst:108
 msgid "client side clipping"
 msgstr "클라이언트 측 클리핑"
 
@@ -15719,7 +15717,7 @@ msgstr ""
 "로컬 차분 프라이버시(DP)를 활용하고 클라이언트 모델 파라미터를 서버로 전송하기 전에 노이즈를 추가하려면 `LocalDpMod`를"
 " 사용하면 됩니다. 클리핑 노멀 값, 감도, 엡실론, 델타 등의 하이퍼파라미터를 설정해야 합니다."
 
-#: ../../source/how-to-use-differential-privacy.rst:-1
+#: ../../source/how-to-use-differential-privacy.rst:151
 msgid "local DP mod"
 msgstr "로컬 DP mod"
 
@@ -16187,16 +16185,6 @@ msgstr ""
 msgid "``'default'``"
 msgstr "``flwr/base``"
 
-#: ../../flwr federation list:1 supernode
-#, fuzzy
-msgid "Enable verbose output"
-msgstr "예시"
-
-#: ../../flwr federation list:1 run:1 supernode
-#, fuzzy
-msgid "``False``"
-msgstr "``flwr/base``"
-
 #: ../../source/ref-api-cli.rst
 #, fuzzy
 msgid "Arguments"
@@ -16280,10 +16268,11 @@ msgid "**Run ID:** Unique identifier for the run."
 msgstr "현재 실행에 대한 식별자입니다."
 
 #: ../../flwr list:1
-#, python-brace-format
-msgid ""
-"**FAB:** Name of the FAB associated with the run (``{FAB_ID} "
-"(v{FAB_VERSION})``)."
+msgid "**Federation:** The federation to which the run belongs."
+msgstr ""
+
+#: ../../flwr list:1
+msgid "**App:** The App associated with the run (``<APP_ID>==<APP_VERSION>``)."
 msgstr ""
 
 #: ../../flwr list:1
@@ -16298,17 +16287,8 @@ msgstr ""
 
 #: ../../flwr list:1
 #, fuzzy
-msgid "**Created At:** Timestamp when the run was created."
+msgid "**Status Changed @:** Timestamp of the most recent status change."
 msgstr "메시지가 생성된 때의 Unix timestamp입니다."
-
-#: ../../flwr list:1
-#, fuzzy
-msgid "**Running At:** Timestamp when the run started running."
-msgstr "메시지가 생성된 때의 Unix timestamp입니다."
-
-#: ../../flwr list:1
-msgid "**Finished At:** Timestamp when the run finished."
-msgstr ""
 
 #: ../../flwr list:1
 msgid ""
@@ -16341,6 +16321,11 @@ msgstr ""
 #: ../../flwr list:1
 msgid "List all runs"
 msgstr ""
+
+#: ../../flwr list:1 run:1 supernode
+#, fuzzy
+msgid "``False``"
+msgstr "``flwr/base``"
 
 #: ../../flwr list:1
 msgid "Specific run ID to display"
@@ -16482,6 +16467,11 @@ msgstr "Flower 커뮤니티 가입하기"
 #, fuzzy
 msgid "Manage SuperNodes"
 msgstr "SuperNodes 인증하기"
+
+#: ../../flwr list:1 supernode
+#, fuzzy
+msgid "Enable verbose output"
+msgstr "예시"
 
 #: ../../flwr register:1 supernode
 #, fuzzy
@@ -30845,50 +30835,53 @@ msgid ""
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:2
-msgid "[304] SUPERNODE_TRUST_ENTITY_REQUIRED"
+msgid "[304] SUPERNODE_INVALID_TRUSTED_ENTITIES"
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:7
 msgid ""
-"This error occurs when entity verification is enabled using the "
-"``--enable-entities-verification`` flag, but no trusted entities have "
-"been provided. The SuperNode should be restarted with a valid list of "
-"trusted entities."
+"This error occurs when an invalid YAML file for trusted entities is "
+"provided via the ``--trusted-entities`` option. The SuperNode must be "
+"restarted with a valid trusted entities list."
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:14
-msgid "To fix this issue, you can either:"
+msgid "To resolve this issue, you can do one of the following:"
 msgstr ""
 
 #: ../../source/ref-exit-codes/304.rst:16
 msgid ""
-"Provide a trusted entities list with ``--trust-entities`` when launching "
-"the SuperNode. Supply a YAML file (for example, ``--trust-entities "
-"./pks.yaml``) containing the trusted entities’ public key IDs and their "
-"corresponding public keys."
+"**Provide a valid trusted entities list** using the ``--trusted-"
+"entities`` option when launching the SuperNode. Supply a YAML file (for "
+"example, ``--trusted-entities ./pks.yaml``) that contains the trusted "
+"entities’ public key IDs and their corresponding public keys."
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:20
+#: ../../source/ref-exit-codes/304.rst:21
 msgid ""
-"The public keys must be in **OpenSSH format**, and currently only the "
-"**ssh-ed25519** key type is supported."
+"Public keys must be in **OpenSSH format**, and currently only the **ssh-"
+"ed25519** key type is supported."
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:22
+#: ../../source/ref-exit-codes/304.rst:23
 msgid ""
 "Public key IDs must follow the format ``fpk_<UUID>``, where ``fpk`` "
 "stands for Flower Public Key."
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:24
+#: ../../source/ref-exit-codes/304.rst:25
 msgid "The YAML file should follow this structure:"
 msgstr ""
 
-#: ../../source/ref-exit-codes/304.rst:31
+#: ../../source/ref-exit-codes/304.rst:32
+msgid "\\*Comments are optional."
+msgstr ""
+
+#: ../../source/ref-exit-codes/304.rst:34
 msgid ""
-"Disable entity verification. Remove the ``--enable-entities-"
-"verification`` flag when starting the SuperNode to run without entity "
-"verification."
+"**Disable entity verification** by removing the ``--trusted-entities`` "
+"option when starting the SuperNode. This allows the SuperNode to run "
+"without entity verification."
 msgstr ""
 
 #: ../../source/ref-exit-codes/400.rst:2
@@ -30969,7 +30962,7 @@ msgid ""
 "URL, IPv4, or IPv6 address."
 msgstr ""
 
-#: ../../source/ref-exit-codes/600.rst:15
+#: ../../source/ref-exit-codes/600.rst:13
 msgid "Verify that the address is correctly formatted as one of the following:"
 msgstr ""
 
@@ -31100,7 +31093,7 @@ msgid ""
 "blockchain environment is available here:"
 msgstr ""
 
-#: ../../source/ref-faq.rst:30
+#: ../../source/ref-faq.rst:29
 msgid "`FLock: A Decentralised AI Training Platform <https://www.flock.io/#/>`_."
 msgstr ""
 
@@ -59248,5 +59241,56 @@ msgstr ""
 #~ msgstr "시뮬레이션 실행"
 
 #~ msgid "start\\_simulation"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**FAB:** Name of the FAB associated "
+#~ "with the run (``{FAB_ID} (v{FAB_VERSION})``)."
+#~ msgstr ""
+
+#~ msgid "**Created At:** Timestamp when the run was created."
+#~ msgstr "메시지가 생성된 때의 Unix timestamp입니다."
+
+#~ msgid "**Finished At:** Timestamp when the run finished."
+#~ msgstr ""
+
+#~ msgid "[304] SUPERNODE_TRUST_ENTITY_REQUIRED"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "This error occurs when entity "
+#~ "verification is enabled using the "
+#~ "``--enable-entities-verification`` flag, but "
+#~ "no trusted entities have been provided."
+#~ " The SuperNode should be restarted "
+#~ "with a valid list of trusted "
+#~ "entities."
+#~ msgstr ""
+
+#~ msgid "To fix this issue, you can either:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Provide a trusted entities list with "
+#~ "``--trust-entities`` when launching the "
+#~ "SuperNode. Supply a YAML file (for "
+#~ "example, ``--trust-entities ./pks.yaml``) "
+#~ "containing the trusted entities’ public "
+#~ "key IDs and their corresponding public"
+#~ " keys."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The public keys must be in "
+#~ "**OpenSSH format**, and currently only "
+#~ "the **ssh-ed25519** key type is "
+#~ "supported."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Disable entity verification. Remove the "
+#~ "``--enable-entities-verification`` flag when "
+#~ "starting the SuperNode to run without"
+#~ " entity verification."
 #~ msgstr ""
 
