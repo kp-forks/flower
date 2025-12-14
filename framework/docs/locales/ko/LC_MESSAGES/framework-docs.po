@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Flower main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 00:08+0000\n"
+"POT-Creation-Date: 2025-12-14 01:13+0000\n"
 "PO-Revision-Date: 2024-08-23 13:09+0000\n"
 "Last-Translator: Seulki Yun <icstuckyi@gmail.com>\n"
 "Language: ko\n"
@@ -2654,10 +2654,10 @@ msgstr ""
 #: ../../source/docker/enable-tls.rst:187
 #: ../../source/docker/enable-tls.rst:214
 #: ../../source/docker/enable-tls.rst:239
-#: ../../source/docker/tutorial-quickstart-docker.rst:81
-#: ../../source/docker/tutorial-quickstart-docker.rst:123
-#: ../../source/docker/tutorial-quickstart-docker.rst:239
-#: ../../source/docker/tutorial-quickstart-docker.rst:277
+#: ../../source/docker/tutorial-quickstart-docker.rst:83
+#: ../../source/docker/tutorial-quickstart-docker.rst:125
+#: ../../source/docker/tutorial-quickstart-docker.rst:241
+#: ../../source/docker/tutorial-quickstart-docker.rst:279
 #, fuzzy
 msgid "``docker run``: This tells Docker to run a container from an image."
 msgstr "``docker run``: 새 Docker 컨테이너를 실행하는 명령입니다."
@@ -2667,10 +2667,10 @@ msgstr "``docker run``: 새 Docker 컨테이너를 실행하는 명령입니다.
 #: ../../source/docker/enable-tls.rst:188
 #: ../../source/docker/enable-tls.rst:215
 #: ../../source/docker/enable-tls.rst:240
-#: ../../source/docker/tutorial-quickstart-docker.rst:82
-#: ../../source/docker/tutorial-quickstart-docker.rst:124
-#: ../../source/docker/tutorial-quickstart-docker.rst:240
-#: ../../source/docker/tutorial-quickstart-docker.rst:278
+#: ../../source/docker/tutorial-quickstart-docker.rst:84
+#: ../../source/docker/tutorial-quickstart-docker.rst:126
+#: ../../source/docker/tutorial-quickstart-docker.rst:242
+#: ../../source/docker/tutorial-quickstart-docker.rst:280
 msgid "``--rm``: Remove the container once it is stopped or the command exits."
 msgstr ""
 
@@ -2973,10 +2973,10 @@ msgstr "``pyproject.toml``에 다음 버전 제약 조건을 설정했는지 확
 
 #: ../../source/docker/enable-tls.rst:247
 #: ../../source/docker/run-quickstart-examples-docker-compose.rst:63
-#: ../../source/docker/tutorial-quickstart-docker.rst:310
+#: ../../source/docker/tutorial-quickstart-docker.rst:312
 #: ../../source/how-to-enable-tls-connections.rst:127
 #: ../../source/how-to-manage-flower-federations.rst:69
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:179
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:178
 #: ../../source/how-to-upgrade-to-message-api.rst:132
 #, fuzzy
 msgid "pyproject.toml"
@@ -2991,7 +2991,7 @@ msgstr ""
 
 #: ../../source/docker/enable-tls.rst:259
 #: ../../source/docker/run-quickstart-examples-docker-compose.rst:72
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:188
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:187
 msgid ""
 "You can customize the string that follows ``tool.flwr.federations.`` to "
 "fit your needs. However, please note that the string cannot contain a dot"
@@ -3446,7 +3446,7 @@ msgid ""
 msgstr "다음 명령을 실행하여 가상 환경을 활성화합니다:"
 
 #: ../../source/docker/run-quickstart-examples-docker-compose.rst:75
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:191
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:190
 msgid ""
 "In this example, ``local-deployment`` has been used. Just remember to "
 "replace ``local-deployment`` with your chosen name in both the "
@@ -3685,7 +3685,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/docker/tutorial-deploy-on-multiple-machines.rst:59
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:224
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:223
 msgid "These certificates should be used only for development purposes."
 msgstr ""
 
@@ -3746,7 +3746,7 @@ msgid ""
 msgstr ""
 
 #: ../../source/docker/tutorial-deploy-on-multiple-machines.rst:125
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:176
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:175
 msgid ""
 "For more information, consult the following page: :doc:`persist-"
 "superlink-state`."
@@ -3838,16 +3838,15 @@ msgid ""
 " understanding the basic workflow that uses the minimum configurations."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:40
 #: ../../source/docker/tutorial-quickstart-docker.rst:28
 msgid "Create a new Flower project (PyTorch):"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:50
+#: ../../source/docker/tutorial-quickstart-docker.rst:52
 msgid "Create a new Docker bridge network called ``flwr-network``:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:56
+#: ../../source/docker/tutorial-quickstart-docker.rst:58
 msgid ""
 "User-defined networks, such as ``flwr-network``, enable IP resolution of "
 "container names, a feature absent in the default bridge network. This "
@@ -3855,17 +3854,17 @@ msgid ""
 "first."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:62
+#: ../../source/docker/tutorial-quickstart-docker.rst:64
 #, fuzzy
 msgid "Step 2: Start the SuperLink"
 msgstr "서버(SuperLink)"
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:72
-#: ../../source/docker/tutorial-quickstart-docker.rst:64
+#: ../../source/docker/tutorial-quickstart-docker.rst:66
 msgid "Open your terminal and run:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:83
+#: ../../source/docker/tutorial-quickstart-docker.rst:85
 msgid ""
 "``-p 9091:9091 -p 9092:9092 -p 9093:9093``: Map port ``9091``, ``9092`` "
 "and ``9093`` of the container to the same port of the host machine, "
@@ -3874,29 +3873,29 @@ msgid ""
 " the Control API on ``http://localhost:9093``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:87
-#: ../../source/docker/tutorial-quickstart-docker.rst:128
-#: ../../source/docker/tutorial-quickstart-docker.rst:241
-#: ../../source/docker/tutorial-quickstart-docker.rst:279
-msgid ""
-"``--network flwr-network``: Make the container join the network named "
-"``flwr-network``."
-msgstr ""
-
-#: ../../source/docker/tutorial-quickstart-docker.rst:88
-msgid "``--name superlink``: Assign the name ``superlink`` to the container."
-msgstr ""
-
 #: ../../source/docker/tutorial-quickstart-docker.rst:89
 #: ../../source/docker/tutorial-quickstart-docker.rst:130
 #: ../../source/docker/tutorial-quickstart-docker.rst:243
 #: ../../source/docker/tutorial-quickstart-docker.rst:281
 msgid ""
+"``--network flwr-network``: Make the container join the network named "
+"``flwr-network``."
+msgstr ""
+
+#: ../../source/docker/tutorial-quickstart-docker.rst:90
+msgid "``--name superlink``: Assign the name ``superlink`` to the container."
+msgstr ""
+
+#: ../../source/docker/tutorial-quickstart-docker.rst:91
+#: ../../source/docker/tutorial-quickstart-docker.rst:132
+#: ../../source/docker/tutorial-quickstart-docker.rst:245
+#: ../../source/docker/tutorial-quickstart-docker.rst:283
+msgid ""
 "``--detach``: Run the container in the background, freeing up the "
 "terminal."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:90
+#: ../../source/docker/tutorial-quickstart-docker.rst:92
 msgid ""
 ":substitution-code:`flwr/superlink:|stable_flwr_version|`: The name of "
 "the image to be run and the specific tag of the image. The tag "
@@ -3904,14 +3903,14 @@ msgid ""
 "version <pin-version>` of the image."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:92
-#: ../../source/docker/tutorial-quickstart-docker.rst:133
+#: ../../source/docker/tutorial-quickstart-docker.rst:94
+#: ../../source/docker/tutorial-quickstart-docker.rst:135
 msgid ""
 "``--insecure``: This flag tells the container to operate in an insecure "
 "mode, allowing unencrypted communication."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:94
+#: ../../source/docker/tutorial-quickstart-docker.rst:96
 msgid ""
 "``--isolation process``: Tells the SuperLink that the ServerApp is "
 "executed by separate independent process. The SuperLink does not attempt "
@@ -3919,51 +3918,51 @@ msgid ""
 " :doc:`run-as-subprocess`."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:100
+#: ../../source/docker/tutorial-quickstart-docker.rst:102
 #, fuzzy
 msgid "Step 3: Start the SuperNodes"
 msgstr "서버(SuperLink)"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:102
+#: ../../source/docker/tutorial-quickstart-docker.rst:104
 msgid "Start two SuperNode containers."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:104
+#: ../../source/docker/tutorial-quickstart-docker.rst:106
 msgid "Start the first container:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:125
+#: ../../source/docker/tutorial-quickstart-docker.rst:127
 msgid ""
 "``-p 9094:9094``: Map port ``9094`` of the container to the same port of "
 "the host machine, allowing other services to access the SuperNode API on "
 "``http://localhost:9094``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:129
+#: ../../source/docker/tutorial-quickstart-docker.rst:131
 msgid "``--name supernode-1``: Assign the name ``supernode-1`` to the container."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:131
+#: ../../source/docker/tutorial-quickstart-docker.rst:133
 #, fuzzy
 msgid ""
 ":substitution-code:`flwr/supernode:|stable_flwr_version|`: This is the "
 "name of the image to be run and the specific tag of the image."
 msgstr "``flwr_supernode:0.0.1``: 사용할 Docker 이미지의 태그 이름입니다."
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:135
+#: ../../source/docker/tutorial-quickstart-docker.rst:137
 msgid ""
 "``--superlink superlink:9092``: Connect to the SuperLink's Fleet API at "
 "the address ``superlink:9092``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:137
+#: ../../source/docker/tutorial-quickstart-docker.rst:139
 msgid ""
 "``--node-config \"partition-id=0 num-partitions=2\"``: Set the partition "
 "ID to ``0`` and the number of partitions to ``2`` for the SuperNode "
 "configuration."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:139
+#: ../../source/docker/tutorial-quickstart-docker.rst:141
 msgid ""
 "``--clientappio-api-address 0.0.0.0:9094``: Set the address and port "
 "number that the SuperNode is listening on to communicate with the "
@@ -3972,23 +3971,23 @@ msgid ""
 "next step, we set the second SuperNode container to listen on port 9095)"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:143
+#: ../../source/docker/tutorial-quickstart-docker.rst:145
 msgid ""
 "``--isolation process``: Tells the SuperNode that the ClientApp is "
 "executed by a separate independent process. The SuperNode does not "
 "attempt to execute it."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:146
+#: ../../source/docker/tutorial-quickstart-docker.rst:148
 msgid "Start the second container:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:165
+#: ../../source/docker/tutorial-quickstart-docker.rst:167
 #, fuzzy
 msgid "Step 4: Start the SuperExec to execute ServerApps"
 msgstr "서버(SuperLink)"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:167
+#: ../../source/docker/tutorial-quickstart-docker.rst:169
 msgid ""
 "The **SuperExec** Docker image comes with a pre-installed version of "
 "Flower and serves as a base for building your own image. Use a **single**"
@@ -3997,19 +3996,19 @@ msgid ""
 "corresponding processes on demand."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:172
+#: ../../source/docker/tutorial-quickstart-docker.rst:174
 msgid ""
 "When using SuperExec with the *serverapp* plugin, pass ``--appio-api-"
 "address`` pointing to the SuperLink's **ServerAppIO API** endpoint."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:175
+#: ../../source/docker/tutorial-quickstart-docker.rst:177
 msgid ""
 "Create a Dockerfile called ``superexec.Dockerfile`` and paste the "
 "following:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:177
+#: ../../source/docker/tutorial-quickstart-docker.rst:179
 #: ../../source/how-to-run-flower-on-gcp.rst
 #, fuzzy
 msgid "superexec.Dockerfile"
@@ -4020,7 +4019,7 @@ msgstr "SuperNode Dockerfile 만들기"
 msgid "Understand the Dockerfile"
 msgstr "SuperNode Dockerfile 만들기"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:193
+#: ../../source/docker/tutorial-quickstart-docker.rst:195
 #, fuzzy
 msgid ""
 ":substitution-code:`FROM flwr/superexec:|stable_flwr_version|`: This line"
@@ -4029,46 +4028,46 @@ msgid ""
 "code:`|stable_flwr_version|`."
 msgstr "다음 명령은 ``superlink:1.8.0`` 태그가 참조하는 현재 이미지 해시를 반환합니다:"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:195
+#: ../../source/docker/tutorial-quickstart-docker.rst:197
 msgid ""
 "``WORKDIR /app``: Set the working directory for the container to "
 "``/app``. Any subsequent commands that reference a directory will be "
 "relative to this directory."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:197
+#: ../../source/docker/tutorial-quickstart-docker.rst:199
 msgid ""
 "``COPY pyproject.toml .``: Copy the ``pyproject.toml`` file. from the "
 "current working directory into the container's ``/app`` directory."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:199
+#: ../../source/docker/tutorial-quickstart-docker.rst:201
 msgid ""
 "``RUN sed -i 's/.*flwr\\[simulation\\].*//' pyproject.toml``: Remove the "
 "``flwr`` dependency from the ``pyproject.toml``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:201
+#: ../../source/docker/tutorial-quickstart-docker.rst:203
 msgid ""
 "``python -m pip install -U --no-cache-dir .``: Run the ``pip`` install "
 "command to install the dependencies defined in the ``pyproject.toml`` "
 "file."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:204
+#: ../../source/docker/tutorial-quickstart-docker.rst:206
 msgid ""
 "The ``-U`` flag indicates that any existing packages should be upgraded, "
 "and ``--no-cache-dir`` prevents pip from using the cache to speed up the "
 "installation."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:206
+#: ../../source/docker/tutorial-quickstart-docker.rst:208
 msgid ""
 "``ENTRYPOINT [\"flower-superexec\"]``: Set the command ``flower-"
 "superexec`` to be the default command run when the container is started."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:211
+#: ../../source/docker/tutorial-quickstart-docker.rst:213
 msgid ""
 "Note that `flwr <https://pypi.org/project/flwr/>`__ is already installed "
 "in the ``flwr/superexec`` base image, so only other package dependencies "
@@ -4077,174 +4076,174 @@ msgid ""
 "after it has been copied into the Docker image (see line 5)."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:217
+#: ../../source/docker/tutorial-quickstart-docker.rst:219
 msgid ""
 "Afterward, in the directory that holds the Dockerfile, execute this "
 "Docker command to build the SuperExec image:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:224
+#: ../../source/docker/tutorial-quickstart-docker.rst:226
 #, fuzzy
 msgid "Start the **SuperExec for ServerApps** container:"
 msgstr "현재 클라이언트 속성입니다."
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:242
+#: ../../source/docker/tutorial-quickstart-docker.rst:244
 msgid "``--name superexec-serverapp``: Give the container a descriptive name."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:244
-#: ../../source/docker/tutorial-quickstart-docker.rst:282
+#: ../../source/docker/tutorial-quickstart-docker.rst:246
+#: ../../source/docker/tutorial-quickstart-docker.rst:284
 #, fuzzy
 msgid ""
 "``flwr_superexec:0.0.1``: This is the name of the image to be run and the"
 " specific tag of the image."
 msgstr "``flwr_supernode:0.0.1``: 사용할 Docker 이미지의 태그 이름입니다."
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:246
-#: ../../source/docker/tutorial-quickstart-docker.rst:284
+#: ../../source/docker/tutorial-quickstart-docker.rst:248
+#: ../../source/docker/tutorial-quickstart-docker.rst:286
 msgid ""
 "``--insecure``: This flag tells the container to operate in an insecure "
 "mode, allowing unencrypted communication. Secure connections will be "
 "added in future releases."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:248
+#: ../../source/docker/tutorial-quickstart-docker.rst:250
 msgid ""
 "``--plugin-type serverapp``: Load the *serverapp* plugin. SuperExec will "
 "spawn ServerApp processes as needed."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:250
+#: ../../source/docker/tutorial-quickstart-docker.rst:252
 msgid ""
 "``--appio-api-address superlink:9091``: Connect to the SuperLink's "
 "ServerAppIO API at the address ``superlink:9091``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:255
+#: ../../source/docker/tutorial-quickstart-docker.rst:257
 #, fuzzy
 msgid "Step 5: Start the SuperExec to execute ClientApps"
 msgstr "서버(SuperLink)"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:257
+#: ../../source/docker/tutorial-quickstart-docker.rst:259
 msgid ""
 "For ClientApps, reuse the **same** image and change the plugin and API "
 "address. When using the *clientapp* plugin, pass ``--appio-api-address`` "
 "pointing to the SuperNode's **ClientAppIO API** endpoint."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:261
+#: ../../source/docker/tutorial-quickstart-docker.rst:263
 msgid "(No new Dockerfile is needed; reuse ``flwr_superexec:0.0.1``.)"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:262
+#: ../../source/docker/tutorial-quickstart-docker.rst:264
 #, fuzzy
 msgid "Start the first **SuperExec for ClientApps** container:"
 msgstr "현재 클라이언트 속성입니다."
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:280
+#: ../../source/docker/tutorial-quickstart-docker.rst:282
 msgid "``--name superexec-clientapp-1``: Give the container a descriptive name."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:286
+#: ../../source/docker/tutorial-quickstart-docker.rst:288
 msgid ""
 "``--plugin-type clientapp``: Load the *clientapp* plugin. SuperExec will "
 "spawn ClientApp processes as needed."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:288
+#: ../../source/docker/tutorial-quickstart-docker.rst:290
 msgid ""
 "``--appio-api-address supernode-1:9094``: Connect to the SuperNode's "
 "ClientAppIO API at the address ``supernode-1:9094``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:291
+#: ../../source/docker/tutorial-quickstart-docker.rst:293
 #, fuzzy
 msgid "Start the second **SuperExec for ClientApps** container:"
 msgstr "현재 클라이언트 속성입니다."
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:306
+#: ../../source/docker/tutorial-quickstart-docker.rst:308
 msgid "Step 6: Run the Quickstart Project"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:308
+#: ../../source/docker/tutorial-quickstart-docker.rst:310
 #, fuzzy
 msgid "Add the following lines to the ``pyproject.toml``:"
 msgstr "``pyproject.toml``에 다음 버전 제약 조건을 설정했는지 확인하세요:"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:317
+#: ../../source/docker/tutorial-quickstart-docker.rst:319
 msgid ""
-"Run the ``quickstart-docker`` project and follow the ServerApp logs to "
+"Run the ``quickstart-pytorch`` project and follow the ServerApp logs to "
 "track the execution of the run:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:326
+#: ../../source/docker/tutorial-quickstart-docker.rst:328
 msgid "Step 7: Update the Application"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:328
+#: ../../source/docker/tutorial-quickstart-docker.rst:330
 msgid ""
 "Change the application code. For example, change the ``seed`` in "
-"``quickstart_docker/task.py`` to ``43`` and save it:"
+"``pytorchexample/task.py`` to ``43`` and save it:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:331
-msgid "quickstart_docker/task.py"
+#: ../../source/docker/tutorial-quickstart-docker.rst:333
+msgid "pytorchexample/task.py"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:338
+#: ../../source/docker/tutorial-quickstart-docker.rst:340
 #, fuzzy
 msgid "Stop the running containers:"
 msgstr "이미 *서버*를 시작할 수 있습니다:"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:135
-#: ../../source/docker/tutorial-quickstart-docker.rst:342
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:134
+#: ../../source/docker/tutorial-quickstart-docker.rst:344
 msgid ""
 "If you have modified the dependencies listed in your ``pyproject.toml`` "
 "file, it is essential to rebuild images."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:345
+#: ../../source/docker/tutorial-quickstart-docker.rst:347
 msgid "If you haven't made any changes, you can skip steps 2 through 4."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:351
+#: ../../source/docker/tutorial-quickstart-docker.rst:353
 #, fuzzy
 msgid "Rebuild the SuperExec image:"
 msgstr "기본 이미지 빌드"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:357
+#: ../../source/docker/tutorial-quickstart-docker.rst:359
 msgid ""
 "Launch **one SuperExec container** for the new ServerApp and **two "
 "SuperExec containers** for the new ClientApps:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:387
+#: ../../source/docker/tutorial-quickstart-docker.rst:389
 msgid "Run the updated project:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:395
+#: ../../source/docker/tutorial-quickstart-docker.rst:397
 msgid "Step 8: Clean Up"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:397
+#: ../../source/docker/tutorial-quickstart-docker.rst:399
 msgid "Remove the containers and the bridge network:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:419
-#: ../../source/docker/tutorial-quickstart-docker.rst:409
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:418
+#: ../../source/docker/tutorial-quickstart-docker.rst:411
 #, fuzzy
 msgid "Where to Go Next"
 msgstr "시작 위치"
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:411
+#: ../../source/docker/tutorial-quickstart-docker.rst:413
 msgid ":doc:`enable-tls`"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:412
+#: ../../source/docker/tutorial-quickstart-docker.rst:414
 msgid ":doc:`persist-superlink-state`"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker.rst:413
+#: ../../source/docker/tutorial-quickstart-docker.rst:415
 msgid ":doc:`tutorial-quickstart-docker-compose`"
 msgstr ""
 
@@ -4277,6 +4276,11 @@ msgstr ""
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:31
 msgid "Clone the Docker Compose ``complete`` directory:"
 msgstr ""
+
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:40
+#, fuzzy
+msgid "Create a new Flower app (PyTorch):"
+msgstr "새 페이지 만들기"
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:46
 msgid ""
@@ -4315,20 +4319,20 @@ msgid ""
 msgstr ""
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:80
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:186
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:185
 #, fuzzy
 msgid "``docker compose``: The Docker command to run the Docker Compose tool."
 msgstr "``docker run``: 새 Docker 컨테이너를 실행하는 명령입니다."
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:81
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:192
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:191
 msgid ""
 "``--build``: Rebuild the images for each service if they don't already "
 "exist."
 msgstr ""
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:82
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:193
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:192
 msgid ""
 "``-d``: Detach the containers from the terminal and run them in the "
 "background."
@@ -4351,14 +4355,16 @@ msgid ""
 msgstr ""
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:94
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:235
-msgid "Add the following lines to the ``quickstart-compose/pyproject.toml``:"
-msgstr ""
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:234
+#, fuzzy
+msgid "Add the following lines to the ``quickstart-pytorch/pyproject.toml``:"
+msgstr "``pyproject.toml``에 다음 버전 제약 조건을 설정했는지 확인하세요:"
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:96
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:237
-msgid "quickstart-compose/pyproject.toml"
-msgstr ""
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:236
+#, fuzzy
+msgid "quickstart-pytorch/pyproject.toml"
+msgstr "빠른 시작 튜토리얼"
 
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:103
 msgid ""
@@ -4377,59 +4383,60 @@ msgstr ""
 #: ../../source/docker/tutorial-quickstart-docker-compose.rst:116
 msgid ""
 "For example, go to the ``task.py`` file in the ``quickstart-"
-"compose/quickstart_compose/`` directory and add a ``print`` call in the "
+"pytorch/pytorchexample/`` directory and add a ``print`` call in the "
 "``get_weights`` function:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:120
-msgid "quickstart-compose/quickstart_compose/task.py"
-msgstr ""
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:119
+#, fuzzy
+msgid "quickstart-pytorch/pytorchexample/task.py"
+msgstr "빠른 시작 튜토리얼"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:131
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:130
 #, fuzzy
 msgid "Rebuild and restart the services."
 msgstr "이미 *서버*를 시작할 수 있습니다:"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:138
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:137
 msgid "If you haven't made any changes, you can skip this step."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:140
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:139
 msgid "Run the following command to rebuild and restart the services:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:146
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:145
 msgid "Run the updated quickstart example:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:152
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:151
 msgid "In the ``ServerApp`` logs, you should find the ``Get weights`` line:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:166
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:165
 msgid "Step 5: Persisting the SuperLink State"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:168
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:167
 msgid ""
 "In this step, Flower services are configured to persist the state of the "
 "SuperLink service, ensuring that it maintains its state even after a "
 "restart."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:173
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:172
 msgid ""
 "When working with Docker Compose on Linux, you may need to create the "
 "``state`` directory first and change its ownership to ensure proper "
 "access and permissions."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:178
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:229
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:177
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:228
 msgid "Run the command:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:187
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:186
 msgid ""
 "``-f compose.yml``: Specify the YAML file that contains the basic Flower "
 "service definitions."
@@ -4452,17 +4459,18 @@ msgid ""
 "rules>`_."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:195
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:250
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:385
-msgid "Rerun the ``quickstart-compose`` project:"
-msgstr ""
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:194
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:249
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:384
+#, fuzzy
+msgid "Rerun the ``quickstart-pytorch`` project:"
+msgstr "빠른 시작 튜토리얼"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:201
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:200
 msgid "Check the content of the ``state`` directory:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:208
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:207
 msgid ""
 "You should see a ``state.db`` file in the ``state`` directory. If you "
 "restart the service, the state file will be used to restore the state "
@@ -4470,106 +4478,106 @@ msgid ""
 "if the containers are stopped and started again."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:217
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:216
 msgid "Step 6: Run Flower with TLS"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:219
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:218
 msgid ""
 "To demonstrate how to enable TLS, generate self-signed certificates using"
 " the ``certs.yml`` Compose file."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:226
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:225
 msgid ""
 "For production environments, use a service like `Let's Encrypt "
 "<https://letsencrypt.org/>`_ to obtain your certificates."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:244
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:243
 msgid "Restart the services with TLS enabled:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:258
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:257
 #, fuzzy
 msgid "Step 7: Add another SuperNode and ClientApp"
 msgstr "서버(SuperLink)"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:260
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:259
 msgid ""
 "You can add more SuperNodes and ClientApps by uncommenting their "
 "definitions in the ``compose.yml`` file:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:263
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:262
 msgid "compose.yml"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:317
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:316
 msgid ""
 "If you also want to enable TLS for the new SuperNode, uncomment the "
 "definition in the ``with-tls.yml`` file:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:320
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:319
 msgid "with-tls.yml"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:341
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:340
 #, fuzzy
 msgid "Restart the services with:"
 msgstr "이미 *서버*를 시작할 수 있습니다:"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:351
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:350
 msgid "Step 8: Persisting the SuperLink State and Enabling TLS"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:353
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:352
 msgid ""
 "To run Flower with persisted SuperLink state and enabled TLS, a slight "
 "change in the ``with-state.yml`` file is required:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:356
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:355
 msgid "Comment out the lines 2-6 and uncomment the lines 7-13:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:358
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:357
 msgid "with-state.yml"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:379
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:378
 #, fuzzy
 msgid "Restart the services:"
 msgstr "이미 *서버*를 시작할 수 있습니다:"
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:393
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:392
 msgid "Step 9: Merge Multiple Compose Files"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:395
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:394
 msgid ""
 "You can merge multiple Compose files into a single file. For instance, if"
 " you wish to combine the basic configuration with the TLS configuration, "
 "execute the following command:"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:404
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:403
 msgid ""
 "This will merge the contents of ``compose.yml`` and ``with-tls.yml`` into"
 " a new file called ``my_compose.yml``."
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:409
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:408
 msgid "Step 10: Clean Up"
 msgstr ""
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:411
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:410
 #, fuzzy
 msgid "Remove all services and volumes:"
 msgstr "R에서 모든 항목을 제거합니다."
 
-#: ../../source/docker/tutorial-quickstart-docker-compose.rst:421
+#: ../../source/docker/tutorial-quickstart-docker-compose.rst:420
 #, fuzzy
 msgid ":doc:`run-quickstart-examples-docker-compose`"
 msgstr "빠른 시작 튜토리얼"
@@ -11159,47 +11167,40 @@ msgid "First, we install the Flower package ``flwr``:"
 msgstr ""
 
 #: ../../source/how-to-migrate-from-openfl.rst:69
-#: ../../source/tutorial-series-build-a-strategy-from-scratch-pytorch.rst:66
-#: ../../source/tutorial-series-customize-the-client-pytorch.rst:70
-#: ../../source/tutorial-series-get-started-with-flower-pytorch.rst:86
-#: ../../source/tutorial-series-use-a-federated-learning-strategy-pytorch.rst:75
-msgid ""
-"Then, we create a new Flower app called ``flower-tutorial`` using the "
-"PyTorch template. We also specify a username (``flwrlabs``) for the "
-"project:"
+msgid "Then, run the command below:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:76
+#: ../../source/how-to-migrate-from-openfl.rst:75
 msgid ""
-"After running the command, a new directory called ``flower-tutorial`` "
+"After running the command, a new directory called ``quickstart-pytorch`` "
 "will be created. Here is a comparison between it and the relevant files "
 "in a typical ``openfl-example`` folder:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:82
+#: ../../source/how-to-migrate-from-openfl.rst:81
 #, fuzzy
 msgid "OpenFL Example"
 msgstr "예시"
 
-#: ../../source/how-to-migrate-from-openfl.rst:105
+#: ../../source/how-to-migrate-from-openfl.rst:104
 #, fuzzy
-msgid "Flower Tutorial"
-msgstr "튜토리얼"
+msgid "Flower Quickstart (PyTorch)"
+msgstr "빠른 시작 튜토리얼"
 
-#: ../../source/how-to-migrate-from-openfl.rst:119
+#: ../../source/how-to-migrate-from-openfl.rst:118
 msgid ""
 "Let's start with an overview of which areas of OpenFL and Flower "
 "directory structures you'll want to focus on. We will go through these in"
 " depth in later sections of the guide:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:123
+#: ../../source/how-to-migrate-from-openfl.rst:122
 msgid ""
 "**Model**: In OpenFL, the model is usually defined in ``taskrunner.py``. "
 "In Flower, the model definition is usually located in ``task.py``."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:125
+#: ../../source/how-to-migrate-from-openfl.rst:124
 msgid ""
 "**Train and Evaluate Functions**: In OpenFL, these are part of the "
 "`TaskRunner` subclass in ``taskrunner.py``. For Flower, you'll find these"
@@ -11207,7 +11208,7 @@ msgid ""
 "``@app.evaluate`` decorators."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:128
+#: ../../source/how-to-migrate-from-openfl.rst:127
 msgid ""
 "**Aggregation Functions**: In OpenFL, most examples use the "
 "``WeightedAverage()`` aggregation algorithm by default. If you're using a"
@@ -11216,32 +11217,32 @@ msgid ""
 " defined as a |strategy_link|_."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:134
+#: ../../source/how-to-migrate-from-openfl.rst:133
 msgid "Migrate your model"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:136
+#: ../../source/how-to-migrate-from-openfl.rst:135
 msgid ""
 "The model is very straightforward to port from OpenFL to Flower. If you "
 "are working with a PyTorch model, OpenFL has a ``PyTorchTaskRunner`` that"
 " inherits from ``nn.module`` (in ``taskrunner.py``) - and includes other "
 "things like the ``train`` and ``validate`` functions. Flower assumes you "
 "bring a standard PyTorch model, so it's as easy as moving the model "
-"definition to ``task.py`` in the ``flower_tutorial`` directory, and "
+"definition to ``task.py`` in the ``quickstart-pytorch`` directory, and "
 "changing the inheritance of the Net back to ``nn.module``. For a concrete"
 " example, see the following OpenFL TaskRunner code snippet:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:208
+#: ../../source/how-to-migrate-from-openfl.rst:207
 msgid "And the corresponding PyTorch model used by Flower:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:234
+#: ../../source/how-to-migrate-from-openfl.rst:233
 #, fuzzy
 msgid "Migrate your training and test functions"
 msgstr "클라이언트 앱에 평가함수를 등록하는 데코레이터를 반환합니다."
 
-#: ../../source/how-to-migrate-from-openfl.rst:236
+#: ../../source/how-to-migrate-from-openfl.rst:235
 msgid ""
 "Recent versions of OpenFL had a simple way of defining training and "
 "evaluation functions. The setting and extraction of model weights was "
@@ -11251,7 +11252,7 @@ msgid ""
 "directly to the Flower ``client_app.py`` file:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:321
+#: ../../source/how-to-migrate-from-openfl.rst:320
 msgid ""
 "In Flower more control is given to users by default. With the "
 "introduction of the Message API, the training and validation functions "
@@ -11261,7 +11262,7 @@ msgid ""
 "``train_`` function fits into Flower:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:379
+#: ../../source/how-to-migrate-from-openfl.rst:378
 msgid ""
 "Notice the model is reininitialized, the dataloader is initialized and "
 "configured, and hyperparameters are each set before the core training "
@@ -11272,24 +11273,24 @@ msgid ""
 " to the model parameters for ``FedAvg``."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:386
+#: ../../source/how-to-migrate-from-openfl.rst:385
 msgid ""
 "Here is the corresponding evaluation function, with the highlighted area "
 "representing the migrated code from OpenFL:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:434
+#: ../../source/how-to-migrate-from-openfl.rst:433
 msgid ""
 "The code can be mostly pasted in unmodified! There are a few references "
 "to cleanup (i.e. changing `self` to `model`) to fit with the Flower "
 "variables, but the logic remains the same."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:439
+#: ../../source/how-to-migrate-from-openfl.rst:438
 msgid "Migrating the Data Loaders"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:441
+#: ../../source/how-to-migrate-from-openfl.rst:440
 msgid ""
 "Unlike OpenFL, Flower does not require that you use their own Dataloaders"
 " when developing your application. This means you can simply DataLoaders "
@@ -11299,7 +11300,7 @@ msgid ""
 "each ``ClientApp`` through the ``Context``:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:459
+#: ../../source/how-to-migrate-from-openfl.rst:458
 msgid ""
 "Flower also has its own library for partitioning single datasets in "
 "distributions representative of what can be expected in real world "
@@ -11307,12 +11308,12 @@ msgid ""
 "<https://flower.ai/docs/datasets/>`_ documentation for details."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:464
+#: ../../source/how-to-migrate-from-openfl.rst:463
 #, fuzzy
 msgid "Client-side Code"
 msgstr "클라이언트 측 클리핑"
 
-#: ../../source/how-to-migrate-from-openfl.rst:466
+#: ../../source/how-to-migrate-from-openfl.rst:465
 msgid ""
 "In OpenFL, the client side code was known as a Collaborator. In Flower, "
 "the application that data owners operate is referred to as a "
@@ -11327,12 +11328,12 @@ msgid ""
 "concept in OpenFL captured in the ``plan.yaml`` file of every workspace."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:492
+#: ../../source/how-to-migrate-from-openfl.rst:491
 #, fuzzy
 msgid "Server-side Code"
 msgstr "서버 측 클리핑"
 
-#: ../../source/how-to-migrate-from-openfl.rst:494
+#: ../../source/how-to-migrate-from-openfl.rst:493
 msgid ""
 "In OpenFL, all of the aggregator-side code is configured via the "
 "`plan.yaml` file through the specification of different arguments. In "
@@ -11343,7 +11344,7 @@ msgid ""
 "code snippets:"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:544
+#: ../../source/how-to-migrate-from-openfl.rst:543
 msgid ""
 "You'll notice that most ``ServerApp`` examples have specific logic for "
 "working with a given deep learning framework (in this case PyTorch) due "
@@ -11356,13 +11357,13 @@ msgid ""
 "FastAI, Huggingface, etc.) should you need reference code."
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:554
+#: ../../source/how-to-migrate-from-openfl.rst:553
 #: ../../source/how-to-upgrade-to-flower-1.0.rst:139
 #: ../../source/how-to-upgrade-to-flower-1.13.rst:462
 msgid "Further help"
 msgstr "추가 도움말"
 
-#: ../../source/how-to-migrate-from-openfl.rst:556
+#: ../../source/how-to-migrate-from-openfl.rst:555
 msgid ""
 "For a complete PyTorch example that goes into depth on various Flower "
 "components, see the `Get started with Flower "
@@ -11377,12 +11378,12 @@ msgid ""
 " to get in touch with our team!"
 msgstr ""
 
-#: ../../source/how-to-migrate-from-openfl.rst:567
+#: ../../source/how-to-migrate-from-openfl.rst:566
 #: ../../source/how-to-upgrade-to-flower-1.13.rst:471
 msgid "Important"
 msgstr "중요"
 
-#: ../../source/how-to-migrate-from-openfl.rst:569
+#: ../../source/how-to-migrate-from-openfl.rst:568
 #, fuzzy
 msgid ""
 "As we work with the OpenFL community, we'll be periodically updating this"
@@ -11391,7 +11392,7 @@ msgstr ""
 "Flower Next는 빠른 속도로 지속적으로 개선되고 있으므로 이 가이드는 주기적으로 업데이트될 예정입니다. 피드백이 있으면 "
 "언제든지 공유해 주세요!"
 
-#: ../../source/how-to-migrate-from-openfl.rst:572
+#: ../../source/how-to-migrate-from-openfl.rst:571
 #: ../../source/how-to-upgrade-to-flower-1.13.rst:476
 msgid "Happy migrating! 🚀"
 msgstr "행복한 마이그레이션! 🚀"
@@ -11782,8 +11783,8 @@ msgstr ""
 #: ../../source/how-to-run-flower-on-gcp.rst:57
 msgid ""
 "**Configure Kubernetes Cluster**: in the page that is shown, we assign a "
-"name to the new cluster, e.g., ``flower-numpy-example`` and we select the"
-" region, e.g., ``us-central1``. For the rest of the configuration "
+"name to the new cluster, e.g., ``quickstart-numpy`` and we select the "
+"region, e.g., ``us-central1``. For the rest of the configuration "
 "settings, such as ``Cluster Tier``, ``Fleet Registration``, "
 "``Networking``, and other settings we use the default values. Now, press "
 "the ``Create`` button."
@@ -11855,8 +11856,8 @@ msgstr ""
 msgid ""
 "The next step is to configure ``kubectl`` to point to the GKE cluster you"
 " created in the previous steps by using the name of the cluster, e.g., "
-"``flower-numpy-example``, and the name of the region where the cluster "
-"was created:"
+"``quickstart-numpy``, and the name of the region where the cluster was "
+"created:"
 msgstr ""
 
 #: ../../source/how-to-run-flower-on-gcp.rst:142
@@ -11977,9 +11978,9 @@ msgid ""
 " image name we created during the previous steps. If you have followed "
 "the earlier naming suggestions, the repository name is ``flower-gcp-"
 "example-artifacts``, the local Docker image name is "
-"``flower_numpy_example_superexec:0.0.1``, and the region is ``us-"
-"central1``. Please note that the ``<YOUR_PROJECT_ID>`` is different from "
-"user to user, so in the commands below we use the ``<YOUR_PROJECT_ID>`` "
+"``quickstart_numpy_superexec:0.0.1``, and the region is ``us-central1``. "
+"Please note that the ``<YOUR_PROJECT_ID>`` is different from user to "
+"user, so in the commands below we use the ``<YOUR_PROJECT_ID>`` "
 "placeholder. Putting all this together, the final command you need to run"
 " to tag the ``SuperExec`` Docker image is:"
 msgstr ""
@@ -12120,19 +12121,19 @@ msgstr ""
 msgid "Expected Output"
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-gcp.rst:678
+#: ../../source/how-to-run-flower-on-gcp.rst:703
 msgid ""
 "Please note that if you terminate or shut down the cluster, and create a "
 "new one, the value of the ``EXTERNAL_IP`` changes. In that case, you will"
 " have to update the ``pyproject.toml``."
 msgstr ""
 
-#: ../../source/how-to-run-flower-on-gcp.rst:684
+#: ../../source/how-to-run-flower-on-gcp.rst:709
 #, fuzzy
 msgid "Shutdown Flower Infrastructure"
 msgstr "Flower 서버."
 
-#: ../../source/how-to-run-flower-on-gcp.rst:686
+#: ../../source/how-to-run-flower-on-gcp.rst:711
 msgid ""
 "If you would like to shutdown all the running pods deployed during this "
 "guide, you can use the ``kubectl delete`` command and pass the the "
@@ -13251,7 +13252,7 @@ msgstr ""
 
 #: ../../source/how-to-run-flower-with-deployment-engine.rst:15
 #, fuzzy
-msgid "Create a Flower App using the PyTorch template."
+msgid "Create a Flower App using PyTorch."
 msgstr "gRPC transport layer를 사용하여 Flower 서버를 실행하세요."
 
 #: ../../source/how-to-run-flower-with-deployment-engine.rst:16
@@ -13310,61 +13311,54 @@ msgstr "새 페이지 만들기"
 #: ../../source/how-to-run-flower-with-deployment-engine.rst:52
 msgid ""
 "Although you could write a Flower app from scratch, it is often easier to"
-" start from one of the templates available via ``flwr new`` and then "
-"customize it to your use case. Create a new Flower app (PyTorch), and "
-"follow the instructions show upon executing ``flwr new``:"
+" start from one of the available quickstart apps via ``flwr new`` and "
+"then customize it to your use case. Create a new Flower app (PyTorch), "
+"and follow the instructions shown upon executing ``flwr new``:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:76
-msgid ""
-"You might want to update the ``torch`` and ``torchvision`` packages that "
-"come with the proejct to the latets released versions. Do so with: ``pip "
-"install -U torch torchvision``."
-msgstr ""
-
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:80
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:79
 msgid ""
 "If you decide to run the project with ``flwr run .``, the Simulation "
 "Engine will be used. Continue to Step 2 to know how to instead use the "
 "Deployment Engine."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:85
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:84
 msgid ""
 "Feel free to inspect the code using your favorite code editor before "
-"proceeding. Just open the ``my-project`` that was automatically created "
-"via ``flwr new``. If you would like to get an overview of the code that "
-"was generated, take a look at the :doc:`tutorial-quickstart-pytorch` "
-"tutorial."
+"proceeding. Just open the ``quickstart-pytorch`` that was automatically "
+"created via ``flwr new``. If you would like to get an overview of the "
+"code that was generated, take a look at the :doc:`tutorial-quickstart-"
+"pytorch` tutorial."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:92
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:91
 #, fuzzy
 msgid "Step 2: Launch Flower Federation"
 msgstr "Flower SuperNode를 실행합니다."
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:94
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:93
 msgid ""
 "In this section you will learn how to launch a SuperLink and connect two "
 "SuperNodes to it."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:98
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:97
 #, fuzzy
 msgid "Start a Flower SuperLink"
 msgstr "flower 초연결"
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:100
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:99
 msgid ""
 "In a new terminal, activate your environment and start the SuperLink "
 "process in insecure mode:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:109
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:108
 msgid "``flower-superlink``: Name of the SuperLink installed CLI executable."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:110
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:109
 msgid ""
 "``--insecure``: This flag tells the SuperLink to operate in an insecure "
 "mode, allowing unencrypted communication. Refer to the :doc:`how-to-"
@@ -13372,18 +13366,18 @@ msgid ""
 "TLS."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:114
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:113
 #, fuzzy
 msgid "Start two Flower SuperNodes"
 msgstr "서버(SuperLink)"
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:116
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:115
 msgid ""
 "In this step, you will launch two SuperNodes and connect them to the "
 "SuperLink. You will need two terminals for this step."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:121
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:120
 msgid ""
 "Note that the values passed via the ``--node-config`` argument are "
 "specific to the behaviour of the ``ClientApp``. If you inspect the code "
@@ -13395,17 +13389,17 @@ msgid ""
 "receive, for example, the path to a directory of images."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:129
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:128
 msgid ""
 "**Terminal 1** Start the first SuperNode after activating your "
 "environment:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:141
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:140
 msgid "``flower-supernode``: Name of the SuperNode installed CLI executable."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:142
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:141
 msgid ""
 "``--insecure``: This flag tells the SuperNode to operate in an insecure "
 "mode, allowing unencrypted communication. Refer to the :doc:`how-to-"
@@ -13413,7 +13407,7 @@ msgid ""
 "TLS."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:144
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:143
 msgid ""
 "``--superlink 127.0.0.1:9092``: Connect to the SuperLink's Fleet API at "
 "the address ``127.0.0.1:9092``. If you had launched the SuperLink in a "
@@ -13421,28 +13415,28 @@ msgid ""
 " machine."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:146
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:145
 msgid ""
 "``--clientappio-api-address 127.0.0.1:9094``: Set the address and port "
 "number where the SuperNode is listening to communicate with the "
 "``ClientApp``."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:148
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:147
 msgid ""
 "``--node-config \"partition-id=0 num-partitions=2\"``: The ``ClientApp`` "
-"code generated via the ``flwr new`` template expects those two key-value "
-"pairs to be defined at run time. Set the partition ID to ``0`` and the "
-"number of partitions to ``2`` for the SuperNode configuration."
+"code generated via ``flwr new`` expects those two key-value pairs to be "
+"defined at run time. Set the partition ID to ``0`` and the number of "
+"partitions to ``2`` for the SuperNode configuration."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:150
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:149
 msgid ""
 "**Terminal 2** Start the second SuperNode after activating your "
 "environment:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:162
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:161
 msgid ""
 "``--clientappio-api-address 127.0.0.1:9095``: Note that a different port "
 "is being used. This is only needed because you are running two SuperNodes"
@@ -13451,19 +13445,19 @@ msgid ""
 "together and left with its default value."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:163
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:162
 msgid ""
 "``--node-config \"partition-id=1 num-partitions=2\"``: Note here we "
 "indicate a different `partition-id`. In this way, a ``ClientApp`` will "
 "use a different data partition depending on which SuperNode runs in."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:167
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:166
 #, fuzzy
 msgid "Step 3: Run a Flower App on the Federation"
 msgstr "Flower SuperNode를 실행합니다."
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:169
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:168
 msgid ""
 "At this point, you have launched two SuperNodes that are connected to the"
 " same SuperLink. The system is idling waiting for a ``Run`` to be "
@@ -13476,30 +13470,30 @@ msgid ""
 " real deployments require TLS)."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:177
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:176
 msgid ""
 "Open the ``pyproject.toml`` file and at the end add a new federation "
 "configuration:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:195
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:194
 msgid ""
 "In another terminal and with your Python environment activated, run the "
 "Flower App and follow the ``ServerApp`` logs to track the execution of "
 "the run:"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:202
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:201
 msgid ""
 "If you want to rerun the project or test an updated version by making "
 "changes to the code, simply re-run the command above."
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:207
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:206
 msgid "Step 4: Clean Up"
 msgstr ""
 
-#: ../../source/how-to-run-flower-with-deployment-engine.rst:209
+#: ../../source/how-to-run-flower-with-deployment-engine.rst:208
 msgid ""
 "Use the ``Ctrl+C`` command in each terminal to stop the respective "
 "processes."
@@ -13652,8 +13646,8 @@ msgid ""
 "primarily requires you to first define a ``ClientApp`` and a "
 "``ServerApp``. A convenient way to generate a minimal but fully "
 "functional Flower app is by means of the |flwr_new_link|_ command. There "
-"are multiple templates to choose from. The example below uses the "
-"``PyTorch`` template."
+"are multiple apps to choose from. The example below uses the ``PyTorch`` "
+"quickstart app."
 msgstr ""
 
 #: ../../source/how-to-run-simulations.rst:157
@@ -16546,28 +16540,17 @@ msgid "Create new Flower App."
 msgstr "새 페이지 만들기"
 
 #: ../../flwr new:1
-msgid "The ML framework to use"
-msgstr ""
-
-#: ../../flwr new
-#, fuzzy
-msgid "options"
-msgstr "해결법"
-
-#: ../../flwr new:1
-msgid ""
-"PyTorch | TensorFlow | sklearn | HuggingFace | JAX | MLX | NumPy | "
-"XGBoost | FlowerTune | Flower Baseline | PyTorch (Legacy API, deprecated)"
+msgid "Deprecated. The ML framework to use"
 msgstr ""
 
 #: ../../flwr new:1
-msgid "The Flower username of the author"
+msgid "Deprecated. The Flower username of the author"
 msgstr ""
 
 #: ../../flwr new:1
 msgid ""
-"Flower app name. For remote apps, use the format '@account_name/app_name'"
-" or '@account_name/app_name==x.y.z'. Version is optional (defaults to "
+"Flower app specifier. Use the format '@account_name/app_name' or "
+"'@account_name/app_name==x.y.z'. Version is optional (defaults to "
 "latest)."
 msgstr ""
 
@@ -34017,6 +34000,16 @@ msgid ""
 "If you've completed part 1 and 2 of the tutorial, you can skip this step."
 " But remember to include ``wandb`` as a dependency in your "
 "``pyproject.toml`` file and install it in your environment."
+msgstr ""
+
+#: ../../source/tutorial-series-build-a-strategy-from-scratch-pytorch.rst:66
+#: ../../source/tutorial-series-customize-the-client-pytorch.rst:70
+#: ../../source/tutorial-series-get-started-with-flower-pytorch.rst:86
+#: ../../source/tutorial-series-use-a-federated-learning-strategy-pytorch.rst:75
+msgid ""
+"Then, we create a new Flower app called ``flower-tutorial`` using the "
+"PyTorch template. We also specify a username (``flwrlabs``) for the "
+"project:"
 msgstr ""
 
 #: ../../source/tutorial-series-build-a-strategy-from-scratch-pytorch.rst:73
@@ -59858,5 +59851,189 @@ msgstr ""
 #~ "`Flower simulation TensorFlow/Keras "
 #~ "<https://colab.research.google.com/github/adap/flower/blob/main/examples"
 #~ "/simulation-tensorflow/sim.ipynb>`_"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Run the ``quickstart-docker`` project "
+#~ "and follow the ServerApp logs to "
+#~ "track the execution of the run:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Change the application code. For "
+#~ "example, change the ``seed`` in "
+#~ "``quickstart_docker/task.py`` to ``43`` and "
+#~ "save it:"
+#~ msgstr ""
+
+#~ msgid "quickstart_docker/task.py"
+#~ msgstr ""
+
+#~ msgid "Add the following lines to the ``quickstart-compose/pyproject.toml``:"
+#~ msgstr ""
+
+#~ msgid "quickstart-compose/pyproject.toml"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "For example, go to the ``task.py`` "
+#~ "file in the ``quickstart-"
+#~ "compose/quickstart_compose/`` directory and add "
+#~ "a ``print`` call in the ``get_weights``"
+#~ " function:"
+#~ msgstr ""
+
+#~ msgid "quickstart-compose/quickstart_compose/task.py"
+#~ msgstr ""
+
+#~ msgid "Rerun the ``quickstart-compose`` project:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "After running the command, a new "
+#~ "directory called ``flower-tutorial`` will "
+#~ "be created. Here is a comparison "
+#~ "between it and the relevant files "
+#~ "in a typical ``openfl-example`` folder:"
+#~ msgstr ""
+
+#~ msgid "Flower Tutorial"
+#~ msgstr "튜토리얼"
+
+#~ msgid ""
+#~ "The model is very straightforward to "
+#~ "port from OpenFL to Flower. If you"
+#~ " are working with a PyTorch model,"
+#~ " OpenFL has a ``PyTorchTaskRunner`` that"
+#~ " inherits from ``nn.module`` (in "
+#~ "``taskrunner.py``) - and includes other "
+#~ "things like the ``train`` and "
+#~ "``validate`` functions. Flower assumes you "
+#~ "bring a standard PyTorch model, so "
+#~ "it's as easy as moving the model"
+#~ " definition to ``task.py`` in the "
+#~ "``flower_tutorial`` directory, and changing "
+#~ "the inheritance of the Net back to"
+#~ " ``nn.module``. For a concrete example, "
+#~ "see the following OpenFL TaskRunner code"
+#~ " snippet:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "**Configure Kubernetes Cluster**: in the "
+#~ "page that is shown, we assign a"
+#~ " name to the new cluster, e.g., "
+#~ "``flower-numpy-example`` and we select"
+#~ " the region, e.g., ``us-central1``. "
+#~ "For the rest of the configuration "
+#~ "settings, such as ``Cluster Tier``, "
+#~ "``Fleet Registration``, ``Networking``, and "
+#~ "other settings we use the default "
+#~ "values. Now, press the ``Create`` "
+#~ "button."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The next step is to configure "
+#~ "``kubectl`` to point to the GKE "
+#~ "cluster you created in the previous "
+#~ "steps by using the name of the "
+#~ "cluster, e.g., ``flower-numpy-example``, "
+#~ "and the name of the region where"
+#~ " the cluster was created:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Before we are able to push our "
+#~ "two newly locally created Docker images,"
+#~ " we need to tag them with the"
+#~ " Google Artifact Registry repository name"
+#~ " and image name we created during "
+#~ "the previous steps. If you have "
+#~ "followed the earlier naming suggestions, "
+#~ "the repository name is ``flower-gcp-"
+#~ "example-artifacts``, the local Docker "
+#~ "image name is "
+#~ "``flower_numpy_example_superexec:0.0.1``, and the "
+#~ "region is ``us-central1``. Please note"
+#~ " that the ``<YOUR_PROJECT_ID>`` is "
+#~ "different from user to user, so in"
+#~ " the commands below we use the "
+#~ "``<YOUR_PROJECT_ID>`` placeholder. Putting all "
+#~ "this together, the final command you "
+#~ "need to run to tag the "
+#~ "``SuperExec`` Docker image is:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Although you could write a Flower "
+#~ "app from scratch, it is often "
+#~ "easier to start from one of the"
+#~ " templates available via ``flwr new`` "
+#~ "and then customize it to your use"
+#~ " case. Create a new Flower app "
+#~ "(PyTorch), and follow the instructions "
+#~ "show upon executing ``flwr new``:"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "You might want to update the "
+#~ "``torch`` and ``torchvision`` packages that"
+#~ " come with the proejct to the "
+#~ "latets released versions. Do so with:"
+#~ " ``pip install -U torch torchvision``."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Feel free to inspect the code "
+#~ "using your favorite code editor before"
+#~ " proceeding. Just open the ``my-"
+#~ "project`` that was automatically created "
+#~ "via ``flwr new``. If you would "
+#~ "like to get an overview of the "
+#~ "code that was generated, take a "
+#~ "look at the :doc:`tutorial-quickstart-"
+#~ "pytorch` tutorial."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "``--node-config \"partition-id=0 num-"
+#~ "partitions=2\"``: The ``ClientApp`` code "
+#~ "generated via the ``flwr new`` template"
+#~ " expects those two key-value pairs"
+#~ " to be defined at run time. Set"
+#~ " the partition ID to ``0`` and "
+#~ "the number of partitions to ``2`` "
+#~ "for the SuperNode configuration."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Running a simulation is straightforward; "
+#~ "in fact, it is the default mode"
+#~ " of operation for |flwr_run_link|_. "
+#~ "Therefore, running Flower simulations "
+#~ "primarily requires you to first define"
+#~ " a ``ClientApp`` and a ``ServerApp``. "
+#~ "A convenient way to generate a "
+#~ "minimal but fully functional Flower app"
+#~ " is by means of the |flwr_new_link|_"
+#~ " command. There are multiple templates "
+#~ "to choose from. The example below "
+#~ "uses the ``PyTorch`` template."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "PyTorch | TensorFlow | sklearn | "
+#~ "HuggingFace | JAX | MLX | NumPy"
+#~ " | XGBoost | FlowerTune | Flower "
+#~ "Baseline | PyTorch (Legacy API, "
+#~ "deprecated)"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Flower app name. For remote apps, "
+#~ "use the format '@account_name/app_name' or "
+#~ "'@account_name/app_name==x.y.z'. Version is optional"
+#~ " (defaults to latest)."
 #~ msgstr ""
 
