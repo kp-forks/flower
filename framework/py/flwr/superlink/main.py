@@ -29,9 +29,11 @@ from flwr import __version__
 from flwr.common import log
 from flwr.server.superlink.linkstate import LinkStateFactory
 from flwr.supercore.error import http_error_translator
+from flwr.supercore.protobuf.translation import ProtobufTranslationMiddleware
 from flwr.superlink import extensions
 from flwr.superlink.auth_plugin import ControlAuthnPlugin, ControlAuthzPlugin
 from flwr.superlink.dependencies.account import AccountAccessDependency
+from flwr.superlink.routers.control.middlewares import ControlAuthenticationMiddleware
 
 if TYPE_CHECKING:
     from flwr.superlink.cli.flower_superlink import SuperLinkLifespan
@@ -126,16 +128,17 @@ def create_app(
     # fastapi_app.include_router(health.router)
 
     # SuperLink APIs
-    # fastapi_app.include_router(control.router)
+    # fastapi_app.include_router(control_router)
+    fastapi_app.add_middleware(ProtobufTranslationMiddleware)
+    fastapi_app.add_middleware(ControlAuthenticationMiddleware)
+    # Register last so it is outermost and translates errors from every Control layer.
+    fastapi_app.middleware("http")(http_error_translator)
     # fastapi_app.include_router(runtime.router)
 
     # Extension hooks
     extensions.configure_app(fastapi_app)
 
     validate_unique_route_operation_ids(fastapi_app)
-
-    # Apply the FlowerError translation layer last to make it outermost
-    fastapi_app.middleware("http")(http_error_translator)
 
     return fastapi_app
 
