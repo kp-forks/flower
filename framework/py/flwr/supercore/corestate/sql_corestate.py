@@ -24,7 +24,7 @@ from logging import ERROR
 from typing import Any, Literal, cast
 from uuid import uuid4
 
-from sqlalchemy import MetaData, delete, select, update
+from sqlalchemy import MetaData, delete, or_, select, update
 from sqlalchemy.exc import IntegrityError
 
 from flwr.app import Context, Message
@@ -68,9 +68,12 @@ from flwr.supercore.state.schema.corestate_models import Fab as FabModel
 from flwr.supercore.state.schema.corestate_models import (
     RunConnector as RunConnectorModel,
 )
+from flwr.supercore.state.schema.corestate_models import RunSeries as RunSeriesModel
 from flwr.supercore.state.schema.corestate_models import (
     SeriesContext as SeriesContextModel,
 )
+from flwr.supercore.state.schema.corestate_models import SeriesRuns as SeriesRunsModel
+from flwr.supercore.state.schema.corestate_models import Task as TaskModel
 from flwr.supercore.state.schema.corestate_models import TaskEvent as TaskEventModel
 from flwr.supercore.state.schema.corestate_models import TaskUsage as TaskUsageModel
 from flwr.supercore.state.schema.corestate_tables import create_corestate_metadata
@@ -624,57 +627,51 @@ class SqlCoreState(CoreState, SqlMixin):  # pylint: disable=R0904
         ):
             return []
 
-        # Build optional filters for the run-series page.
-        conditions: list[str] = []
-        params: dict[str, Any] = {}
+        page_query = select(RunSeriesModel.series_id)
         if series_ids is not None:
             sint64_series_ids = [uint64_to_int64(series_id) for series_id in series_ids]
-            placeholders, in_params = build_sql_in_params(sint64_series_ids, "sid")
-            conditions.append(f"series_id IN ({placeholders})")
-            params.update(in_params)
+            page_query = page_query.where(
+                RunSeriesModel.series_id.in_(sint64_series_ids)
+            )
         if federation_ids is not None:
-            placeholders, in_params = build_sql_in_params(federation_ids, "fed")
-            conditions.append(f"federation_id IN ({placeholders})")
-            params.update(in_params)
+            page_query = page_query.where(
+                RunSeriesModel.federation_id.in_(federation_ids)
+            )
         if updated_before is not None:
-            conditions.append("updated_at < :updated_before")
-            params["updated_before"] = datetime.fromisoformat(updated_before)
-
-        where_clause = f"WHERE {' AND '.join(conditions)}" if conditions else ""
-        limit_clause = ""
+            page_query = page_query.where(
+                RunSeriesModel.updated_at < datetime.fromisoformat(updated_before)
+            )
+        page_query = page_query.order_by(RunSeriesModel.updated_at.desc())
         if limit is not None:
-            limit_clause = "LIMIT :limit"
-            params["limit"] = limit
+            page_query = page_query.limit(limit)
 
         # Select the requested page before joining run IDs so limit applies to series.
-        run_series_cte = f"""
-            run_series_cte AS (
-                SELECT series_id, federation_id, description, created_at, updated_at
-                FROM run_series
-                {where_clause}
-                ORDER BY updated_at DESC
-                {self.select_lock_sql}
-                {limit_clause}
+        selected_series = page_query.subquery()
+        query = (
+            select(RunSeriesModel, SeriesRunsModel.run_id)
+            .join(
+                selected_series,
+                RunSeriesModel.series_id == selected_series.c.series_id,
             )
-        """
-        query = f"""
-            WITH {run_series_cte}
-            SELECT
-                run_series_cte.*,
-                series_runs.run_id
-            FROM run_series_cte
-            LEFT JOIN series_runs
-                ON series_runs.series_id = run_series_cte.series_id
-        """
-        rows = self.query(query, params)
+            .outerjoin(
+                SeriesRunsModel,
+                SeriesRunsModel.series_id == RunSeriesModel.series_id,
+            )
+            .order_by(RunSeriesModel.updated_at.desc())
+            .execution_options(populate_existing=True)
+        )
+
         # Fold the joined rows back into one RunSeries per series.
         series_by_id: dict[int, RunSeries] = {}
-        for row in rows:
-            series_id = row["series_id"]
-            if series_id not in series_by_id:
-                series_by_id[series_id] = _run_series_from_row(row)
-            if row["run_id"] is not None:
-                series_by_id[series_id].run_ids.append(int64_to_uint64(row["run_id"]))
+        with self.session() as session:
+            for series_model, stored_run_id in session.execute(query):
+                series_id = series_model.series_id
+                if series_id not in series_by_id:
+                    series_by_id[series_id] = _run_series_from_model(series_model)
+                if stored_run_id is not None:
+                    series_by_id[series_id].run_ids.append(
+                        int64_to_uint64(stored_run_id)
+                    )
         return list(series_by_id.values())
 
     def get_run_series_context(self, series_id: int) -> Context | None:
@@ -1190,59 +1187,45 @@ class SqlCoreState(CoreState, SqlMixin):  # pylint: disable=R0904
         if isinstance(statuses, str):
             raise ValueError("`statuses` must be a sequence of strings")
 
-        conditions = []
-        params: dict[str, Any] = {}
+        query = select(TaskModel)
 
         if task_ids is not None:
             if not task_ids:
                 return []
             sint64_task_ids = [uint64_to_int64(task_id) for task_id in task_ids]
-            placeholders, in_params = build_sql_in_params(sint64_task_ids, "tid")
-            conditions.append(f"task_id IN ({placeholders})")
-            params.update(in_params)
+            query = query.where(TaskModel.task_id.in_(sint64_task_ids))
 
         if run_ids is not None:
             if not run_ids:
                 return []
             sint64_run_ids = [uint64_to_int64(run_id) for run_id in run_ids]
-            placeholders, in_params = build_sql_in_params(sint64_run_ids, "rid")
-            conditions.append(f"run_id IN ({placeholders})")
-            params.update(in_params)
+            query = query.where(TaskModel.run_id.in_(sint64_run_ids))
 
         if statuses is not None:
             if not statuses:
                 return []
             status_conditions = []
-            for status, condition in STATUS_CONDITIONS.items():
+            for status in STATUS_CONDITIONS:
                 if status in statuses:
-                    status_conditions.append(condition)
+                    status_conditions.append(_task_status_filter(status))
             if not status_conditions:
                 return []
-            conditions.append(f"({' OR '.join(status_conditions)})")
+            query = query.where(or_(*status_conditions))
 
-        query = """
-            SELECT task_id, type, run_id, fab_hash, model_ref, connector_ref,
-                   pending_at, starting_at, running_at, finished_at,
-                   sub_status, details
-            FROM task
-        """
-        if conditions:
-            query += " WHERE " + " AND ".join(conditions)
         if order_by is not None:
-            query += f" ORDER BY {order_by} {'ASC' if ascending else 'DESC'}"
+            order_column = (
+                TaskModel.pending_at.asc() if ascending else TaskModel.pending_at.desc()
+            )
+            query = query.order_by(order_column)
         if limit is not None:
-            query += " LIMIT :limit"
-            params["limit"] = limit
+            query = query.limit(limit)
+        query = query.execution_options(populate_existing=True)
 
-        with self.session():
+        with self.session() as session:
             # Clean up expired task tokens before querying tasks
             self._cleanup_expired_task_tokens()
-            rows = self.query(query, params)
-
-        result: list[Task] = []
-        for row in rows:
-            result.append(task_from_row(row))
-        return result
+            rows = session.scalars(query).all()
+            return [task_from_model(row) for row in rows]
 
     def get_metadata(self) -> MetaData:
         """Return SQLAlchemy MetaData needed for CoreState tables."""
@@ -1417,16 +1400,19 @@ class SqlCoreState(CoreState, SqlMixin):  # pylint: disable=R0904
 
     def get_task_by_token(self, token: str) -> Task | None:
         """Return the task associated with the task token, if valid."""
-        rows = self.query(
-            """
-            SELECT * FROM task
-            WHERE token = :token AND active_until >= :current AND finished_at IS NULL
-            """,
-            {"token": token, "current": now()},
-        )
-        if not rows:
-            return None
-        return task_from_row(rows[0])
+        current = now()
+        with self.session() as session:
+            row = session.scalars(
+                select(TaskModel)
+                .where(
+                    TaskModel.token == token,
+                    TaskModel.finished_at.is_(None),
+                )
+                .execution_options(populate_existing=True)
+            ).first()
+            if row is None or row.active_until is None or row.active_until < current:
+                return None
+            return task_from_model(row)
 
     def store_task_message(self, message: Message) -> bool:
         """Store one task-addressed Message."""
@@ -1691,19 +1677,19 @@ class SqlCoreState(CoreState, SqlMixin):  # pylint: disable=R0904
 
 
 def _connector_oauth_session_from_model(
-    row: ConnectorOAuthSessionModel,
+    model: ConnectorOAuthSessionModel,
 ) -> ConnectorOAuthSessionRecord:
     """Convert a connector OAuth session model to its persistence record."""
     return ConnectorOAuthSessionRecord(
-        oauth_session_id=row.oauth_session_id,
-        flwr_aid=row.flwr_aid,
-        connector_ref=row.connector_ref,
-        state=row.state,
-        redirect_uri=row.redirect_uri,
-        pkce_verifier=row.pkce_verifier,
-        created_at=_timestamp_to_iso_assuming_utc(row.created_at),
-        expires_at=_timestamp_to_iso_assuming_utc(row.expires_at),
-        completed_at=_timestamp_to_iso_assuming_utc(row.completed_at) or None,
+        oauth_session_id=model.oauth_session_id,
+        flwr_aid=model.flwr_aid,
+        connector_ref=model.connector_ref,
+        state=model.state,
+        redirect_uri=model.redirect_uri,
+        pkce_verifier=model.pkce_verifier,
+        created_at=_timestamp_to_iso_assuming_utc(model.created_at),
+        expires_at=_timestamp_to_iso_assuming_utc(model.expires_at),
+        completed_at=_timestamp_to_iso_assuming_utc(model.completed_at) or None,
     )
 
 
@@ -1732,6 +1718,41 @@ def determine_task_status(row: dict[str, Any]) -> TaskStatus:
     raise ValueError(f"The task {task_id} does not have a valid status.")
 
 
+def _determine_task_model_status(model: TaskModel) -> TaskStatus:
+    """Determine the status of the task based on timestamp fields."""
+    if model.pending_at:
+        if model.finished_at:
+            return TaskStatus(
+                status=Status.FINISHED,
+                sub_status=model.sub_status,
+                details=model.details,
+            )
+        if model.starting_at:
+            if model.running_at:
+                return TaskStatus(status=Status.RUNNING, sub_status="", details="")
+            return TaskStatus(status=Status.STARTING, sub_status="", details="")
+        return TaskStatus(status=Status.PENDING, sub_status="", details="")
+    task_id = int64_to_uint64(model.task_id)
+    raise ValueError(f"The task {task_id} does not have a valid status.")
+
+
+def _task_status_filter(status: str) -> Any:
+    """Return the ORM filter expression for a task status."""
+    if status == Status.PENDING:
+        return TaskModel.starting_at.is_(None) & TaskModel.finished_at.is_(None)
+    if status == Status.STARTING:
+        return (
+            TaskModel.starting_at.is_not(None)
+            & TaskModel.running_at.is_(None)
+            & TaskModel.finished_at.is_(None)
+        )
+    if status == Status.RUNNING:
+        return TaskModel.running_at.is_not(None) & TaskModel.finished_at.is_(None)
+    if status == Status.FINISHED:
+        return TaskModel.finished_at.is_not(None)
+    raise ValueError(f"Unsupported task status {status!r}.")
+
+
 def task_from_row(row: dict[str, Any]) -> Task:
     """Convert a database row to a Task object."""
     return Task(
@@ -1749,6 +1770,23 @@ def task_from_row(row: dict[str, Any]) -> Task:
     )
 
 
+def task_from_model(model: TaskModel) -> Task:
+    """Convert a task ORM model to a Task object."""
+    return Task(
+        task_id=int64_to_uint64(model.task_id),
+        type=model.type,
+        run_id=int64_to_uint64(model.run_id),
+        pending_at=timestamp_to_iso(model.pending_at),
+        starting_at=timestamp_to_iso(model.starting_at),
+        running_at=timestamp_to_iso(model.running_at),
+        finished_at=timestamp_to_iso(model.finished_at),
+        status=_determine_task_model_status(model),
+        fab_hash=model.fab_hash,
+        model_ref=model.model_ref,
+        connector_ref=model.connector_ref,
+    )
+
+
 def _run_series_from_row(row: dict[str, Any]) -> RunSeries:
     """Convert a database row to a RunSeries object."""
     return RunSeries(
@@ -1757,6 +1795,17 @@ def _run_series_from_row(row: dict[str, Any]) -> RunSeries:
         description=row["description"] or "",
         created_at=timestamp_to_iso(row["created_at"]),
         updated_at=timestamp_to_iso(row["updated_at"]),
+    )
+
+
+def _run_series_from_model(model: RunSeriesModel) -> RunSeries:
+    """Convert a run series ORM model to a RunSeries object."""
+    return RunSeries(
+        series_id=int64_to_uint64(model.series_id),
+        federation=model.federation_id,
+        description=model.description or "",
+        created_at=timestamp_to_iso(model.created_at),
+        updated_at=timestamp_to_iso(model.updated_at),
     )
 
 
@@ -1774,26 +1823,26 @@ def _task_usage_to_row(task_id: int, usage: TaskUsage) -> dict[str, Any]:
     }
 
 
-def _task_usage_from_model(row: TaskUsageModel) -> TaskUsage:
+def _task_usage_from_model(model: TaskUsageModel) -> TaskUsage:
     """Convert a task_usage ORM model to a TaskUsage proto."""
     return TaskUsage(
-        usage_type=row.usage_type,
-        provider=row.provider,
-        input_tokens=row.input_tokens,
-        output_tokens=row.output_tokens,
-        total_tokens=row.total_tokens,
+        usage_type=model.usage_type,
+        provider=model.provider,
+        input_tokens=model.input_tokens,
+        output_tokens=model.output_tokens,
+        total_tokens=model.total_tokens,
     )
 
 
-def _task_event_from_model(row: TaskEventModel) -> TaskEvent:
+def _task_event_from_model(model: TaskEventModel) -> TaskEvent:
     """Convert a task_event ORM model to a TaskEvent proto."""
     return TaskEvent(
-        id=row.id,
-        timestamp=timestamp_to_iso(row.timestamp),
-        run_id=int64_to_uint64(row.run_id),
-        task_id=int64_to_uint64(row.task_id),
-        event=row.event,
-        data=row.data,
+        id=model.id,
+        timestamp=timestamp_to_iso(model.timestamp),
+        run_id=int64_to_uint64(model.run_id),
+        task_id=int64_to_uint64(model.task_id),
+        event=model.event,
+        data=model.data,
     )
 
 
