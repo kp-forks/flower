@@ -32,7 +32,11 @@ from flwr.common.constant import (
 )
 from flwr.common.logger import log, warn_deprecated_feature
 from flwr.common.serde import message_to_proto
-from flwr.proto.appio_pb2 import (  # pylint: disable=E0611
+from flwr.proto.message_pb2 import (  # pylint: disable=E0611
+    ConfirmMessageReceivedRequest,
+)
+from flwr.proto.node_pb2 import Node  # pylint: disable=E0611
+from flwr.proto.runtime_pb2 import (  # pylint: disable=E0611
     GetNodesRequest,
     GetNodesResponse,
     PullAppMessagesRequest,
@@ -40,10 +44,6 @@ from flwr.proto.appio_pb2 import (  # pylint: disable=E0611
     PushAppMessagesRequest,
     PushAppMessagesResponse,
 )
-from flwr.proto.message_pb2 import (  # pylint: disable=E0611
-    ConfirmMessageReceivedRequest,
-)
-from flwr.proto.node_pb2 import Node  # pylint: disable=E0611
 from flwr.proto.runtime_pb2_grpc import RuntimeStub  # pylint: disable=E0611
 from flwr.serverapp.grid import Grid
 from flwr.supercore.constant import SYSTEM_MESSAGE_TYPE
@@ -67,7 +67,7 @@ from flwr.supercore.inflatable.inflatable_utils import (
     push_objects,
 )
 from flwr.supercore.interceptors import (
-    AppIoTokenClientInterceptor,
+    RuntimeTokenClientInterceptor,
     RuntimeVersionClientInterceptor,
 )
 from flwr.supercore.retry import make_simple_grpc_retry_invoker, wrap_stub
@@ -162,7 +162,7 @@ class GrpcGrid(Grid):  # pylint: disable=too-many-instance-attributes
             root_certificates=self._cert,
             interceptors=[
                 RuntimeVersionClientInterceptor(component_name="flwr-serverapp"),
-                AppIoTokenClientInterceptor(token=self._token),
+                RuntimeTokenClientInterceptor(token=self._token),
             ],
         )
         self._channel.subscribe(on_channel_state_change)
