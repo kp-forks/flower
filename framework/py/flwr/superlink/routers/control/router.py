@@ -14,6 +14,7 @@
 # ==============================================================================
 """Control API router."""
 
+from collections.abc import Iterator
 from typing import Annotated
 
 from fastapi import APIRouter, Depends
@@ -73,12 +74,20 @@ from flwr.proto.control_pb2 import (  # pylint: disable=E0611
     StopAutomationResponse,
     StopRunRequest,
     StopRunResponse,
+    StreamLogsRequest,
+    StreamLogsResponse,
+    StreamRunEventsRequest,
+    StreamRunEventsResponse,
     UnregisterNodeRequest,
     UnregisterNodeResponse,
 )
 from flwr.server.superlink.linkstate import LinkState
 from flwr.supercore.auth.typing import AccountInfo
 from flwr.supercore.protobuf.routing import ProtobufRoute
+from flwr.supercore.protobuf.streaming import (
+    ProtobufStreamContext,
+    get_protobuf_stream_context,
+)
 from flwr.supercore.protobuf.translation import get_protobuf_request
 from flwr.superlink.artifact_provider import ArtifactProvider
 from flwr.superlink.dependencies.account import get_account
@@ -91,6 +100,9 @@ router = APIRouter(prefix="/v1/control", tags=["Control"], route_class=ProtobufR
 
 LinkStateDependency = Annotated[LinkState, Depends(get_linkstate)]
 AccountDependency = Annotated[AccountInfo, Depends(get_account)]
+ProtobufStreamContextDependency = Annotated[
+    ProtobufStreamContext, Depends(get_protobuf_stream_context)
+]
 ArtifactProviderDependency = Annotated[
     ArtifactProvider | None, Depends(get_artifact_provider)
 ]
@@ -152,6 +164,38 @@ def stop_run(
 ) -> StopRunResponse:
     """Stop a run."""
     return control_handlers.stop_run(request, account, linkstate)
+
+
+@router.post("/stream-logs")
+def stream_logs(
+    request: Annotated[StreamLogsRequest, Depends(get_protobuf_request)],
+    linkstate: LinkStateDependency,
+    account: AccountDependency,
+    stream_context: ProtobufStreamContextDependency,
+) -> Iterator[StreamLogsResponse]:
+    """Stream logs for a run."""
+    return control_handlers.stream_logs(
+        request,
+        account,
+        linkstate,
+        stream_context.is_active,
+    )
+
+
+@router.post("/stream-run-events")
+def stream_run_events(
+    request: Annotated[StreamRunEventsRequest, Depends(get_protobuf_request)],
+    linkstate: LinkStateDependency,
+    account: AccountDependency,
+    stream_context: ProtobufStreamContextDependency,
+) -> Iterator[StreamRunEventsResponse]:
+    """Stream task events for a run."""
+    return control_handlers.stream_run_events(
+        request,
+        account,
+        linkstate,
+        stream_context.is_active,
+    )
 
 
 @router.post("/pull-artifacts")

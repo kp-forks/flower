@@ -15,6 +15,7 @@
 """Tests for the Control API router."""
 
 
+from collections.abc import Callable
 from datetime import datetime
 from unittest.mock import Mock, patch
 
@@ -30,11 +31,20 @@ from flwr.proto.control_pb2 import (  # pylint: disable=E0611
     PullArtifactsResponse,
     StartRunRequest,
     StartRunResponse,
+    StreamLogsRequest,
+    StreamLogsResponse,
+    StreamRunEventsRequest,
+    StreamRunEventsResponse,
 )
+from flwr.proto.task_pb2 import TaskEvent  # pylint: disable=E0611
 from flwr.server.superlink.linkstate import LinkState
 from flwr.supercore.auth.typing import AccountInfo
 from flwr.supercore.error import ApiErrorCode, http_error_translator
-from flwr.supercore.protobuf.constants import PROTOBUF_MEDIA_TYPE
+from flwr.supercore.protobuf.constants import (
+    PROTOBUF_MEDIA_TYPE,
+    PROTOBUF_STREAM_MEDIA_TYPE,
+)
+from flwr.supercore.protobuf.framing import frame_message
 from flwr.supercore.protobuf.translation import (
     PROTOBUF_REQUEST_TYPES,
     ProtobufTranslationMiddleware,
@@ -352,6 +362,107 @@ def test_list_runs_rejects_invalid_protobuf_bytes() -> None:
     }
 
 
+def test_stream_logs_returns_framed_protobuf_responses() -> None:
+    """Serialize every log response as one length-delimited stream frame."""
+    linkstate = Mock(spec=LinkState)
+    expected = [
+        StreamLogsResponse(log_output="first\n", latest_timestamp=1.0),
+        StreamLogsResponse(log_output="second\n", latest_timestamp=2.0),
+    ]
+    app = _create_app()
+    app.dependency_overrides[get_linkstate] = lambda: linkstate
+
+    def stream(
+        request: StreamLogsRequest,
+        account: AccountInfo,
+        state: LinkState,
+        is_active: Callable[[], bool],
+    ) -> object:
+        assert request == StreamLogsRequest(run_id=7, after_timestamp=0.5)
+        assert account is _ACCOUNT
+        assert state is linkstate
+        assert is_active()
+        return iter(expected)
+
+    with patch(
+        "flwr.superlink.routers.control.router.control_handlers.stream_logs",
+        side_effect=stream,
+    ):
+        response = TestClient(app).post(
+            "/v1/control/stream-logs",
+            content=StreamLogsRequest(
+                run_id=7, after_timestamp=0.5
+            ).SerializeToString(),
+            headers={
+                "authorization": "Bearer access-token",
+                "content-type": PROTOBUF_MEDIA_TYPE,
+            },
+        )
+
+    assert response.status_code == 200
+    assert response.headers["content-type"] == PROTOBUF_STREAM_MEDIA_TYPE
+    assert response.content == b"".join(frame_message(message) for message in expected)
+
+
+def test_stream_run_events_returns_framed_protobuf_responses() -> None:
+    """Serialize every task event as one length-delimited stream frame."""
+    linkstate = Mock(spec=LinkState)
+    expected = [
+        StreamRunEventsResponse(task_event=TaskEvent(id=5, run_id=7, event="first")),
+        StreamRunEventsResponse(task_event=TaskEvent(id=6, run_id=7, event="second")),
+    ]
+    app = _create_app()
+    app.dependency_overrides[get_linkstate] = lambda: linkstate
+
+    with patch(
+        "flwr.superlink.routers.control.router.control_handlers.stream_run_events",
+        return_value=iter(expected),
+    ) as stream:
+        response = TestClient(app).post(
+            "/v1/control/stream-run-events",
+            content=StreamRunEventsRequest(
+                run_id=7, after_task_event_id=4
+            ).SerializeToString(),
+            headers={
+                "authorization": "Bearer access-token",
+                "content-type": PROTOBUF_MEDIA_TYPE,
+            },
+        )
+
+    assert response.status_code == 200
+    assert response.headers["content-type"] == PROTOBUF_STREAM_MEDIA_TYPE
+    assert response.content == b"".join(frame_message(message) for message in expected)
+    request, account, state, is_active = stream.call_args.args
+    assert request == StreamRunEventsRequest(run_id=7, after_task_event_id=4)
+    assert account is _ACCOUNT
+    assert state is linkstate
+    assert callable(is_active)
+
+
+def test_stream_logs_returns_missing_run_error_before_streaming() -> None:
+    """Return a JSON error instead of opening a stream for an unknown run."""
+    linkstate = Mock(spec=LinkState)
+    linkstate.get_run_info.return_value = []
+    app = _create_app()
+    app.dependency_overrides[get_linkstate] = lambda: linkstate
+
+    response = TestClient(app).post(
+        "/v1/control/stream-logs",
+        content=StreamLogsRequest(run_id=7).SerializeToString(),
+        headers={
+            "authorization": "Bearer access-token",
+            "content-type": PROTOBUF_MEDIA_TYPE,
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.headers["content-type"] == "application/json"
+    assert response.json() == {
+        "detail": "Run ID not found.",
+        "code": ApiErrorCode.RUN_ID_NOT_FOUND.value,
+    }
+
+
 def test_pull_artifacts_returns_provider_url() -> None:
     """Return the configured provider's URL for a finished owned run."""
     linkstate = Mock(spec=LinkState)
@@ -380,6 +491,30 @@ def test_pull_artifacts_returns_provider_url() -> None:
         url="https://artifacts.example/run-7.zip"
     )
     artifact_provider.get_url.assert_called_once_with(7)
+
+
+def test_stream_run_events_returns_missing_run_error_before_streaming() -> None:
+    """Return a JSON error instead of opening an event stream for an unknown run."""
+    linkstate = Mock(spec=LinkState)
+    linkstate.get_run_info.return_value = []
+    app = _create_app()
+    app.dependency_overrides[get_linkstate] = lambda: linkstate
+
+    response = TestClient(app).post(
+        "/v1/control/stream-run-events",
+        content=StreamRunEventsRequest(run_id=7).SerializeToString(),
+        headers={
+            "authorization": "Bearer access-token",
+            "content-type": PROTOBUF_MEDIA_TYPE,
+        },
+    )
+
+    assert response.status_code == 404
+    assert response.headers["content-type"] == "application/json"
+    assert response.json() == {
+        "detail": "Run ID not found.",
+        "code": ApiErrorCode.RUN_ID_NOT_FOUND.value,
+    }
 
 
 def test_pull_artifacts_returns_error_without_provider() -> None:
