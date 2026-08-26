@@ -80,6 +80,7 @@ from flwr.supercore.protobuf.routing import ProtobufRoute
 from flwr.supercore.protobuf.translation import get_protobuf_request
 from flwr.superlink.dependencies.account import get_account
 from flwr.superlink.dependencies.linkstate import get_linkstate
+from flwr.superlink.dependencies.run_source import RunSourceDependency
 from flwr.superlink.servicer.control import control_handlers
 
 router = APIRouter(prefix="/v1/control", tags=["Control"], route_class=ProtobufRoute)
@@ -93,10 +94,17 @@ def start_run(
     request: Annotated[StartRunRequest, Depends(get_protobuf_request)],
     linkstate: LinkStateDependency,
     account: AccountDependency,
+    run_source: RunSourceDependency,
 ) -> StartRunResponse:
     """Start a run."""
     # Temporary: pass an empty Fleet API type
-    return control_handlers.start_run(request, account, linkstate, "")
+    return control_handlers.start_run(
+        request,
+        account,
+        linkstate,
+        "",
+        source=run_source,
+    )
 
 
 @router.post("/list-runs")
