@@ -29,7 +29,6 @@ from flwr.supercore.constant import (
     TASK_TYPE_TO_COMMAND,
     TaskType,
 )
-from flwr.supercore.typing import JSONObject
 
 from .types import ExecutionSpec, LaunchResult
 from .warm_executor_pool import (
@@ -44,6 +43,10 @@ if TYPE_CHECKING:
 
 _TOKEN_STDIN_ACKNOWLEDGEMENT = "FLWR_AGENTAPP_TOKEN_ACCEPTED"
 WARM_EXECUTOR_CONSUMED_ANNOTATION = "flower.ai/warm-executor-consumed"
+WARM_AGENTAPP_ROOT_CERTIFICATES_MOUNT_PATH = "/run/flwr/runtime-ca"
+WARM_AGENTAPP_ROOT_CERTIFICATES_FILE_PATH = (
+    f"{WARM_AGENTAPP_ROOT_CERTIFICATES_MOUNT_PATH}/ca.crt"
+)
 _WARM_EXECUTOR_ACK_TIMEOUT_SECONDS = 5.0
 # A surviving consumed Pod is safe to retire only after all task processes exit.
 # Ignore PID 1 (the idle parent), this probe, and zombies. A concurrent readiness
@@ -166,8 +169,11 @@ def warm_agentapp_command(
     if spec.insecure:
         command.append("--insecure")
     elif runtime_root_certificates is not None:
-        raise WarmAgentAppUnavailable(
-            "Warm executor dispatch cannot safely deliver Runtime API certificates."
+        command.extend(
+            [
+                "--root-certificates",
+                WARM_AGENTAPP_ROOT_CERTIFICATES_FILE_PATH,
+            ]
         )
     if spec.runtime_dependency_install:
         command.append("--allow-runtime-dependency-installation")
@@ -184,8 +190,9 @@ class WarmAgentAppPoolManager:  # pylint: disable=too-many-instance-attributes,t
         active_pod_count: Callable[[], int],
         exec_client: KubernetesClient | None = None,
         *,
-        build_warm_executor_pod: Callable[
-            [WarmExecutorPoolKey, KubernetesExecutorConfig, str], JSONObject
+        create_warm_executor: Callable[
+            [KubernetesClient, WarmExecutorPoolKey, KubernetesExecutorConfig, str],
+            None,
         ],
         has_warm_executor_configuration: Callable[
             [object, KubernetesExecutorConfig], bool
@@ -199,7 +206,7 @@ class WarmAgentAppPoolManager:  # pylint: disable=too-many-instance-attributes,t
         self._exec_client = exec_client or client
         self._config = config
         self._active_pod_count = active_pod_count
-        self._build_warm_executor_pod = build_warm_executor_pod
+        self._create_warm_executor = create_warm_executor
         self._has_warm_executor_configuration = has_warm_executor_configuration
         self._is_active_warm_executor = is_active_warm_executor
         self._warm_executor_owner_label_selector = warm_executor_owner_label_selector
@@ -391,10 +398,12 @@ class WarmAgentAppPoolManager:  # pylint: disable=too-many-instance-attributes,t
             pods_to_create = min(pods_to_create, max(available_pod_capacity, 0))
         for _ in range(pods_to_create):
             try:
-                pod = self._build_warm_executor_pod(
-                    pool.key, self._config, new_warm_executor_id()
+                self._create_warm_executor(
+                    self._client,
+                    pool.key,
+                    self._config,
+                    new_warm_executor_id(),
                 )
-                self._client.create_namespaced_pod(self._config.namespace, pod)
             except Exception:  # pylint: disable=broad-exception-caught
                 log(WARNING, "Failed to create a warm TaskExecutor Pod.", exc_info=True)
                 return
