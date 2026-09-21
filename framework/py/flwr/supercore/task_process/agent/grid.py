@@ -54,11 +54,15 @@ def _grid_tools() -> list[JSONObject]:
             ),
             properties={
                 "sample_size": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "minimum": 1,
-                    "description": "Optional maximum number of SuperNodes to return.",
+                    "description": (
+                        "Maximum number of SuperNodes to return, or null to return "
+                        "all available SuperNodes."
+                    ),
                 }
             },
+            required=["sample_size"],
             output_schema={
                 "type": "object",
                 "properties": {
@@ -93,6 +97,7 @@ def _grid_tools() -> list[JSONObject]:
                 "required": ["nodes", "num_available"],
                 "additionalProperties": False,
             },
+            strict=True,
         ),
         function_tool(
             "push_messages",
@@ -114,13 +119,20 @@ def _grid_tools() -> list[JSONObject]:
                                 "message's src_node_id."
                             ),
                             "payload": string_property("String payload to send."),
-                            "reply_to_message_id": string_property(
-                                "ID of the message being replied to. Required when "
-                                "replying to another message; otherwise, this field "
-                                "must not be set."
-                            ),
+                            "reply_to_message_id": {
+                                "type": ["string", "null"],
+                                "minLength": 1,
+                                "description": (
+                                    "ID of the message being replied to, or null when "
+                                    "sending a new message."
+                                ),
+                            },
                         },
-                        "required": ["dst_node_id", "payload"],
+                        "required": [
+                            "dst_node_id",
+                            "payload",
+                            "reply_to_message_id",
+                        ],
                         "additionalProperties": False,
                     },
                 },
@@ -156,6 +168,7 @@ def _grid_tools() -> list[JSONObject]:
                 "required": ["results"],
                 "additionalProperties": False,
             },
+            strict=True,
         ),
         function_tool(
             "pull_messages",
@@ -227,6 +240,7 @@ def _grid_tools() -> list[JSONObject]:
                 "required": ["messages", "pending_message_ids"],
                 "additionalProperties": False,
             },
+            strict=True,
         ),
     ]
 
