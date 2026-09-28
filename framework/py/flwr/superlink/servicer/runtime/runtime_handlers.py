@@ -42,6 +42,8 @@ from flwr.proto.message_pb2 import (  # pylint: disable=E0611
     PushObjectResponse,
 )
 from flwr.proto.runtime_pb2 import (  # pylint: disable=E0611
+    AcquireTaskRequest,
+    AcquireTaskResponse,
     GetConnectorRequest,
     GetConnectorResponse,
     GetNodesRequest,
@@ -67,6 +69,7 @@ from flwr.supercore.auth.typing import AccountInfo
 from flwr.supercore.constant import AUTOMATION_BATCH_LIMIT, TaskType
 from flwr.supercore.error import ApiErrorCode, FlowerError
 from flwr.supercore.object_store import NoObjectInStoreError
+from flwr.supercore.servicer.runtime import runtime_handlers as core_runtime_handlers
 from flwr.superlink.servicer.control.control_handlers import process_due_automations
 from flwr.superlink.servicer.control.control_handlers import (
     start_automation as start_control_automation,
@@ -102,6 +105,12 @@ def pull_pending_tasks(
         statuses=[Status.PENDING], order_by="pending_at", ascending=True
     )
     return PullPendingTasksResponse(tasks=tasks)
+
+
+def acquire_task(request: AcquireTaskRequest, state: LinkState) -> AcquireTaskResponse:
+    """Process due automations, then acquire an eligible pending task."""
+    process_due_automations(state, limit=AUTOMATION_BATCH_LIMIT)
+    return core_runtime_handlers.acquire_task(request, state)
 
 
 def get_nodes(
